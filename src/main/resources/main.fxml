@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.Pane?>
+
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller">
+   <children>
+      <Button layoutX="88.0" layoutY="174.0" mnemonicParsing="false" text="Heels" />
+      <Button layoutX="179.0" layoutY="174.0" mnemonicParsing="false" onAction="#addToCart" text="Sandals" />
+      <TextField fx:id="cartTotal" layoutX="332.0" layoutY="175.0" prefHeight="26.0" prefWidth="68.0" />
+      <TextField fx:id="cartCount" layoutX="415.0" layoutY="175.0" prefHeight="26.0" prefWidth="94.0" />
+   </children>
+</Pane>
