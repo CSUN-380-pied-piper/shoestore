@@ -13,7 +13,10 @@ public class SceneController {
 	private Parent root;
 	
 	public void switchToProductScene(ActionEvent event) throws IOException{
-		
+		/*
+		Parent root = FXMLLoader.load(getClass().getResource("/fxml/Scene.fxml"));
+        	Scene scene = new Scene(root);
+		*/
 	}
 	
 	public void switchToShoppingCartScene(ActionEvent event) throws IOException{
