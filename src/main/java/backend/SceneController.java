@@ -12,7 +12,7 @@ public class SceneController {
 	private Scene scene;
 	private Parent root;
 	
-	public void switchToProductScene(ActionEvent event) throws IOException{
+	@FXML public void switchToProductScene(ActionEvent event) throws IOException{
 		/*
 		Parent root = FXMLLoader.load(getClass().getResource("/fxml/shoestore.fxml"));
         	Scene scene = new Scene(root);
@@ -25,7 +25,7 @@ public class SceneController {
 		*/
 	}
 	
-	public void switchToShoppingCartScene(ActionEvent event) throws IOException{
+	@FXML public void switchToShoppingCartScene(ActionEvent event) throws IOException{
 		/*
 		Parent root = FXMLLoader.load(getClass().getResource("/fxml/shoppingCart.fxml"));
         	Scene scene = new Scene(root);
@@ -38,11 +38,11 @@ public class SceneController {
 		*/
 	}
 	
-	public void switchToCheckOutScene(ActionEvent event) throws IOException{
+	@FXML public void switchToCheckOutScene(ActionEvent event) throws IOException{
 		
 	}
 	
-	public void switchToConfirmationScene(ActionEvent event) throws IOException{
+	@FXML public void switchToConfirmationScene(ActionEvent event) throws IOException{
 		
 	}
 	
