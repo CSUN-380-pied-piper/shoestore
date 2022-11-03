@@ -10,7 +10,7 @@
    <children>
       <TextField alignment="CENTER" layoutX="226.0" layoutY="67.0" text="Shopping Cart" />
       <TextArea layoutX="126.0" layoutY="126.0" prefHeight="137.0" prefWidth="345.0" text="//purchases will appear here" />
-      <Button layoutX="166.0" layoutY="298.0" mnemonicParsing="false" onAction="#switchToProductScene" text="Return to Shopping" />
-      <Button layoutX="342.0" layoutY="298.0" mnemonicParsing="false" onAction="#switchToCheckOutScene" text="Checkout" />
+      <Button layoutX="266.0" layoutY="299.0" mnemonicParsing="false" text="Checkout" />
+      <Button layoutX="126.0" layoutY="299.0" mnemonicParsing="false" text="Bact to Store" />
    </children>
 </AnchorPane>
