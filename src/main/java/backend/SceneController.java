@@ -7,7 +7,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 public class SceneController {
-	
+	// Reference on how to use scenebuilder: https://github.com/jocelynmallon/GraphingCalculator/blob/master/src/main/java/dev/StylishNerds/GraphingCalculator/Calculator.java
 	private Stage stage;
 	private Scene scene;
 	private Parent root;
