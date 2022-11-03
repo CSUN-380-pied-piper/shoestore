@@ -16,6 +16,12 @@ public class SceneController {
 		/*
 		Parent root = FXMLLoader.load(getClass().getResource("/fxml/Scene.fxml"));
         	Scene scene = new Scene(root);
+		        stage.setScene(scene);
+        	stage.setMinWidth(350);
+        	stage.setMinHeight(510);
+        	stage.setResizable(true);
+        	stage.initStyle(StageStyle.UNIFIED);
+        	stage.setTitle("Product");
 		*/
 	}
 	
