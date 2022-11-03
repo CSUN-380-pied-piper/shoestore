@@ -1,17 +1,59 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
 
-
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="727.0" prefWidth="920.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <TextField alignment="TOP_CENTER" layoutX="210.0" layoutY="47.0" text="Checkout" />
-      <TextArea layoutX="63.0" layoutY="89.0" prefHeight="213.0" prefWidth="454.0" text="// summary info appear here" />
-      <Button layoutX="249.0" layoutY="319.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="83.0" text="Place Order" />
-      <Button layoutX="63.0" layoutY="319.0" mnemonicParsing="false" text="Back to Shopping Cart" />
-      <Button layoutX="63.0" layoutY="356.0" mnemonicParsing="false" text="Back to Store" />
+      <TextField alignment="TOP_CENTER" layoutX="364.0" layoutY="27.0" text="Checkout">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font></TextField>
+      <Button layoutX="419.0" layoutY="591.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="83.0" text="Place Order" />
+      <Button layoutX="38.0" layoutY="591.0" mnemonicParsing="false" text="Back to Shopping Cart" />
+      <Button layoutX="39.0" layoutY="635.0" mnemonicParsing="false" text="Back to Store" />
+      <TextField layoutX="42.0" layoutY="86.0" prefHeight="25.0" prefWidth="160.0" text="Shipping ">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </TextField>
+      <TextField layoutX="42.0" layoutY="123.0" text="Personal Details" />
+      <TextField layoutX="237.0" layoutY="159.0" promptText="Last Name" />
+      <TextField layoutX="42.0" layoutY="159.0" promptText="First Name" />
+      <TextField layoutX="42.0" layoutY="198.0" promptText="Contact Number" />
+      <TextField layoutX="38.0" layoutY="245.0" text="Address Details" />
+      <TextField layoutX="38.0" layoutY="284.0" prefHeight="25.0" prefWidth="302.0" promptText="Street" />
+      <TextField layoutX="38.0" layoutY="376.0" prefHeight="25.0" prefWidth="160.0" text="Billing">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </TextField>
+      <TextField layoutX="37.0" layoutY="412.0" prefHeight="25.0" prefWidth="190.0" text="Please select payment method" />
+      <TextField layoutX="366.0" layoutY="324.0" prefHeight="25.0" prefWidth="125.0" promptText="ZIP Code" />
+      <TextField layoutX="364.0" layoutY="284.0" prefHeight="25.0" prefWidth="125.0" promptText="Unit, Apt, Suite, etc." />
+      <TextField layoutX="38.0" layoutY="324.0" prefHeight="25.0" prefWidth="160.0" promptText="City" />
+      <TextField layoutX="227.0" layoutY="324.0" prefHeight="25.0" prefWidth="113.0" promptText="State" />
+      <TextField layoutX="232.0" layoutY="486.0" prefHeight="25.0" prefWidth="259.0" promptText="Card Number" />
+      <TextField layoutX="304.0" layoutY="526.0" prefHeight="25.0" prefWidth="113.0" promptText="CVC" />
+      <TextField layoutX="39.0" layoutY="526.0" prefHeight="19.0" prefWidth="114.0" promptText="Exp Month" />
+      <TextField layoutX="38.0" layoutY="486.0" promptText="Cardholder Name" />
+      <Button layoutX="37.0" layoutY="447.0" mnemonicParsing="false" text="Credit/Debit Card" />
+      <Button layoutX="172.0" layoutY="447.0" mnemonicParsing="false" text="Paypal" />
+      <TextField layoutX="170.0" layoutY="526.0" prefHeight="19.0" prefWidth="114.0" promptText="Exp Year" />
+      <TextField layoutX="559.0" layoutY="86.0" prefHeight="28.0" prefWidth="160.0" text="Order Summary">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </TextField>
+      <TextField layoutX="559.0" layoutY="136.0" prefHeight="25.0" prefWidth="74.0" text="Subtotal" />
+      <TextField layoutX="559.0" layoutY="159.0" prefHeight="25.0" prefWidth="74.0" text="Shipping" />
+      <TextField layoutX="559.0" layoutY="186.0" prefHeight="25.0" prefWidth="74.0" text="Tax" />
+      <TextField alignment="TOP_RIGHT" layoutX="725.0" layoutY="136.0" prefHeight="25.0" prefWidth="114.0" />
+      <TextField alignment="TOP_RIGHT" layoutX="726.0" layoutY="186.0" prefHeight="19.0" prefWidth="113.0" />
+      <TextField alignment="TOP_RIGHT" layoutX="726.0" layoutY="159.0" prefHeight="25.0" prefWidth="113.0" />
+      <TextField layoutX="559.0" layoutY="211.0" prefHeight="25.0" prefWidth="74.0" text="Total" />
+      <TextField alignment="TOP_RIGHT" layoutX="726.0" layoutY="211.0" prefHeight="25.0" prefWidth="113.0" />
    </children>
 </Pane>
