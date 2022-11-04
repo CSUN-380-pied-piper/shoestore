@@ -1,49 +1,53 @@
-package shoeStore;
-import java.awt.event.ActionEvent;
-import java.io.IOException;
+package sample;
 
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
-public class SceneController {
-	// Reference on how to use scenebuilder: https://github.com/jocelynmallon/GraphingCalculator/blob/master/src/main/java/dev/StylishNerds/GraphingCalculator/Calculator.java
-	private Stage stage;
-	private Scene scene;
-	private Parent root;
-	
-	@FXML public void switchToProductScene(ActionEvent event) throws IOException{
-		/*
-		Parent root = FXMLLoader.load(getClass().getResource("/fxml/shoestore.fxml"));
-        	Scene scene = new Scene(root);
-		        stage.setScene(scene);
-        	stage.setMinWidth(350);
-        	stage.setMinHeight(510);
-        	stage.setResizable(true);
-        	stage.initStyle(StageStyle.UNIFIED);
-        	stage.setTitle("Product");
-		*/
-	}
-	
-	@FXML public void switchToShoppingCartScene(ActionEvent event) throws IOException{
-		/*
-		Parent root = FXMLLoader.load(getClass().getResource("/fxml/shoppingCart.fxml"));
-        	Scene scene = new Scene(root);
-		        stage.setScene(scene);
-        	stage.setMinWidth(350);
-        	stage.setMinHeight(510);
-        	stage.setResizable(true);
-        	stage.initStyle(StageStyle.UNIFIED);
-        	stage.setTitle("Product");
-		*/
-	}
-	
-	@FXML public void switchToCheckOutScene(ActionEvent event) throws IOException{
-		
-	}
-	
-	@FXML public void switchToConfirmationScene(ActionEvent event) throws IOException{
-		
-	}
-	
+import java.io.IOException;
+
+public class Controller {
+
+    
+    private Stage stage;
+    private Scene scene;
+    private Parent root;
+
+    @FXML void addToCart(ActionEvent event) {
+
+    }
+    public void switchToCheckout(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("checkout.fxml"));
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+    public void switchToShoppingCart(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("shoppingCart.fxml"));
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+    public void switchToOrderPlaced(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("orderPlaced.fxml"));
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+    public void switchToShoeStore(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("shoeStore.fxml"));
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
 }
