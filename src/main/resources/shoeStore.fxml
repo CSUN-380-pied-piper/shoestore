@@ -4,14 +4,16 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.Pane?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0"
+prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1"
+fx:controller="gui.ShoeStoreController">
    <children>
       <Button layoutX="106.0" layoutY="200.0" mnemonicParsing="false" onAction="#addToCart" text="Heels" />
       <Button layoutX="208.0" layoutY="200.0" mnemonicParsing="false" onAction="#addToCart" text="Sneakers" />
       <Button layoutX="329.0" layoutY="200.0" mnemonicParsing="false" onAction="#addToCart" text="Sandal" />
       <Button layoutX="447.0" layoutY="200.0" mnemonicParsing="false" onAction="#addToCart" text="Boots" />
       <TextField alignment="CENTER" layoutX="183.0" layoutY="93.0" prefHeight="25.0" prefWidth="235.0" text="Click to add to shopping Cart" />
-      <Button layoutX="238.0" layoutY="287.0" mnemonicParsing="false" onAction="#switchToShoppingCartScene" text="Go to shopping Cart" />
+      <Button layoutX="238.0" layoutY="287.0" mnemonicParsing="false" onAction="#switchToShoppingCart" text="Go to shopping Cart" />
       <TextField alignment="CENTER" layoutX="106.0" layoutY="235.0" prefHeight="25.0" prefWidth="45.0" text="\$45" />
       <TextField alignment="CENTER" layoutX="208.0" layoutY="235.0" prefHeight="25.0" prefWidth="63.0" text="\$120" />
       <TextField alignment="CENTER" layoutX="330.0" layoutY="235.0" prefHeight="25.0" prefWidth="51.0" text="\$23" />
