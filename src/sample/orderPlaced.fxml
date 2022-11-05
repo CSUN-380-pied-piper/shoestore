@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.SceneController">
+   <children>
+      <TextField alignment="TOP_CENTER" layoutX="183.0" layoutY="41.0" text="Congratulations!">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </TextField>
+      <TextField alignment="TOP_CENTER" layoutX="202.0" layoutY="135.0" prefHeight="29.0" prefWidth="199.0" text="Your order has been placed.">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </TextField>
+      <TextField alignment="TOP_CENTER" layoutX="141.0" layoutY="186.0" prefHeight="29.0" prefWidth="321.0" text="An order confirmation will sent to your email shortly.">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </TextField>
+      <Button layoutX="255.0" layoutY="252.0" mnemonicParsing="false" onAction="#switchToShoeStore" text="Back to Store" />
+   </children>
+</Pane>
