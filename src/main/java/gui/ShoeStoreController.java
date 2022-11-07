@@ -6,6 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -17,9 +18,18 @@ public class ShoeStoreController {
     private Scene scene;
     private Parent root;
 
+    // import fxml ui elements that we need to interact with
+    @FXML
+    Button CartButton, HeelsBtn, SneakersBtn, SandalsBtn, BootsBtn;
+
     @FXML void addToCart(ActionEvent event) {
+        Object source = event.getSource();
+        if (source instanceof Button) {
+            String btnLabel = ((Button) source).getText();
+        }
 
     }
+
     @FXML
     public void switchToCheckout(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/checkout.fxml"));
