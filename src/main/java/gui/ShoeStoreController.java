@@ -1,5 +1,6 @@
 package gui;
 
+import backend.Database;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -17,6 +18,7 @@ public class ShoeStoreController {
     private Stage stage;
     private Scene scene;
     private Parent root;
+    private Database db;
 
     // import fxml ui elements that we need to interact with
     @FXML
@@ -64,6 +66,11 @@ public class ShoeStoreController {
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
+    }
+
+    @FXML
+    public void initialize() {
+        this.db = new Database();
     }
 
 }
