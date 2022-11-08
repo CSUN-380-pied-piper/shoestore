@@ -1,25 +1,28 @@
 package gui;
 
-import backend.Database;
 import javafx.fxml.FXMLLoader;
-import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.lang.reflect.Constructor;
+import java.net.URL;
+import javafx.scene.Parent;
+import state.AppState;
 
-public class SceneLoader extends FXMLLoader {
+public class SceneLoader {
 
-    public SceneLoader(Database db, Stage stage) {
+    private AppState state;
+    private FXMLLoader loader;
+
+    public SceneLoader(AppState state) {
+        this.state = state;
+        this.state.setLoader(this);
+        this.loader = new FXMLLoader();
         try {
-            this.setControllerFactory((Class<?> type) -> {
-                try
-                {
+            loader.setControllerFactory((Class<?> type) -> {
+                try {
                     for (Constructor<?> c : type.getConstructors()) {
                         if (c.getParameterCount() == 1) {
-                            return c.newInstance(db);
-                        } else if (c.getParameterCount() == 2) {
-                            return c.newInstance(db, this);
-                        } else if (c.getParameterCount() == 3) {
-                            return c.newInstance(db, this, stage);
+                            return c.newInstance(this.state);
                         }
                     }
                     return type.getConstructor().newInstance();
@@ -32,4 +35,12 @@ public class SceneLoader extends FXMLLoader {
         }
     }
 
+    public Parent load(URL url) throws IOException {
+        // clear the last used root & controller values before loading
+        loader.setRoot(null);
+        loader.setController(null);
+        // now set location and load the file
+        loader.setLocation(url);
+        return loader.load();
+    }
 }

@@ -7,27 +7,25 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
+import state.AppState;
 import java.io.IOException;
+import java.util.Stack;
 
 public class ShoeStoreController {
 
-    
+    private AppState state;
     private Stage stage;
     private Scene scene;
     private Database db;
     private SceneLoader loader;
+    private Stack<Parent> viewStack;
 
     // import fxml ui elements that we need to interact with
     @FXML
     Button CartButton, HeelsBtn, SneakersBtn, SandalsBtn, BootsBtn;
 
-    public ShoeStoreController() {
-    }
-
-    public ShoeStoreController(Database db, SceneLoader loader, Stage stage) {
-        this.db = db;
-        this.loader = loader;
-        this.stage = stage;
+    public ShoeStoreController(AppState state) {
+        this.state = state;
     }
 
     @FXML void addToCart(ActionEvent event) {
@@ -59,10 +57,9 @@ public class ShoeStoreController {
 
     @FXML
     public void switchToShoppingCart(ActionEvent event) throws IOException {
-        Parent root = loader.load(getClass().getResource("/shoppingCart.fxml"));
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+        Parent childRoot = loader.load(getClass().getResource("/shoppingCart.fxml"));
+        viewStack.push(stage.getScene().getRoot());
+        stage.getScene().setRoot(childRoot);
     }
 
     @FXML
@@ -83,6 +80,10 @@ public class ShoeStoreController {
 
     @FXML
     public void initialize() {
+        this.db = state.getDb();
+        this.loader = state.getLoader();
+        this.stage = state.getStage();
+        this.viewStack = state.getViewStack();
     }
 
 }
