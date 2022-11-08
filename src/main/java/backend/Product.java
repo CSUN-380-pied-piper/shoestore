@@ -5,6 +5,7 @@ import java.util.ArrayList;
 public class Product {
 
     private String id;
+
     private Double price;
     private String name;
     private Boolean halfSizes;
@@ -15,4 +16,7 @@ public class Product {
         this.price = price;
     }
 
+    public Double getPrice() {
+        return price;
+    }
 }
