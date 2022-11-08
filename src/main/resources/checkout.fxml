@@ -25,12 +25,11 @@
       <TextField layoutX="42.0" layoutY="198.0" promptText="Contact Number" />
       <TextField layoutX="38.0" layoutY="245.0" text="Address Details" />
       <TextField layoutX="38.0" layoutY="284.0" prefHeight="25.0" prefWidth="302.0" promptText="Street" />
-      <TextField layoutX="38.0" layoutY="376.0" prefHeight="25.0" prefWidth="160.0" text="Billing">
+      <TextField layoutX="36.0" layoutY="439.0" prefHeight="25.0" prefWidth="160.0" text="Billing">
          <font>
             <Font size="14.0" />
          </font>
       </TextField>
-      <TextField layoutX="37.0" layoutY="412.0" prefHeight="25.0" prefWidth="190.0" text="Please select payment method" />
       <TextField layoutX="366.0" layoutY="324.0" prefHeight="25.0" prefWidth="125.0" promptText="ZIP Code" />
       <TextField layoutX="364.0" layoutY="284.0" prefHeight="25.0" prefWidth="125.0" promptText="Unit, Apt, Suite, etc." />
       <TextField layoutX="38.0" layoutY="324.0" prefHeight="25.0" prefWidth="160.0" promptText="City" />
@@ -39,8 +38,6 @@
       <TextField layoutX="304.0" layoutY="526.0" prefHeight="25.0" prefWidth="113.0" promptText="CVC" />
       <TextField layoutX="39.0" layoutY="526.0" prefHeight="19.0" prefWidth="114.0" promptText="Exp Month" />
       <TextField layoutX="38.0" layoutY="486.0" promptText="Cardholder Name" />
-      <Button layoutX="37.0" layoutY="447.0" mnemonicParsing="false" text="Credit/Debit Card" />
-      <Button layoutX="172.0" layoutY="447.0" mnemonicParsing="false" text="Paypal" />
       <TextField layoutX="170.0" layoutY="526.0" prefHeight="19.0" prefWidth="114.0" promptText="Exp Year" />
       <TextField layoutX="559.0" layoutY="86.0" prefHeight="28.0" prefWidth="160.0" text="Order Summary">
          <font>
