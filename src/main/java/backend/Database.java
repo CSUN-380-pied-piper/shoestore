@@ -1,8 +1,7 @@
 package backend;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
+import java.sql.*;
+import java.util.ArrayList;
 
 public class Database {
 
@@ -19,12 +18,11 @@ public class Database {
         Connection conn = null;
         try {
             conn = DriverManager.getConnection(url, user, password);
-            System.out.println("Connected to the PostgreSQL server successfully.");
+            System.out.println("Connected to the DB successfully.");
             this.conn = conn;
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
-
     }
 
     public Connection connect() {
@@ -32,5 +30,33 @@ public class Database {
             this.openConnection();
         }
         return this.conn;
+    }
+
+    public ArrayList<Product> getProducts(String name) {
+        String sqlQuery = "SELECT * FROM products WHERE name like '" + name + "'";
+        ArrayList<Product> productList = new ArrayList<>();
+        Statement stmt;
+        ResultSet results;
+        try {
+            // open the db connection...
+            openConnection();
+            // now create and run our query
+            stmt = conn.createStatement();
+            results = stmt.executeQuery(sqlQuery);
+            // while we have results from the query, parse them...
+            while (results.next()) {
+                String shoeName = results.getString("name");
+                Double shoePrice = results.getDouble("price");
+                Product p = new Product(shoeName, shoePrice);
+                productList.add(p);
+            }
+            // cleanup/close our DB connection when we're done with it.
+            stmt.close();
+            results.close();
+            conn.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return productList;
     }
 }

@@ -1,6 +1,7 @@
 package gui;
 
 import backend.Database;
+import backend.Product;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Parent;
@@ -9,6 +10,7 @@ import javafx.scene.control.Button;
 import javafx.stage.Stage;
 import state.AppState;
 import java.io.IOException;
+import java.text.DecimalFormat;
 import java.util.Stack;
 
 public class ShoeStoreController {
@@ -19,6 +21,7 @@ public class ShoeStoreController {
     private Database db;
     private SceneLoader loader;
     private Stack<Parent> viewStack;
+    private DecimalFormat df = new DecimalFormat("####,###,###.00");
 
     // import fxml ui elements that we need to interact with
     @FXML
@@ -32,11 +35,23 @@ public class ShoeStoreController {
         Object source = event.getSource();
         if (source instanceof Button) {
             String btnLabel = ((Button) source).getText();
+            System.out.println("Button text: " + btnLabel);
+            Product item = db.getProducts(btnLabel).get(0);
+            System.out.println("Shoe: " + btnLabel + ", Price: " + df.format(item.getPrice()));
         }
 
     }
 
-    @FXML public void switchScene(ActionEvent event) {
+    /*
+        Note, this is a placeholder/wip method to eventually remove the
+        individual methods for each 'scene' button in our fxml files.
+
+        Instead, this method will take the source text/label from the button
+        and handle loading the appropriate fxml file, and pushing/popping
+        the view stack before switching the scene.
+     */
+    @FXML
+    public void switchScene(ActionEvent event) {
         Object source = event.getSource();
         if (source instanceof Button) {
             String btnId = ((Button) source).getId();
