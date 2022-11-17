@@ -25,7 +25,20 @@ public class placeOrderController {
         this.state = state;
     }
 
+    @FXML
+    public void backToStore(ActionEvent event) throws IOException {
+        Parent root = loader.load(getClass().getResource("/shoeStore.fxml"));
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
 
+    @FXML
+    public void initialize() {
+        this.db = state.getDb();
+        this.loader = state.getLoader();
+        this.stage = state.getStage();
+    }
 
 
 }
