@@ -22,21 +22,31 @@ public class CheckoutController {
     private Stack<Parent> viewStack;
 
     @FXML
-    Button placeOrderButton, backToStore, backToShoppingCart;
+    Button placeOrderButton, backToStoreButton, backToCartButton;
 
     public CheckoutController(AppState state) {
         this.state = state;
     }
 
     @FXML
-    public void backToShoppingCart(ActionEvent event) {
-        Parent prevScene = viewStack.pop();
-        stage.getScene().setRoot(prevScene);
+    public void backToShoppingCart(ActionEvent event) throws IOException {
+        Parent root = loader.load(getClass().getResource("/shoppingCart.fxml"));
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
     }
 
     @FXML
     public void backToStore(ActionEvent event) throws IOException {
         Parent root = loader.load(getClass().getResource("/shoeStore.fxml"));
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    @FXML
+    public void placeOrder(ActionEvent event) throws IOException {
+        Parent root = loader.load(getClass().getResource("/orderPlaced.fxml"));
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();

@@ -5,24 +5,23 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.placeOrderController">
    <children>
-      <TextField alignment="TOP_CENTER" layoutX="190.0" layoutY="94.0" text="Congratulations!">
+      <TextField alignment="TOP_CENTER" editable="false" layoutX="190.0" layoutY="94.0" text="Congratulations!">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </TextField>
-      <TextField alignment="TOP_CENTER" layoutX="202.0" layoutY="135.0" prefHeight="29.0" prefWidth="199.0" text="Your order has been placed.">
+      <TextField alignment="TOP_CENTER" editable="false" layoutX="202.0" layoutY="135.0" prefHeight="29.0" prefWidth="199.0" text="Your order has been placed.">
          <font>
             <Font size="14.0" />
          </font>
       </TextField>
-      <TextField alignment="TOP_CENTER" layoutX="141.0" layoutY="186.0" prefHeight="29.0" prefWidth="321.0" text="An order confirmation will sent to your email shortly.">
+      <TextField alignment="TOP_CENTER" editable="false" layoutX="141.0" layoutY="186.0" prefHeight="29.0" prefWidth="321.0" text="An order confirmation will sent to your email shortly.">
          <font>
             <Font size="14.0" />
          </font>
       </TextField>
-      <Button layoutX="255.0" layoutY="252.0" mnemonicParsing="false" text="Back to Store" />
+      <Button layoutX="255.0" layoutY="252.0" mnemonicParsing="false" onAction="#switchToShoeStore" text="Back to Store" />
    </children>
 </Pane>
