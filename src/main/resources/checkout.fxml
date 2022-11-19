@@ -1,56 +1,103 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="672.0" prefWidth="916.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.CheckoutController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="652.0" prefWidth="901.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.CheckoutController">
    <children>
-      <TextField alignment="TOP_CENTER" editable="false" layoutX="364.0" layoutY="27.0" text="Checkout">
+      <Button fx:id="placeOrderButton" layoutX="409.0" layoutY="527.0" mnemonicParsing="false" onAction="#placeOrder" prefHeight="28.0" prefWidth="91.0" text="Place Order">
          <font>
-            <Font name="System Bold" size="18.0" />
+            <Font size="14.0" />
+         </font></Button>
+      <Button fx:id="backToCartButton" layoutX="43.0" layoutY="527.0" mnemonicParsing="false" onAction="#backToShoppingCart" text="Back to Shopping Cart">
+         <font>
+            <Font size="14.0" />
+         </font></Button>
+      <Button fx:id="backToStoreButton" layoutX="44.0" layoutY="571.0" mnemonicParsing="false" onAction="#backToStore" text="Back to Store">
+         <font>
+            <Font size="14.0" />
+         </font></Button>
+      <TextField fx:id="LastNameTF" layoutX="239.0" layoutY="161.0" promptText="Last Name" />
+      <TextField fx:id="FirstNameTF" layoutX="44.0" layoutY="161.0" promptText="First Name" />
+      <TextField fx:id="ContactNumTF" layoutX="44.0" layoutY="200.0" promptText="Contact Number" />
+      <TextField fx:id="StTF" layoutX="41.0" layoutY="284.0" prefHeight="25.0" prefWidth="302.0" promptText="Street" />
+      <TextField fx:id="ZipTF" layoutX="369.0" layoutY="324.0" prefHeight="25.0" prefWidth="125.0" promptText="ZIP Code" />
+      <TextField fx:id="UnitTF" layoutX="367.0" layoutY="284.0" prefHeight="25.0" prefWidth="125.0" promptText="Unit, Apt, Suite, etc." />
+      <TextField fx:id="CityTF" layoutX="41.0" layoutY="324.0" prefHeight="25.0" prefWidth="160.0" promptText="City" />
+      <TextField fx:id="StateTF" layoutX="230.0" layoutY="324.0" prefHeight="25.0" prefWidth="113.0" promptText="State" />
+      <TextField fx:id="CardNumTF" layoutX="236.0" layoutY="415.0" prefHeight="25.0" prefWidth="259.0" promptText="Card Number" />
+      <TextField fx:id="CvcTF" layoutX="236.0" layoutY="457.0" prefHeight="25.0" prefWidth="113.0" promptText="CVC" />
+      <TextField fx:id="ExpMonthTF" layoutX="43.0" layoutY="455.0" prefHeight="28.0" prefWidth="140.0" promptText="Exp Date (MM/YYYY)" />
+      <TextField fx:id="CardNameTF" layoutX="42.0" layoutY="415.0" promptText="Cardholder Name" />
+      <TextField fx:id="SubtotalTF" alignment="TOP_RIGHT" editable="false" layoutX="727.0" layoutY="127.0" prefHeight="25.0" prefWidth="114.0">
+         <font>
+            <Font size="14.0" />
          </font></TextField>
-      <Button fx:id="placeOrderButton" layoutX="421.0" layoutY="552.0" mnemonicParsing="false" onAction="#placeOrder" prefHeight="25.0" prefWidth="83.0" text="Place Order" />
-      <Button fx:id="backToCartButton" layoutX="40.0" layoutY="552.0" mnemonicParsing="false" onAction="#backToShoppingCart" text="Back to Shopping Cart" />
-      <Button fx:id="backToStoreButton" layoutX="41.0" layoutY="596.0" mnemonicParsing="false" onAction="#backToStore" text="Back to Store" />
-      <TextField editable="false" layoutX="42.0" layoutY="86.0" prefHeight="25.0" prefWidth="160.0" text="Shipping ">
+      <TextField fx:id="TaxTF" alignment="TOP_RIGHT" editable="false" layoutX="727.0" layoutY="183.0" prefHeight="19.0" prefWidth="113.0">
          <font>
             <Font size="14.0" />
-         </font>
-      </TextField>
-      <TextField editable="false" layoutX="42.0" layoutY="123.0" text="Personal Details" />
-      <TextField layoutX="237.0" layoutY="159.0" promptText="Last Name" />
-      <TextField layoutX="42.0" layoutY="159.0" promptText="First Name" />
-      <TextField layoutX="42.0" layoutY="198.0" promptText="Contact Number" />
-      <TextField editable="false" layoutX="38.0" layoutY="245.0" text="Address Details" />
-      <TextField layoutX="38.0" layoutY="284.0" prefHeight="25.0" prefWidth="302.0" promptText="Street" />
-      <TextField editable="false" layoutX="38.0" layoutY="392.0" prefHeight="25.0" prefWidth="160.0" text="Billing">
+         </font></TextField>
+      <TextField fx:id="ShippingTF" alignment="TOP_RIGHT" editable="false" layoutX="727.0" layoutY="155.0" prefHeight="25.0" prefWidth="113.0">
          <font>
             <Font size="14.0" />
-         </font>
-      </TextField>
-      <TextField layoutX="366.0" layoutY="324.0" prefHeight="25.0" prefWidth="125.0" promptText="ZIP Code" />
-      <TextField layoutX="364.0" layoutY="284.0" prefHeight="25.0" prefWidth="125.0" promptText="Unit, Apt, Suite, etc." />
-      <TextField layoutX="38.0" layoutY="324.0" prefHeight="25.0" prefWidth="160.0" promptText="City" />
-      <TextField layoutX="227.0" layoutY="324.0" prefHeight="25.0" prefWidth="113.0" promptText="State" />
-      <TextField layoutX="234.0" layoutY="439.0" prefHeight="25.0" prefWidth="259.0" promptText="Card Number" />
-      <TextField layoutX="306.0" layoutY="479.0" prefHeight="25.0" prefWidth="113.0" promptText="CVC" />
-      <TextField layoutX="41.0" layoutY="479.0" prefHeight="19.0" prefWidth="114.0" promptText="Exp Month" />
-      <TextField layoutX="40.0" layoutY="439.0" promptText="Cardholder Name" />
-      <TextField layoutX="172.0" layoutY="479.0" prefHeight="19.0" prefWidth="114.0" promptText="Exp Year" />
-      <TextField editable="false" layoutX="559.0" layoutY="86.0" prefHeight="28.0" prefWidth="160.0" text="Order Summary">
+         </font></TextField>
+      <TextField fx:id="TotalTF" alignment="TOP_RIGHT" editable="false" layoutX="727.0" layoutY="211.0" prefHeight="25.0" prefWidth="113.0">
          <font>
             <Font size="14.0" />
+         </font></TextField>
+      <TextField fx:id="eTF" layoutX="239.0" layoutY="199.0" prefHeight="25.0" prefWidth="202.0" promptText="Email" />
+      <Label layoutX="406.0" layoutY="45.0" prefHeight="47.0" prefWidth="105.0" text="Checkout" textAlignment="CENTER">
+         <font>
+            <Font size="24.0" />
          </font>
-      </TextField>
-      <TextField editable="false" layoutX="559.0" layoutY="136.0" prefHeight="25.0" prefWidth="74.0" text="Subtotal" />
-      <TextField editable="false" layoutX="559.0" layoutY="159.0" prefHeight="25.0" prefWidth="74.0" text="Shipping" />
-      <TextField editable="false" layoutX="559.0" layoutY="186.0" prefHeight="25.0" prefWidth="74.0" text="Tax" />
-      <TextField alignment="TOP_RIGHT" layoutX="725.0" layoutY="136.0" prefHeight="25.0" prefWidth="114.0" />
-      <TextField alignment="TOP_RIGHT" layoutX="726.0" layoutY="186.0" prefHeight="19.0" prefWidth="113.0" />
-      <TextField alignment="TOP_RIGHT" layoutX="726.0" layoutY="159.0" prefHeight="25.0" prefWidth="113.0" />
-      <TextField editable="false" layoutX="559.0" layoutY="211.0" prefHeight="25.0" prefWidth="74.0" text="Total" />
-      <TextField alignment="TOP_RIGHT" layoutX="726.0" layoutY="211.0" prefHeight="25.0" prefWidth="113.0" />
-      <TextField layoutX="237.0" layoutY="197.0" prefHeight="25.0" prefWidth="202.0" promptText="Email" />
+      </Label>
+      <Label layoutX="44.0" layoutY="92.0" text="Shipping">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="42.0" layoutY="128.0" text="Personal Details">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="40.0" layoutY="253.0" text="Address Details">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="559.0" layoutY="92.0" text="Order Summary">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="42.0" layoutY="380.0" text="Billing">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="558.0" layoutY="214.0" text="Total">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="557.0" layoutY="186.0" text="Tax">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="557.0" layoutY="158.0" text="Shipping">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="558.0" layoutY="130.0" text="Subtotal">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
    </children>
 </Pane>
