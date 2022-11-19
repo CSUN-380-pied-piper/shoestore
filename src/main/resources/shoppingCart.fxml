@@ -2,12 +2,23 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.ShoppingCartController">
    <children>
-      <TextField alignment="CENTER" layoutX="226.0" layoutY="67.0" text="Shopping Cart" />
       <TextArea layoutX="126.0" layoutY="126.0" prefHeight="137.0" prefWidth="345.0" text="//purchases will appear here" />
-      <Button layoutX="266.0" layoutY="299.0" mnemonicParsing="false" onAction="#checkout" text="Checkout" />
-      <Button fx:id="HomeButton" layoutX="126.0" layoutY="299.0" mnemonicParsing="false" onAction="#backToStore" text="Back to Store" />
+      <Button layoutX="266.0" layoutY="299.0" mnemonicParsing="false" onAction="#checkout" text="Checkout">
+         <font>
+            <Font size="14.0" />
+         </font></Button>
+      <Button fx:id="HomeButton" layoutX="126.0" layoutY="299.0" mnemonicParsing="false" onAction="#backToStore" text="Back to Store">
+         <font>
+            <Font size="14.0" />
+         </font></Button>
+      <Label layoutX="246.0" layoutY="77.0" text="Shopping Cart">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

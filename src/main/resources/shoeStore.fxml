@@ -1,12 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.ShoeStoreController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.ShoeStoreController">
    <children>
-      <TextField alignment="CENTER" editable="false" layoutX="183.0" layoutY="93.0" prefHeight="25.0" prefWidth="235.0" text="Click to add to shopping Cart" />
       <GridPane alignment="CENTER" layoutX="45.0" layoutY="189.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="71.0" prefWidth="512.0">
          <columnConstraints>
             <ColumnConstraints halignment="LEFT" hgrow="ALWAYS" minWidth="0.0" percentWidth="25.0" />
@@ -23,21 +28,33 @@
                <GridPane.margin>
                   <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
                </GridPane.margin>
+               <font>
+                  <Font size="14.0" />
+               </font>
             </Button>
             <Button fx:id="SneakersBtn" mnemonicParsing="false" onAction="#addToCart" text="Sneakers" GridPane.columnIndex="1">
                <GridPane.margin>
                   <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
                </GridPane.margin>
+               <font>
+                  <Font size="14.0" />
+               </font>
             </Button>
             <Button fx:id="SandalsBtn" mnemonicParsing="false" onAction="#addToCart" text="Sandals" GridPane.columnIndex="2">
                <GridPane.margin>
                   <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
                </GridPane.margin>
+               <font>
+                  <Font size="14.0" />
+               </font>
             </Button>
             <Button fx:id="BootsBtn" mnemonicParsing="false" onAction="#addToCart" text="Boots" GridPane.columnIndex="3">
                <GridPane.margin>
                   <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
                </GridPane.margin>
+               <font>
+                  <Font size="14.0" />
+               </font>
             </Button>
             <TextField editable="false" prefHeight="25.0" prefWidth="45.0" text="\$45" GridPane.halignment="LEFT" GridPane.rowIndex="1" />
             <TextField editable="false" prefHeight="25.0" prefWidth="63.0" text="\$120" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="1" />
@@ -45,6 +62,14 @@
             <TextField editable="false" prefHeight="25.0" prefWidth="51.0" text="\$135" GridPane.columnIndex="3" GridPane.halignment="LEFT" GridPane.rowIndex="1" />
          </children>
       </GridPane>
-      <Button layoutX="238.0" layoutY="287.0" mnemonicParsing="false" onAction="#switchToShoppingCart" text="Go to shopping Cart" />
+      <Button layoutX="233.0" layoutY="287.0" mnemonicParsing="false" onAction="#switchToShoppingCart" text="Go to shopping Cart">
+         <font>
+            <Font size="14.0" />
+         </font></Button>
+      <Label layoutX="203.0" layoutY="112.0" text="Click to add to shopping Cart" textAlignment="CENTER">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
    </children>
 </Pane>
