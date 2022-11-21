@@ -21,7 +21,7 @@ public class ShoeStoreController {
     private Database db;
     private SceneLoader loader;
     private Stack<Parent> viewStack;
-    private ShoppingCart sc;
+    private ShoppingCart sc = new ShoppingCart();
     private DecimalFormat df = new DecimalFormat("####,###,###.00");
 
     // import fxml ui elements that we need to interact with
