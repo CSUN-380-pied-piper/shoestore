@@ -22,8 +22,7 @@ public class CheckoutController {
     private Database db;
     private SceneLoader loader;
     private Stack<Parent> viewStack;
-    private String lastName, firstName, email, street, unit, city, s;
-    private int phoneNum, zip;
+    private String lastName, firstName, phoneNum, email, street, unit, city, s, zip;
 
     @FXML
     Button placeOrderButton, backToStoreButton, backToCartButton;
@@ -63,13 +62,13 @@ public class CheckoutController {
 
         firstName = firstNameTF.getText();
         lastName = lastNameTF.getText();
-        phoneNum = Integer.parseInt(contactNumTF.getText());
+        phoneNum = contactNumTF.getText();
         email = eTF.getText();
         street = stTF.getText();
         unit = unitTF.getText();
         city = cityTF.getText();
         s = stateTF.getText();
-        zip = Integer.parseInt(zipTF.getText());
+        zip = zipTF.getText();
         Customer c = new Customer(firstName, lastName, phoneNum, email, street, unit, city, s, zip);
         System.out.println(c);
     }
