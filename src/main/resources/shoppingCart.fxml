@@ -6,7 +6,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.ShoppingCartController">
    <children>
-      <TextArea layoutX="126.0" layoutY="126.0" prefHeight="137.0" prefWidth="345.0" text="//purchases will appear here" />
+      <TextArea fx:id="shoppingCartTextBox" layoutX="126.0" layoutY="126.0" prefHeight="137.0" prefWidth="345.0" text="//purchases will appear here" />
       <Button layoutX="266.0" layoutY="299.0" mnemonicParsing="false" onAction="#checkout" text="Checkout">
          <font>
             <Font size="14.0" />

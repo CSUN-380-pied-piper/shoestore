@@ -29,6 +29,9 @@ public class ShoppingCartController {
     Button HomeButton;
 
     @FXML
+    TextArea shoppingCartTextBox;
+    
+    @FXML
     Button CheckoutButton;
 
     public ShoppingCartController(AppState state) {
