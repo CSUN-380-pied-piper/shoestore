@@ -20,31 +20,31 @@
          <font>
             <Font size="14.0" />
          </font></Button>
-      <TextField fx:id="LastNameTF" layoutX="237.0" layoutY="161.0" promptText="Last Name" />
-      <TextField fx:id="FirstNameTF" layoutX="41.0" layoutY="161.0" promptText="First Name" />
-      <TextField fx:id="ContactNumTF" layoutX="41.0" layoutY="200.0" promptText="Contact Number" />
-      <TextField fx:id="StTF" layoutX="41.0" layoutY="284.0" prefHeight="25.0" prefWidth="302.0" promptText="Street" />
-      <TextField fx:id="ZipTF" layoutX="369.0" layoutY="324.0" prefHeight="25.0" prefWidth="125.0" promptText="ZIP Code" />
-      <TextField fx:id="UnitTF" layoutX="367.0" layoutY="284.0" prefHeight="25.0" prefWidth="125.0" promptText="Unit, Apt, Suite, etc." />
-      <TextField fx:id="CityTF" layoutX="41.0" layoutY="324.0" prefHeight="25.0" prefWidth="160.0" promptText="City" />
-      <TextField fx:id="StateTF" layoutX="230.0" layoutY="324.0" prefHeight="25.0" prefWidth="113.0" promptText="State" />
-      <TextField fx:id="CardNumTF" layoutX="234.0" layoutY="415.0" prefHeight="25.0" prefWidth="259.0" promptText="Card Number" />
-      <TextField fx:id="CvcTF" layoutX="234.0" layoutY="457.0" prefHeight="25.0" prefWidth="113.0" promptText="CVC" />
-      <TextField fx:id="ExpMonthTF" layoutX="41.0" layoutY="455.0" prefHeight="28.0" prefWidth="138.0" promptText="Exp Date (MM/YYYY)" />
-      <TextField fx:id="CardNameTF" layoutX="41.0" layoutY="415.0" promptText="Cardholder Name" />
-      <TextField fx:id="SubtotalTF" alignment="TOP_RIGHT" editable="false" layoutX="727.0" layoutY="127.0" prefHeight="25.0" prefWidth="114.0">
+      <TextField fx:id="lastNameTF" layoutX="237.0" layoutY="161.0" onAction="#placeOrder" promptText="Last Name" />
+      <TextField fx:id="firstNameTF" layoutX="41.0" layoutY="161.0" onAction="#placeOrder" promptText="First Name" />
+      <TextField fx:id="contactNumTF" layoutX="41.0" layoutY="200.0" onAction="#placeOrder" promptText="Contact Number" />
+      <TextField fx:id="stTF" layoutX="41.0" layoutY="284.0" onAction="#placeOrder" prefHeight="25.0" prefWidth="302.0" promptText="Street" />
+      <TextField fx:id="zipTF" layoutX="369.0" layoutY="324.0" onAction="#placeOrder" prefHeight="25.0" prefWidth="125.0" promptText="ZIP Code" />
+      <TextField fx:id="unitTF" layoutX="367.0" layoutY="284.0" onAction="#placeOrder" prefHeight="25.0" prefWidth="125.0" promptText="Unit, Apt, Suite, etc." />
+      <TextField fx:id="cityTF" layoutX="41.0" layoutY="324.0" onAction="#placeOrder" prefHeight="25.0" prefWidth="160.0" promptText="City" />
+      <TextField fx:id="stateTF" layoutX="230.0" layoutY="324.0" onAction="#placeOrder" prefHeight="25.0" prefWidth="113.0" promptText="State" />
+      <TextField fx:id="cardNumTF" layoutX="234.0" layoutY="415.0" onAction="#placeOrder" prefHeight="25.0" prefWidth="259.0" promptText="Card Number" />
+      <TextField fx:id="cvcTF" layoutX="234.0" layoutY="457.0" onAction="#placeOrder" prefHeight="25.0" prefWidth="113.0" promptText="CVC" />
+      <TextField fx:id="expDateTF" layoutX="41.0" layoutY="455.0" onAction="#placeOrder" prefHeight="28.0" prefWidth="138.0" promptText="Exp Date (MM/YYYY)" />
+      <TextField fx:id="cardNameTF" layoutX="41.0" layoutY="415.0" onAction="#placeOrder" promptText="Cardholder Name" />
+      <TextField fx:id="subtotalTF" alignment="TOP_RIGHT" editable="false" layoutX="727.0" layoutY="127.0" prefHeight="25.0" prefWidth="114.0">
          <font>
             <Font size="14.0" />
          </font></TextField>
-      <TextField fx:id="TaxTF" alignment="TOP_RIGHT" editable="false" layoutX="727.0" layoutY="155.0" prefHeight="28.0" prefWidth="114.0">
+      <TextField fx:id="taxTF" alignment="TOP_RIGHT" editable="false" layoutX="727.0" layoutY="155.0" prefHeight="28.0" prefWidth="114.0">
          <font>
             <Font size="14.0" />
          </font></TextField>
-      <TextField fx:id="TotalTF" alignment="TOP_RIGHT" editable="false" layoutX="727.0" layoutY="183.0" prefHeight="28.0" prefWidth="114.0">
+      <TextField fx:id="totalTF" alignment="TOP_RIGHT" editable="false" layoutX="727.0" layoutY="183.0" prefHeight="28.0" prefWidth="114.0">
          <font>
             <Font size="14.0" />
          </font></TextField>
-      <TextField fx:id="eTF" layoutX="237.0" layoutY="199.0" prefHeight="25.0" prefWidth="202.0" promptText="Email" />
+      <TextField fx:id="eTF" layoutX="237.0" layoutY="199.0" onAction="#placeOrder" prefHeight="25.0" prefWidth="202.0" promptText="Email" />
       <Label layoutX="406.0" layoutY="45.0" prefHeight="47.0" prefWidth="105.0" text="Checkout" textAlignment="CENTER">
          <font>
             <Font size="24.0" />

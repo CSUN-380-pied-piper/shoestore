@@ -16,4 +16,12 @@ public class Customer {
         zip = z;
     }
 
+    @Override
+    public String toString() {
+        return "\nCustomer Information\n"
+                + firstName + " " + lastName + "\n"
+                + street + " " + unit + "\n"
+                + city + " " + state + " " + zip + "\n"
+                + email + "\n" + phoneNum;
+    }
 }
