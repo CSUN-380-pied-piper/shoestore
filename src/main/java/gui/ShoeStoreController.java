@@ -2,6 +2,7 @@ package gui;
 
 import backend.Database;
 import backend.Product;
+import backend.ShoppingCart;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Parent;
