@@ -22,20 +22,20 @@ public class ShoppingCart {
         this.contents.add(prod);
         subtotal = subtotal + prod.getPrice();
         System.out.println("added " + prod.getName() );
-        System.out.println("total: " + getTotal());
+        System.out.println("total: " + getFinalTotal());
     }
 
-    public double getSubTotal() {
+    public Double getSubTotal() {
     	return subtotal;
     }
     
-    public double getTax() {
+    public Double getTax() {
     	double tax = Math.round(subtotal *7.25);
     	tax = tax / 100;
     	return tax;
     }
     
-    public double getFinalTotal() {
+    public Double getFinalTotal() {
     	return getSubTotal() + getTax();
     }
     
