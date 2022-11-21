@@ -21,6 +21,7 @@ public class ShoeStoreController {
     private Database db;
     private SceneLoader loader;
     private Stack<Parent> viewStack;
+    private ShoppingCart sc;
     private DecimalFormat df = new DecimalFormat("####,###,###.00");
 
     // import fxml ui elements that we need to interact with
@@ -38,6 +39,7 @@ public class ShoeStoreController {
             System.out.println("Button text: " + btnLabel);
             Product item = db.getProducts(btnLabel).get(0);
             System.out.println("Shoe: " + btnLabel + ", Price: " + df.format(item.getPrice()));
+            sc.addItem(item);
         }
 
     }
