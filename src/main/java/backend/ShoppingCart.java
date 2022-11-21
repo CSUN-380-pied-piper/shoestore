@@ -11,7 +11,6 @@ public class ShoppingCart {
 
     public ShoppingCart() {
         this.contents = new ArrayList<>();
-        this.total = new SimpleDoubleProperty();
     }
 
     public ArrayList<Product> getContents() {
@@ -19,11 +18,14 @@ public class ShoppingCart {
     }
 
     public void addItem(Product prod) {
+    	System.out.println("add Item Method");
         this.contents.add(prod);
-        this.total.add(prod.getPrice());
+        total = total + prod.getPrice();
+        System.out.println("added " + prod.getName() );
+        System.out.println("total: " + getTotal());
     }
 
-    public SimpleDoubleProperty getTotal() {
-        return this.total;
+    public double getTotal() {
+        return total;
     }
 }
