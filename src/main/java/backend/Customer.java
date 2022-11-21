@@ -1,10 +1,10 @@
 package backend;
 
 public class Customer {
-    private String lastName, firstName, email, street, unit, city, state, cardholder;
-    private int phoneNum, zip, creditCardNum, expDate, cvcCode;
+    private String lastName, firstName, phoneNum, email, street, unit, city, state, zip, cardholder;
+    private int creditCardNum, expDate, cvcCode;
 
-    public Customer(String fn, String ln, int pn, String e, String st, String u, String c, String s, int z) {
+    public Customer(String fn, String ln, String pn, String e, String st, String u, String c, String s, String z) {
         firstName = fn;
         lastName = ln;
         phoneNum = pn;
