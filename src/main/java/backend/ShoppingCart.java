@@ -7,7 +7,7 @@ import java.util.ArrayList;
 public class ShoppingCart {
 
     private ArrayList<Product> contents;
-    private SimpleDoubleProperty total;
+    private Double subtotal = 0.0;
 
     public ShoppingCart() {
         this.contents = new ArrayList<>();
@@ -20,13 +20,23 @@ public class ShoppingCart {
     public void addItem(Product prod) {
     	System.out.println("add Item Method");
         this.contents.add(prod);
-        total = total + prod.getPrice();
+        subtotal = subtotal + prod.getPrice();
         System.out.println("added " + prod.getName() );
         System.out.println("total: " + getTotal());
     }
 
-    public double getTotal() {
-        return total;
+    public double getSubTotal() {
+    	return subtotal;
+    }
+    
+    public double getTax() {
+    	double tax = Math.round(subtotal *7.25);
+    	tax = tax / 100;
+    	return tax;
+    }
+    
+    public double getFinalTotal() {
+    	return getSubTotal() + getTax();
     }
     
     public String ReceiptInTextArea() {
@@ -61,7 +71,7 @@ public class ShoppingCart {
     			finalText = finalText + "\nNumber of Sandals: " + BootNum;
     		}
     		
-    		finalText = finalText + "\n\nTotal: $" + total;
+    		finalText = finalText + "\n\nSubTotal: $" + subtotal;
     		
     	}
     	return finalText;
