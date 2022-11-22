@@ -85,7 +85,10 @@ public class Database {
             while (results.next()) {
                 String shoeName = results.getString("name");
                 Double shoePrice = results.getDouble("price");
-                Product p = new Product(shoeName, shoePrice);
+                Integer minSize = results.getInt("minsize");
+                Integer maxSize = results.getInt("maxsize");
+                boolean half = results.getBoolean("halfsizes");
+                Product p = new Product(shoeName, shoePrice, half, minSize, maxSize);
                 productList.add(p);
             }
             // cleanup/close our DB connection when we're done with it.
