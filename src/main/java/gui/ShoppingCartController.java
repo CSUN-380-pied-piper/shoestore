@@ -3,6 +3,8 @@ package gui;
 import backend.Database;
 import backend.Product;
 import backend.ShoppingCart;
+import javafx.beans.property.SimpleDoubleProperty;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -10,11 +12,14 @@ import javafx.fxml.FXML;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.ListView;
+import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.stage.Stage;
 import state.AppState;
 
 import java.io.IOException;
+import java.text.DecimalFormat;
 import java.util.Stack;
 
 public class ShoppingCartController {
@@ -27,8 +32,8 @@ public class ShoppingCartController {
     private SceneLoader loader;
     private Stack<Parent> viewStack;
     private ShoppingCart cart;
-
     private ObservableList<Product> cartItemsList;
+    private DecimalFormat df = new DecimalFormat("####,###,###.00");
 
     // fxml ui elements that we need to interact with
     @FXML
@@ -38,7 +43,14 @@ public class ShoppingCartController {
     Button CheckoutButton;
 
     @FXML
-    ListView<Product> cartList;
+    Label taxLabel, totalLabel;
+
+    @FXML
+    private TableView<Product> cartList;
+    @FXML
+    private TableColumn<Product, String> prodNameCol;
+    @FXML
+    private TableColumn<Product, Number> prodPriceCol;
 
     public ShoppingCartController(AppState state) {
         this.state = state;
@@ -57,6 +69,28 @@ public class ShoppingCartController {
         stage.show();
     }
 
+    /**
+     * Initializes the cell value factory for our shopping cart
+     * table view columns.
+     */
+    private void initCartList() {
+        prodNameCol.setCellValueFactory(cellData ->
+                new SimpleStringProperty(cellData.getValue().getName()));
+        prodPriceCol.setCellValueFactory(cellData ->
+                new SimpleDoubleProperty(cellData.getValue().getPrice()));
+    }
+
+    /**
+     * Initializes the observable properties for our computed
+     * tax and total display labels.
+     */
+    private void initTaxAndTotal() {
+        SimpleStringProperty taxProp = new SimpleStringProperty(df.format(cart.getTax()));
+        SimpleStringProperty totalProp = new SimpleStringProperty(df.format(cart.getFinalTotal()));
+        taxLabel.textProperty().bind(taxProp);
+        totalLabel.textProperty().bind(totalProp);
+    }
+
     @FXML
     public void initialize() {
         if (this.cart == null) {
@@ -68,5 +102,7 @@ public class ShoppingCartController {
         this.viewStack = state.getViewStack();
         this.cartItemsList = FXCollections.observableArrayList(cart.getContents());
         this.cartList.setItems(cartItemsList);
+        this.initCartList();
+        this.initTaxAndTotal();
     }
 }

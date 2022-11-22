@@ -43,9 +43,7 @@ public class ShoeStoreController {
         Object source = event.getSource();
         if (source instanceof Button) {
             String btnLabel = ((Button) source).getText();
-            System.out.println("Button text: " + btnLabel);
             Product item = db.getProducts(btnLabel).get(0);
-            System.out.println("Shoe: " + btnLabel + ", Price: " + df.format(item.getPrice()));
             sc.addItem(item);
         }
 
