@@ -88,7 +88,7 @@ public class ShoeStoreController {
 
     @FXML
     public void switchToOrderPlaced(ActionEvent event) throws IOException {
-        Parent root = loader.load(getClass().getResource("/orderPlaced.fxml"));
+        Parent root = loader.load(getClass().getResource("/orderConfirm.fxml"));
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();

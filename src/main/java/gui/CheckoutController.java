@@ -2,7 +2,6 @@ package gui;
 
 import backend.Customer;
 import backend.Database;
-import backend.ShoppingCart;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Parent;
@@ -54,8 +53,15 @@ public class CheckoutController {
     }
 
     @FXML
+    public void displayOrderSummary() {
+        subtotalTF.setText(String.valueOf(state.getCart().getSubTotal()));
+        taxTF.setText(String.valueOf(state.getCart().getTax()));
+        totalTF.setText(String.valueOf(state.getCart().getFinalTotal()));
+    }
+
+    @FXML
     public void placeOrder(ActionEvent event) throws IOException {
-        Parent root = loader.load(getClass().getResource("/orderPlaced.fxml"));
+        Parent root = loader.load(getClass().getResource("/orderConfirm.fxml"));
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
