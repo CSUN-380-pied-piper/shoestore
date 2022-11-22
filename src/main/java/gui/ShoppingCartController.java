@@ -12,7 +12,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
-import javafx.util.converter.FormatStringConverter;
 import state.AppState;
 import java.io.IOException;
 import java.text.NumberFormat;
@@ -79,7 +78,7 @@ public class ShoppingCartController {
         delProdCol.setCellValueFactory(
                 param -> new ReadOnlyObjectWrapper<>(param.getValue()));
         delProdCol.setCellFactory(cell -> new TableCell<>() {
-            private final Button delBtn = new Button("x");
+            private final Button delBtn = new TrashButton();
             @Override
             protected void updateItem(Product prod, boolean empty) {
                 super.updateItem(prod, empty);
