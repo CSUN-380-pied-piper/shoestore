@@ -1,17 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.scene.Group?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.placeOrderController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="494.0" prefWidth="633.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.placeOrderController">
    <children>
-      <Button layoutX="255.0" layoutY="252.0" mnemonicParsing="false" onAction="#backToStore" text="Back to Store">
+      <Button layoutX="269.0" layoutY="424.0" mnemonicParsing="false" onAction="#backToStore" text="Back to Store">
          <font>
             <Font size="14.0" />
          </font></Button>
-      <Group layoutX="129.0" layoutY="113.0">
+      <Group layoutX="146.0" layoutY="43.0">
          <children>
             <Label layoutX="108.0" text="Congratulations!" textAlignment="CENTER">
                <font>
@@ -30,5 +32,11 @@
             </Label>
          </children>
       </Group>
+      <TextArea fx:id="orderConf" layoutX="132.0" layoutY="182.0" prefHeight="219.0" prefWidth="369.0" />
+      <Label layoutX="262.0" layoutY="155.0" text="Email Simulation">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
    </children>
 </Pane>
