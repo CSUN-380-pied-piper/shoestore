@@ -39,6 +39,17 @@ public class placeOrderController {
         this.loader = state.getLoader();
         this.stage = state.getStage();
     }
-
+    
+    public String OrderConfirmationText() {
+    	String finalReceipt = "";
+    	Customer c = state.getCustomer();
+    	finalReceipt = c.orderConfirmationCustomerInfo();
+        ShoppingCart sc = state.getCart();
+        finalReceipt = finalReceipt + "\n\n" + sc.ReceiptInTextArea() 
+        				+ "\nTax: $" + sc.getTax()
+        				+ "\nTotal: $" + sc.getFinalTotal();
+        
+		return finalReceipt;
+    }
 
 }
