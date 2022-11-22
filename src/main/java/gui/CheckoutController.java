@@ -70,7 +70,7 @@ public class CheckoutController {
         s = stateTF.getText();
         zip = zipTF.getText();
         Customer c = new Customer(firstName, lastName, phoneNum, email, street, unit, city, s, zip);
-        System.out.println(c);
+        state.setCustomer(c);
     }
 
     @FXML
