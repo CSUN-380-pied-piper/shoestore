@@ -32,7 +32,7 @@ public class ShoppingCartController {
     private Stack<Parent> viewStack;
     private ShoppingCart cart;
     private ObservableList<Product> cartItemsList;
-    private NumberFormat df = NumberFormat.getCurrencyInstance();
+    private NumberFormat df;
 
     // fxml ui elements that we need to interact with
     @FXML
@@ -50,6 +50,8 @@ public class ShoppingCartController {
     private TableColumn<Product, String> prodNameCol;
     @FXML
     private TableColumn<Product, Number> prodPriceCol;
+    @FXML
+    private TableColumn<Product, Product> delProdCol;
 
     public ShoppingCartController(AppState state) {
         this.state = state;
@@ -78,6 +80,21 @@ public class ShoppingCartController {
                 new SimpleStringProperty(cellData.getValue().getName()));
         prodPriceCol.setCellValueFactory(cellData ->
                 new SimpleDoubleProperty(cellData.getValue().getPrice()));
+        delProdCol.setCellValueFactory(
+                param -> new ReadOnlyObjectWrapper<>(param.getValue()));
+        delProdCol.setCellFactory(cell -> new TableCell<>() {
+            private final Button delBtn = new Button("x");
+            @Override
+            protected void updateItem(Product prod, boolean empty) {
+                super.updateItem(prod, empty);
+                if (empty || prod == null) {
+                    setGraphic(null);
+                    return;
+                }
+                setGraphic(delBtn);
+                delBtn.setOnAction(event -> getTableView().getItems().remove(prod));
+            }
+        });
     }
 
     /**
@@ -98,6 +115,7 @@ public class ShoppingCartController {
         this.loader = state.getLoader();
         this.stage = state.getStage();
         this.viewStack = state.getViewStack();
+        this.df = state.getFormatter();
         this.cartItemsList = FXCollections.observableArrayList(cart.getContents());
         this.cartList.setItems(cartItemsList);
         this.initCartList();

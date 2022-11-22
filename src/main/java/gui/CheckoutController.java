@@ -2,26 +2,32 @@ package gui;
 
 import backend.Customer;
 import backend.Database;
+import backend.ShoppingCart;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import state.AppState;
 
 import java.io.IOException;
+import java.text.NumberFormat;
 import java.util.Stack;
 
 public class CheckoutController {
     private AppState state;
+    private ShoppingCart cart;
     private Stage stage;
     private Scene scene;
     private Database db;
     private SceneLoader loader;
     private Stack<Parent> viewStack;
     private String lastName, firstName, phoneNum, email, street, unit, city, s, zip;
+    private NumberFormat df;
+
 
     @FXML
     Button placeOrderButton, backToStoreButton, backToCartButton;
@@ -30,7 +36,7 @@ public class CheckoutController {
     private TextField firstNameTF, lastNameTF, contactNumTF, eTF, stTF, unitTF, cityTF, stateTF, zipTF;
 
     @FXML
-    private TextField subtotalTF, taxTF, totalTF;
+    private Label subLabel, taxLabel, totalLabel;
 
     public CheckoutController(AppState state) {
         this.state = state;
@@ -54,9 +60,9 @@ public class CheckoutController {
 
     @FXML
     public void displayOrderSummary() {
-        subtotalTF.setText(String.valueOf(state.getCart().getSubTotal()));
-        taxTF.setText(String.valueOf(state.getCart().getTax()));
-        totalTF.setText(String.valueOf(state.getCart().getFinalTotal()));
+        subLabel.setText(df.format(cart.getSubTotal()));
+        taxLabel.setText(df.format(cart.getTax()));
+        totalLabel.setText(df.format(cart.getFinalTotal()));
     }
 
     @FXML
@@ -84,5 +90,8 @@ public class CheckoutController {
         this.db = state.getDb();
         this.loader = state.getLoader();
         this.stage = state.getStage();
+        this.cart = state.getCart();
+        this.df = state.getFormatter();
+        this.displayOrderSummary();
     }
 }

@@ -7,6 +7,7 @@ import gui.SceneLoader;
 import javafx.scene.Parent;
 import javafx.stage.Stage;
 import java.net.URL;
+import java.text.NumberFormat;
 import java.util.HashMap;
 import java.util.Stack;
 
@@ -23,6 +24,8 @@ public class AppState {
 
     private ShoppingCart cart;
     private Customer customer;
+    private NumberFormat df = NumberFormat.getCurrencyInstance();
+
 
     /**
      * Instantiates a new App state.
@@ -95,6 +98,10 @@ public class AppState {
         if (this.loader == null) {
             this.loader = loader;
         }
+    }
+
+    public NumberFormat getFormatter() {
+        return df;
     }
 
     public HashMap<String, URL> getSceneMap() {

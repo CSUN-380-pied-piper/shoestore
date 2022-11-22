@@ -13,7 +13,6 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="530.0" prefWidth="705.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.CheckoutController">
    <children>
       <Label alignment="CENTER" layoutX="406.0" layoutY="45.0" prefHeight="47.0" prefWidth="105.0" text="Checkout" AnchorPane.leftAnchor="150.0" AnchorPane.rightAnchor="150.0" AnchorPane.topAnchor="5.0">
@@ -165,6 +164,11 @@
                         <Insets bottom="5.0" />
                      </VBox.margin>
                   </Label>
+                  <Line endX="100.0" startX="-100.0">
+                     <VBox.margin>
+                        <Insets bottom="10.0" />
+                     </VBox.margin>
+                  </Line>
                   <GridPane prefHeight="80.0" prefWidth="202.0">
                      <columnConstraints>
                         <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="90.5" minWidth="10.0" prefWidth="90.5" />
@@ -176,21 +180,6 @@
                         <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
                      </rowConstraints>
                      <children>
-                        <TextField fx:id="subtotalTF" alignment="TOP_RIGHT" editable="false" prefHeight="25.0" prefWidth="114.0" GridPane.columnIndex="1">
-                           <font>
-                              <Font size="14.0" />
-                           </font>
-                        </TextField>
-                        <TextField fx:id="taxTF" alignment="TOP_RIGHT" editable="false" prefHeight="28.0" prefWidth="114.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
-                           <font>
-                              <Font size="14.0" />
-                           </font>
-                        </TextField>
-                        <TextField fx:id="totalTF" alignment="TOP_RIGHT" editable="false" prefHeight="28.0" prefWidth="114.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
-                           <font>
-                              <Font size="14.0" />
-                           </font>
-                        </TextField>
                         <Label text="Total" GridPane.rowIndex="2">
                            <font>
                               <Font size="18.0" />
@@ -202,6 +191,21 @@
                            </font>
                         </Label>
                         <Label text="Subtotal">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="subLabel" layoutX="10.0" layoutY="12.0" text="\$0.00" GridPane.columnIndex="1" GridPane.halignment="RIGHT">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="taxLabel" layoutX="163.0" layoutY="12.0" text="\$0.00" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="totalLabel" layoutX="163.0" layoutY="38.0" text="\$0.00" GridPane.columnIndex="1" GridPane.rowIndex="2">
                            <font>
                               <Font size="18.0" />
                            </font>

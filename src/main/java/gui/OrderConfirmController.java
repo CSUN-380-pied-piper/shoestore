@@ -7,6 +7,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import state.AppState;
@@ -23,7 +24,7 @@ public class OrderConfirmController {
     private Stack<Parent> viewStack;
 
     @FXML
-    TextField orderConf;
+    TextArea orderConf;
 
     public OrderConfirmController(AppState state) {
         this.state = state;
