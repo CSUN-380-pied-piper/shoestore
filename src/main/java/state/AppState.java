@@ -1,5 +1,6 @@
 package state;
 
+import backend.Customer;
 import backend.Database;
 import backend.ShoppingCart;
 import gui.SceneLoader;
@@ -21,6 +22,7 @@ public class AppState {
     private HashMap<String, URL> sceneMap;
 
     private ShoppingCart cart;
+    private Customer customer;
 
     /**
      * Instantiates a new App state.
@@ -38,6 +40,7 @@ public class AppState {
         this.viewStack = viewStack;
         this.sceneMap = new HashMap<>();
         this.cart = new ShoppingCart();
+        this.customer = new Customer(null, null, null, null, null, null, null, null, null);
     }
 
     /**
@@ -70,7 +73,19 @@ public class AppState {
     public ShoppingCart getCart() {
         return cart;
     }
-
+    
+    public void setCart(ShoppingCart cart) {
+    	this.cart = cart;
+    }
+    
+    public Customer getCustomer() {
+        return customer;
+    }
+    
+    public void setCustomer(Customer customer) {
+    	this.customer = customer;
+    }
+    
     /**
      * Sets our custom fxml/scene loader object.
      *
