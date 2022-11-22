@@ -1,7 +1,5 @@
 package backend;
 
-import javafx.beans.property.SimpleDoubleProperty;
-
 import java.util.ArrayList;
 
 public class ShoppingCart {

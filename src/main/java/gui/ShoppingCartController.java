@@ -30,10 +30,10 @@ public class ShoppingCartController {
     Button HomeButton;
 
     @FXML
-    TextArea shoppingCartTextBox;
-    
-    @FXML
     Button CheckoutButton;
+
+    @FXML
+    TextArea CartList;
 
     public ShoppingCartController(AppState state) {
         this.state = state;
@@ -55,7 +55,7 @@ public class ShoppingCartController {
     @FXML
     public void initialize() {
         if (this.cart == null) {
-            this.cart = new ShoppingCart();
+            this.cart = state.getCart();
         }
         this.db = state.getDb();
         this.loader = state.getLoader();

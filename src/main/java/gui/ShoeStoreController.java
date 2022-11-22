@@ -8,10 +8,13 @@ import javafx.fxml.FXML;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import state.AppState;
 import java.io.IOException;
+import java.net.URL;
 import java.text.DecimalFormat;
+import java.util.HashMap;
 import java.util.Stack;
 
 public class ShoeStoreController {
@@ -22,12 +25,15 @@ public class ShoeStoreController {
     private Database db;
     private SceneLoader loader;
     private Stack<Parent> viewStack;
-    private ShoppingCart sc = new ShoppingCart();
+    private ShoppingCart sc;
     private DecimalFormat df = new DecimalFormat("####,###,###.00");
+    private HashMap<String, URL> sceneMap;
 
     // import fxml ui elements that we need to interact with
     @FXML
     Button CartButton, HeelsBtn, SneakersBtn, SandalsBtn, BootsBtn;
+    @FXML
+    TextField CartLabel;
 
     public ShoeStoreController(AppState state) {
         this.state = state;
@@ -54,14 +60,14 @@ public class ShoeStoreController {
         the view stack before switching the scene.
      */
     @FXML
-    public void switchScene(ActionEvent event) {
+    public void switchScene(ActionEvent event) throws IOException {
         Object source = event.getSource();
         if (source instanceof Button) {
-            String btnId = ((Button) source).getId();
-            switch (btnId) {
-                case "CartButton": ;break;
-                default: break;
-            }
+            System.out.println(((Button) source).getText());
+            System.out.println(((Button) source).getId());
+            Parent childRoot = loader.load(sceneMap.get(((Button) source).getText()));
+            viewStack.push(stage.getScene().getRoot());
+            stage.getScene().setRoot(childRoot);
         }
     }
 
@@ -96,12 +102,19 @@ public class ShoeStoreController {
         stage.show();
     }
 
+    private void populateSceneMap() {
+        this.sceneMap.put(CartButton.getText(), getClass().getResource("/shoppingCart.fxml"));
+    }
+
     @FXML
     public void initialize() {
         this.db = state.getDb();
         this.loader = state.getLoader();
         this.stage = state.getStage();
         this.viewStack = state.getViewStack();
+        this.sceneMap = state.getSceneMap();
+        this.sc = state.getCart();
+        this.populateSceneMap();
     }
 
 }

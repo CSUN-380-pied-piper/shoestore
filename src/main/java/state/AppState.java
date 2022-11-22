@@ -1,10 +1,12 @@
 package state;
 
 import backend.Database;
+import backend.ShoppingCart;
 import gui.SceneLoader;
 import javafx.scene.Parent;
 import javafx.stage.Stage;
-
+import java.net.URL;
+import java.util.HashMap;
 import java.util.Stack;
 
 /**
@@ -16,6 +18,9 @@ public class AppState {
     private Database db;
     private SceneLoader loader;
     private Stack<Parent> viewStack;
+    private HashMap<String, URL> sceneMap;
+
+    private ShoppingCart cart;
 
     /**
      * Instantiates a new App state.
@@ -31,6 +36,8 @@ public class AppState {
         this.stage = stage;
         this.db = db;
         this.viewStack = viewStack;
+        this.sceneMap = new HashMap<>();
+        this.cart = new ShoppingCart();
     }
 
     /**
@@ -60,6 +67,10 @@ public class AppState {
         return loader;
     }
 
+    public ShoppingCart getCart() {
+        return cart;
+    }
+
     /**
      * Sets our custom fxml/scene loader object.
      *
@@ -69,6 +80,10 @@ public class AppState {
         if (this.loader == null) {
             this.loader = loader;
         }
+    }
+
+    public HashMap<String, URL> getSceneMap() {
+        return this.sceneMap;
     }
 
     /**
