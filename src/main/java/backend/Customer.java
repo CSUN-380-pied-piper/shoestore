@@ -14,8 +14,6 @@ public class Customer {
         city = c;
         state = s;
         zip = z;
-        Customer c = new Customer(firstName, lastName, phoneNum, email, street, unit, city, s, zip);
-        state.setCustomer(c);
     }
 
     @Override
