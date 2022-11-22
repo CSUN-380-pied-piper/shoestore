@@ -1,26 +1,72 @@
 package backend;
 
-import java.util.ArrayList;
+import javafx.beans.property.SimpleDoubleProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import java.util.HashMap;
 
 public class ShoppingCart {
 
-    private ArrayList<Product> contents;
+    private ObservableList<Product> contents;
+    private SimpleDoubleProperty subTotal;
+    private SimpleDoubleProperty tax;
+    private SimpleDoubleProperty finalTotal;
     private Double subtotal = 0.0;
+    private HashMap<String, Integer> productQtys;
 
     public ShoppingCart() {
-        this.contents = new ArrayList<>();
+        this.contents = FXCollections.observableArrayList();
+        this.subTotal = new SimpleDoubleProperty(0.0);
+        this.tax = new SimpleDoubleProperty();
+        this.finalTotal = new SimpleDoubleProperty();
+        this.tax.bind(subTotal.multiply(0.0725));
+        this.finalTotal.bind(subTotal.add(tax));
+        this.initQtyMap();
     }
 
-    public ArrayList<Product> getContents() {
+    public ObservableList<Product> getContents() {
         return contents;
+    }
+
+    public SimpleDoubleProperty subTotalProperty() {
+        return subTotal;
+    }
+
+    public SimpleDoubleProperty taxProperty() {
+        return tax;
+    }
+
+    public SimpleDoubleProperty finalTotalProperty() {
+        return finalTotal;
     }
 
     public void addItem(Product prod) {
     	System.out.println("Adding Item to Shopping Cart...");
         this.contents.add(prod);
+        String shoe = prod.getName();
+        productQtys.put(shoe, productQtys.get(shoe) + 1);
         subtotal = subtotal + prod.getPrice();
+        subTotal.set(subtotal);
         System.out.println("Added " + prod.getName() );
         System.out.println("Total: " + getFinalTotal());
+    }
+
+    public void removeItem(Product prod) {
+        subtotal = subtotal - prod.getPrice();
+        subTotal.set(subtotal);
+        contents.remove(prod);
+    }
+
+    private void initQtyMap() {
+        this.productQtys = new HashMap<>();
+        String[] shoeTypes = {"Heels", "Sneakers", "Sandals", "Boots"};
+        for (String s : shoeTypes) {
+            this.productQtys.put(s, 0);
+        }
+    }
+
+    public Integer getShoeQty(String shoe) {
+        return this.productQtys.get(shoe);
     }
 
     public Double getSubTotal() {
@@ -34,7 +80,7 @@ public class ShoppingCart {
     }
     
     public Double getFinalTotal() {
-    	return getSubTotal() + getTax();
+        return finalTotalProperty().getValue();
     }
     
     public String ReceiptInTextArea() {
