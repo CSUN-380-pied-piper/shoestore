@@ -6,14 +6,13 @@ import backend.ShoppingCart;
 import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleStringProperty;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
+import javafx.util.converter.FormatStringConverter;
 import state.AppState;
 import java.io.IOException;
 import java.text.NumberFormat;
@@ -29,7 +28,6 @@ public class ShoppingCartController {
     private SceneLoader loader;
     private Stack<Parent> viewStack;
     private ShoppingCart cart;
-    private ObservableList<Product> cartItemsList;
     private NumberFormat df;
 
     // fxml ui elements that we need to interact with
@@ -90,9 +88,13 @@ public class ShoppingCartController {
                     return;
                 }
                 setGraphic(delBtn);
-                delBtn.setOnAction(event -> getTableView().getItems().remove(prod));
+                delBtn.setOnAction(event -> removeItem(prod));
             }
         });
+    }
+
+    private void removeItem(Product prod) {
+        cart.removeItem(prod);
     }
 
     /**
@@ -100,8 +102,8 @@ public class ShoppingCartController {
      * tax and total display labels.
      */
     private void initTaxAndTotal() {
-        taxLabel.textProperty().bind(new SimpleStringProperty(df.format(cart.getTax())));
-        totalLabel.textProperty().bind(new SimpleStringProperty(df.format(cart.getFinalTotal())));
+        taxLabel.textProperty().bind(cart.taxProperty().asString("$%,.2f"));
+        totalLabel.textProperty().bind(cart.finalTotalProperty().asString("$%,.2f"));
     }
 
     @FXML
@@ -114,8 +116,7 @@ public class ShoppingCartController {
         this.stage = state.getStage();
         this.viewStack = state.getViewStack();
         this.df = state.getFormatter();
-        this.cartItemsList = FXCollections.observableArrayList(cart.getContents());
-        this.cartList.setItems(cartItemsList);
+        this.cartList.setItems(cart.getContents());
         this.initCartList();
         this.initTaxAndTotal();
     }
