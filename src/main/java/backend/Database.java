@@ -55,17 +55,18 @@ public class Database {
                 String city = results.getString("city");
                 String state = results.getString("state");
                 Integer zip = results.getInt("zipcode");
-                Integer phone = results.getInt("phone");
+                String phone = results.getString("phone");
                 custList.add(new Customer(fname, lname, phone, email, street, unit, city
                 , state, zip));
             }
             // cleanup/close our DB connection when we're done with it.
             stmt.close();
             results.close();
-            //conn.close();
+            conn.close();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+        System.out.println("Customer: " + custList.get(0));
         return custList.get(0);
     }
 
@@ -90,7 +91,7 @@ public class Database {
             // cleanup/close our DB connection when we're done with it.
             stmt.close();
             results.close();
-            //conn.close();
+            conn.close();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

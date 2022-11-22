@@ -9,31 +9,38 @@
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.shape.SVGPath?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.ShoppingCartController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="530.0" prefWidth="705.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.ShoppingCartController">
    <children>
-      <TableView fx:id="cartList" layoutX="25.0" layoutY="126.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="180.0" prefWidth="562.0" AnchorPane.bottomAnchor="110.0" AnchorPane.leftAnchor="25.0" AnchorPane.rightAnchor="25.0">
+      <TableView fx:id="cartList" layoutX="25.0" layoutY="126.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="180.0" prefWidth="562.0" AnchorPane.bottomAnchor="110.0" AnchorPane.leftAnchor="25.0" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="100.0">
         <columns>
           <TableColumn fx:id="prodNameCol" editable="false" maxWidth="1.7976931348623157E308" prefWidth="443.0" text="Item" />
           <TableColumn fx:id="prodPriceCol" editable="false" minWidth="0.0" resizable="false" sortable="false" text="Price" />
-            <TableColumn fx:id="delProdCol" editable="false" minWidth="0.0" prefWidth="24.0" resizable="false" sortable="false" />
+            <TableColumn fx:id="delProdCol" editable="false" minWidth="0.0" prefWidth="36.0" resizable="false" sortable="false" />
         </columns>
       </TableView>
-      <Button layoutX="330.0" layoutY="351.0" mnemonicParsing="false" onAction="#checkout" text="Checkout" AnchorPane.rightAnchor="25.0">
+      <Button contentDisplay="RIGHT" layoutX="330.0" layoutY="351.0" mnemonicParsing="false" onAction="#checkout" text="Checkout" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="15.0">
          <font>
             <Font size="14.0" />
-         </font></Button>
-      <Button fx:id="HomeButton" layoutX="190.0" layoutY="351.0" mnemonicParsing="false" onAction="#backToStore" text="Back to Store" AnchorPane.leftAnchor="25.0">
+         </font>
+         <graphic>
+            <SVGPath content="M8,8 L8,5 C8,3.8954305 8.8954305,3 10,3 L14,3 C15.1045695,3 16,3.8954305 16,5 L16,8 L19,8 C20.1045695,8 21,8.8954305 21,10 L21,19 C21,20.1045695 20.1045695,21 19,21 L5,21 C3.8954305,21 3,20.1045695 3,19 L3,10 C3,8.8954305 3.8954305,8 5,8 L8,8 Z M5,10 L5,19 L19,19 L19,10 L15.9981873,10 L15.9981873,13 L14,13 L14,10 L10,10 L10,13 L8,13 L8,10 L5,10 Z M10,8 L14,8 L14,5 L10,5 L10,8 Z" />
+         </graphic></Button>
+      <Button fx:id="HomeButton" contentDisplay="RIGHT" layoutX="190.0" layoutY="351.0" mnemonicParsing="false" onAction="#backToStore" text="Back to Store" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="15.0">
          <font>
             <Font size="14.0" />
-         </font></Button>
-      <Label alignment="CENTER" layoutX="244.0" layoutY="17.0" text="Shopping Cart" textAlignment="CENTER" AnchorPane.bottomAnchor="360.0" AnchorPane.leftAnchor="240.0" AnchorPane.rightAnchor="240.0" AnchorPane.topAnchor="17.0">
+         </font>
+         <graphic>
+            <SVGPath content="M12,5.56124969 L5,11.1612497 L5,19 L10,19 L10,15 L14,15 L14,19 L19,19 L19,11.6418745 C19,11.3380908 18.8619103,11.0507779 18.624695,10.8610057 L12,5.56124969 Z M12,3 L19.8740851,9.29926811 C20.5857308,9.86858467 21,10.7305234 21,11.6418745 L21,19 C21,20.1045695 20.1045695,21 19,21 L5,21 C3.8954305,21 3,20.1045695 3,19 L3,11.1612497 C3,10.5536823 3.27617944,9.97905645 3.7506099,9.59951208 L12,3 Z" />
+         </graphic></Button>
+      <Label alignment="CENTER" layoutX="244.0" layoutY="17.0" text="Shopping Cart" textAlignment="CENTER" AnchorPane.leftAnchor="240.0" AnchorPane.rightAnchor="240.0" AnchorPane.topAnchor="17.0">
          <font>
-            <Font size="18.0" />
+            <Font size="24.0" />
          </font>
       </Label>
-      <GridPane layoutX="422.0" layoutY="288.0" prefHeight="55.0" prefWidth="155.0" AnchorPane.rightAnchor="25.0">
+      <GridPane layoutX="422.0" layoutY="288.0" prefHeight="55.0" prefWidth="155.0" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="420.0">
          <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="66.0" minWidth="10.0" prefWidth="51.0" />
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="119.0" minWidth="10.0" prefWidth="119.0" />
