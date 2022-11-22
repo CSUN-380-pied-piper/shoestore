@@ -5,7 +5,6 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -14,10 +13,9 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.ShoppingCartController">
    <children>
-      <TextArea fx:id="shoppingCartTextBox" layoutX="126.0" layoutY="126.0" prefHeight="137.0" prefWidth="345.0" text="//purchases will appear here" />
       <TableView fx:id="cartList" layoutX="25.0" layoutY="126.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="180.0" prefWidth="562.0" AnchorPane.bottomAnchor="110.0" AnchorPane.leftAnchor="25.0" AnchorPane.rightAnchor="25.0">
         <columns>
-          <TableColumn fx:id="prodNameCol" maxWidth="1.7976931348623157E308" prefWidth="455.0" text="Item" />
+          <TableColumn fx:id="prodNameCol" editable="false" maxWidth="1.7976931348623157E308" prefWidth="455.0" text="Item" />
           <TableColumn fx:id="prodPriceCol" editable="false" minWidth="0.0" prefWidth="91.0" resizable="false" sortable="false" text="Price" />
         </columns>
       </TableView>

@@ -17,9 +17,8 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.stage.Stage;
 import state.AppState;
-
 import java.io.IOException;
-import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.util.Stack;
 
 public class ShoppingCartController {
@@ -33,7 +32,7 @@ public class ShoppingCartController {
     private Stack<Parent> viewStack;
     private ShoppingCart cart;
     private ObservableList<Product> cartItemsList;
-    private DecimalFormat df = new DecimalFormat("####,###,###.00");
+    private NumberFormat df = NumberFormat.getCurrencyInstance();
 
     // fxml ui elements that we need to interact with
     @FXML
@@ -74,6 +73,7 @@ public class ShoppingCartController {
      * table view columns.
      */
     private void initCartList() {
+        cartList.setPlaceholder(new Label("Cart is empty"));
         prodNameCol.setCellValueFactory(cellData ->
                 new SimpleStringProperty(cellData.getValue().getName()));
         prodPriceCol.setCellValueFactory(cellData ->
@@ -85,10 +85,8 @@ public class ShoppingCartController {
      * tax and total display labels.
      */
     private void initTaxAndTotal() {
-        SimpleStringProperty taxProp = new SimpleStringProperty(df.format(cart.getTax()));
-        SimpleStringProperty totalProp = new SimpleStringProperty(df.format(cart.getFinalTotal()));
-        taxLabel.textProperty().bind(taxProp);
-        totalLabel.textProperty().bind(totalProp);
+        taxLabel.textProperty().bind(new SimpleStringProperty(df.format(cart.getTax())));
+        totalLabel.textProperty().bind(new SimpleStringProperty(df.format(cart.getFinalTotal())));
     }
 
     @FXML
