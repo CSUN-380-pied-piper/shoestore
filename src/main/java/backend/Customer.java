@@ -16,8 +16,7 @@ public class Customer {
         zip = z;
     }
 
-    @Override
-    public String toString() {
+   public String orderConfirmationCustomerInfo() {
          return "Order Confirmation\n\n" +
         		"Hi "
                 + firstName + " " + lastName + "!\n"
