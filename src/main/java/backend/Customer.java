@@ -18,10 +18,15 @@ public class Customer {
 
     @Override
     public String toString() {
-        return "\nCustomer Information\n"
-                + firstName + " " + lastName + "\n"
+         return "Order Confirmation\n\n" +
+        		"Hi "
+                + firstName + " " + lastName + "!\n"
+                + "Here are the details of your order: \n\n"
+                + "Shipping Address: \n"
                 + street + " " + unit + "\n"
-                + city + " " + state + " " + zip + "\n"
-                + email + "\n" + phoneNum;
+                + city + " " + state + " " + zip + "\n\n"
+                +"Email: "
+                + email + "\n" + 
+                "Phone Number: " + phoneNum;
     }
 }
