@@ -1,13 +1,16 @@
 package gui;
 
 import backend.Database;
+import backend.Product;
 import backend.ShoppingCart;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.TextArea;
+import javafx.scene.control.ListView;
 import javafx.stage.Stage;
 import state.AppState;
 
@@ -25,6 +28,8 @@ public class ShoppingCartController {
     private Stack<Parent> viewStack;
     private ShoppingCart cart;
 
+    private ObservableList<Product> cartItemsList;
+
     // fxml ui elements that we need to interact with
     @FXML
     Button HomeButton;
@@ -33,7 +38,7 @@ public class ShoppingCartController {
     Button CheckoutButton;
 
     @FXML
-    TextArea CartList;
+    ListView<Product> cartList;
 
     public ShoppingCartController(AppState state) {
         this.state = state;
@@ -61,5 +66,7 @@ public class ShoppingCartController {
         this.loader = state.getLoader();
         this.stage = state.getStage();
         this.viewStack = state.getViewStack();
+        this.cartItemsList = FXCollections.observableArrayList(cart.getContents());
+        this.cartList.setItems(cartItemsList);
     }
 }
