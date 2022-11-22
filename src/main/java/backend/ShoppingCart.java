@@ -16,11 +16,11 @@ public class ShoppingCart {
     }
 
     public void addItem(Product prod) {
-    	System.out.println("add Item Method");
+    	System.out.println("Adding Item to Shopping Cart...");
         this.contents.add(prod);
         subtotal = subtotal + prod.getPrice();
-        System.out.println("added " + prod.getName() );
-        System.out.println("total: " + getFinalTotal());
+        System.out.println("Added " + prod.getName() );
+        System.out.println("Total: " + getFinalTotal());
     }
 
     public Double getSubTotal() {
