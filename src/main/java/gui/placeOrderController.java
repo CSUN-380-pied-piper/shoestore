@@ -1,5 +1,6 @@
 package gui;
 
+import backend.Customer;
 import backend.Database;
 import backend.ShoppingCart;
 import javafx.event.ActionEvent;
