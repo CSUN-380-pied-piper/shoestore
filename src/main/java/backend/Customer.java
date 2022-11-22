@@ -16,16 +16,17 @@ public class Customer {
         zip = z;
     }
 
-   public String orderConfirmationCustomerInfo() {
-         return "Order Confirmation\n\n" +
-        		"Hi "
-                + firstName + " " + lastName + "!\n"
+    public String orderConfirmationCustomerInfo() {
+        String oc;
+        oc = "This email was sent to " + email + "\n\n"
+                + "Order Confirmation\n\n" +
+        		"Hi " + firstName + " " + lastName + "!\n"
                 + "Here are the details of your order: \n\n"
                 + "Shipping Address: \n"
                 + street + " " + unit + "\n"
                 + city + " " + state + " " + zip + "\n\n"
-                +"Email: "
-                + email + "\n" + 
-                "Phone Number: " + phoneNum;
+                + "Phone Number: " + phoneNum;
+
+        return oc;
     }
 }
