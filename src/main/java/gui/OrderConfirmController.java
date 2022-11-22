@@ -7,14 +7,14 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import state.AppState;
 
 import java.io.IOException;
 import java.util.Stack;
 
-public class placeOrderController {
+public class OrderConfirmController {
     private AppState state;
     private Stage stage;
     private Scene scene;
@@ -22,7 +22,10 @@ public class placeOrderController {
     private SceneLoader loader;
     private Stack<Parent> viewStack;
 
-    public placeOrderController(AppState state) {
+    @FXML
+    TextField orderConf;
+
+    public OrderConfirmController(AppState state) {
         this.state = state;
     }
 
@@ -34,23 +37,22 @@ public class placeOrderController {
         stage.show();
     }
 
+    public String OrderConfirmationText() {
+    	String finalReceipt = "";
+    	Customer c = state.getCustomer();
+    	finalReceipt = c.orderConfirmationCustomerInfo();
+        ShoppingCart sc = state.getCart();
+        finalReceipt = finalReceipt + "\n\n" + sc.ReceiptInTextArea()
+        				+ "\nTax: $" + sc.getTax()
+        				+ "\nTotal: $" + sc.getFinalTotal();
+
+		return finalReceipt;
+    }
+
     @FXML
     public void initialize() {
         this.db = state.getDb();
         this.loader = state.getLoader();
         this.stage = state.getStage();
     }
-    
-    public String OrderConfirmationText() {
-    	String finalReceipt = "";
-    	Customer c = state.getCustomer();
-    	finalReceipt = c.orderConfirmationCustomerInfo();
-        ShoppingCart sc = state.getCart();
-        finalReceipt = finalReceipt + "\n\n" + sc.ReceiptInTextArea() 
-        				+ "\nTax: $" + sc.getTax()
-        				+ "\nTotal: $" + sc.getFinalTotal();
-        
-		return finalReceipt;
-    }
-
 }
