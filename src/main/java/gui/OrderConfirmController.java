@@ -22,9 +22,10 @@ public class OrderConfirmController {
     private Database db;
     private SceneLoader loader;
     private Stack<Parent> viewStack;
+    private String finalReceipt;
 
     @FXML
-    TextArea orderConf;
+    TextArea orderConfTA;
 
     public OrderConfirmController(AppState state) {
         this.state = state;
@@ -38,8 +39,9 @@ public class OrderConfirmController {
         stage.show();
     }
 
-    public String OrderConfirmationText() {
-    	String finalReceipt = "";
+    @FXML
+    public void displayEmailSim() {
+    	finalReceipt = "";
     	Customer c = state.getCustomer();
     	finalReceipt = c.orderConfirmationCustomerInfo();
         ShoppingCart sc = state.getCart();
@@ -47,7 +49,7 @@ public class OrderConfirmController {
         				+ "\nTax: $" + sc.getTax()
         				+ "\nTotal: $" + sc.getFinalTotal();
 
-		return finalReceipt;
+        orderConfTA.setText(finalReceipt);
     }
 
     @FXML
@@ -55,5 +57,6 @@ public class OrderConfirmController {
         this.db = state.getDb();
         this.loader = state.getLoader();
         this.stage = state.getStage();
+        this.displayEmailSim();
     }
 }
