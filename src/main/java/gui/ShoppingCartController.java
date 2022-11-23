@@ -4,13 +4,12 @@ import backend.Database;
 import backend.Product;
 import backend.ShoppingCart;
 import javafx.beans.property.ReadOnlyObjectWrapper;
-import javafx.beans.property.SimpleDoubleProperty;
-import javafx.beans.property.SimpleStringProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.shape.SVGPath;
 import javafx.stage.Stage;
 import state.AppState;
 import java.io.IOException;
@@ -31,20 +30,13 @@ public class ShoppingCartController {
 
     // fxml ui elements that we need to interact with
     @FXML
-    Button HomeButton;
-
-    @FXML
-    Button CheckoutButton;
-
+    Button HomeButton, CheckoutButton;
     @FXML
     Label taxLabel, totalLabel;
-
     @FXML
     private TableView<Product> cartList;
     @FXML
-    private TableColumn<Product, String> prodNameCol;
-    @FXML
-    private TableColumn<Product, Number> prodPriceCol;
+    private TableColumn<Product, String> prodNameCol, prodPriceCol, prodSizeCol;
     @FXML
     private TableColumn<Product, Product> delProdCol;
 
@@ -59,10 +51,9 @@ public class ShoppingCartController {
 
     @FXML
     public void checkout(ActionEvent event) throws IOException {
-        Parent root = loader.load(getClass().getResource("/checkout.fxml"));
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+        Parent childRoot = loader.load(getClass().getResource("/checkout.fxml"));
+        viewStack.push(stage.getScene().getRoot());
+        stage.getScene().setRoot(childRoot);
     }
 
     /**
@@ -72,11 +63,12 @@ public class ShoppingCartController {
     private void initCartList() {
         cartList.setPlaceholder(new Label("Cart is empty"));
         prodNameCol.setCellValueFactory(cellData -> cellData.getValue().nameProp());
-        prodPriceCol.setCellValueFactory(cellData -> cellData.getValue().priceProp());
+        prodSizeCol.setCellValueFactory(cellData -> cellData.getValue().lastSizeProp().asString());
+        prodPriceCol.setCellValueFactory(cellData -> cellData.getValue().priceProp().asString("$%,.2f"));
         delProdCol.setCellValueFactory(
                 cellData -> new ReadOnlyObjectWrapper<>(cellData.getValue()));
         delProdCol.setCellFactory(cell -> new TableCell<>() {
-            private final Button delBtn = new TrashButton();
+            private final Button delBtn = new Button("Remove  ");
             @Override
             protected void updateItem(Product prod, boolean empty) {
                 super.updateItem(prod, empty);
@@ -84,7 +76,12 @@ public class ShoppingCartController {
                     setGraphic(null);
                     return;
                 }
+                SVGPath svg = new SVGPath();
+                svg.setContent(Glyphs.DEL());
+                delBtn.setContentDisplay(ContentDisplay.RIGHT);
+                delBtn.setGraphic(svg);
                 setGraphic(delBtn);
+                delBtn.prefWidthProperty().bind(cell.widthProperty());
                 delBtn.setOnAction(event -> removeItem(prod));
             }
         });

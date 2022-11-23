@@ -13,7 +13,7 @@
 
 <AnchorPane prefHeight="530.0" prefWidth="705.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.OrderConfirmController">
    <children>
-      <Button contentDisplay="RIGHT" layoutX="137.0" layoutY="381.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#backToStore" prefHeight="28.0" prefWidth="125.0" text="Back to Store" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="15.0">
+      <Button fx:id="confHomeBtn" contentDisplay="RIGHT" layoutX="137.0" layoutY="381.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#backToStore" prefHeight="28.0" prefWidth="125.0" text="Back to Store" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="15.0">
          <font>
             <Font size="14.0" />
          </font>

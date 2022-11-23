@@ -26,11 +26,11 @@
       </Label>
       <TableView fx:id="productList" layoutX="29.0" layoutY="165.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="100.0">
         <columns>
-          <TableColumn fx:id="nameCol" editable="false" prefWidth="485.0" sortable="false" text="Product" />
-          <TableColumn fx:id="sizeCol" minWidth="0.0" prefWidth="55.0" sortable="false" text="Size" />
-            <TableColumn fx:id="qtyCol" prefWidth="31.0" sortable="false" text="Qty" />
-            <TableColumn fx:id="priceCol" editable="false" prefWidth="63.0" sortable="false" text="Price" />
-            <TableColumn fx:id="addBtnCol" editable="false" prefWidth="37.0" sortable="false" />
+          <TableColumn fx:id="nameCol" editable="false" prefWidth="389.0" sortable="false" text="Product" />
+          <TableColumn fx:id="sizeCol" minWidth="0.0" prefWidth="60.0" sortable="false" text="Size" />
+            <TableColumn fx:id="qtyCol" prefWidth="46.0" sortable="false" text="Qty" />
+            <TableColumn fx:id="priceCol" editable="false" prefWidth="70.0" sortable="false" text="Price" />
+            <TableColumn fx:id="addBtnCol" editable="false" prefWidth="106.0" sortable="false" />
         </columns>
       </TableView>
    </children>

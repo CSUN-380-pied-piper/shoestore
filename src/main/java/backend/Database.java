@@ -8,9 +8,7 @@ public class Database {
 
     private final String url = "jdbc:postgresql://bgapytnwjskfjif8rjg3-postgresql.services.clever-cloud.com:5432/bgapytnwjskfjif8rjg3";
     private final String user = "udaqis555zzuvohu7keb";
-    //private final String password = "paste_password_here";
-    private final String password = "je1q5ubCx9wRrssgxo1V";
-
+    private final String password = "paste_password_here";
 
     private Connection conn;
 
