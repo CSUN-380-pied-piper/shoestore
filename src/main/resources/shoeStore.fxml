@@ -1,70 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.SVGPath?>
+<?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.ShoeStoreController">
+
+<AnchorPane prefHeight="530.0" prefWidth="705.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.ShoeStoreController">
    <children>
-      <GridPane alignment="CENTER" layoutX="45.0" layoutY="189.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="71.0" prefWidth="512.0">
-         <columnConstraints>
-            <ColumnConstraints halignment="LEFT" hgrow="ALWAYS" minWidth="0.0" percentWidth="25.0" />
-            <ColumnConstraints halignment="LEFT" hgrow="ALWAYS" minWidth="10.0" percentWidth="25.0" />
-            <ColumnConstraints halignment="LEFT" hgrow="ALWAYS" minWidth="10.0" percentWidth="25.0" />
-            <ColumnConstraints halignment="LEFT" hgrow="ALWAYS" minWidth="10.0" percentWidth="25.0" />
-         </columnConstraints>
-         <rowConstraints>
-            <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
-         </rowConstraints>
-         <children>
-            <Button fx:id="HeelsBtn" mnemonicParsing="false" onAction="#addToCart" text="Heels">
-               <GridPane.margin>
-                  <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
-               </GridPane.margin>
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Button>
-            <Button fx:id="SneakersBtn" mnemonicParsing="false" onAction="#addToCart" text="Sneakers" GridPane.columnIndex="1">
-               <GridPane.margin>
-                  <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
-               </GridPane.margin>
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Button>
-            <Button fx:id="SandalsBtn" mnemonicParsing="false" onAction="#addToCart" text="Sandals" GridPane.columnIndex="2">
-               <GridPane.margin>
-                  <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
-               </GridPane.margin>
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Button>
-            <Button fx:id="BootsBtn" mnemonicParsing="false" onAction="#addToCart" text="Boots" GridPane.columnIndex="3">
-               <GridPane.margin>
-                  <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
-               </GridPane.margin>
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Button>
-            <TextField editable="false" prefHeight="25.0" prefWidth="45.0" text="\$45" GridPane.halignment="LEFT" GridPane.rowIndex="1" />
-            <TextField editable="false" prefHeight="25.0" prefWidth="63.0" text="\$120" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="1" />
-            <TextField editable="false" prefHeight="25.0" prefWidth="51.0" text="\$23" GridPane.columnIndex="2" GridPane.halignment="LEFT" GridPane.rowIndex="1" />
-            <TextField editable="false" prefHeight="25.0" prefWidth="51.0" text="\$135" GridPane.columnIndex="3" GridPane.halignment="LEFT" GridPane.rowIndex="1" />
-         </children>
-      </GridPane>
-      <Button fx:id="CartButton" layoutX="233.0" layoutY="287.0" mnemonicParsing="false" onAction="#switchToShoppingCart" text="Go to shopping Cart">
+      <Button fx:id="CartButton" contentDisplay="RIGHT" layoutX="554.0" layoutY="17.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#switchScene" prefHeight="28.0" prefWidth="125.0" text="shopping cart" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="15.0">
          <font>
             <Font size="14.0" />
-         </font></Button>
-      <Label layoutX="203.0" layoutY="112.0" text="Click to add to shopping Cart" textAlignment="CENTER">
+         </font>
+         <graphic>
+            <SVGPath content="M8,16 L16,16 C16.5522847,16 17,16.4477153 17,17 C17,17.5522847 16.5522847,18 16,18 L7,18 C6.44771525,18 6,17.5522847 6,17 L6,4 L5,4 C4.44771525,4 4,3.55228475 4,3 C4,2.44771525 4.44771525,2 5,2 L7,2 C7.55228475,2 8,2.44771525 8,3 L8,5.00121803 C8.02424149,5.00040824 8.04858873,5 8.07303481,5 L17.9269652,5 C19.0718707,5 20,5.8954305 20,7 C20,7.14592469 19.9834464,7.29141112 19.9506349,7.43386092 L18.7989489,12.4338609 C18.5881731,13.348936 17.7469078,14 16.7752792,14 L8.07303481,14 C8.04858873,14 8.02424149,13.9995918 8,13.998782 L8,16 Z M7.5,22 C6.67157288,22 6,21.3284271 6,20.5 C6,19.6715729 6.67157288,19 7.5,19 C8.32842712,19 9,19.6715729 9,20.5 C9,21.3284271 8.32842712,22 7.5,22 Z M16.5,22 C15.6715729,22 15,21.3284271 15,20.5 C15,19.6715729 15.6715729,19 16.5,19 C17.3284271,19 18,19.6715729 18,20.5 C18,21.3284271 17.3284271,22 16.5,22 Z M8,7 L8,12 L16.831242,12 L18,7 L8,7 Z" />
+         </graphic>
+      </Button>
+      <Label alignment="CENTER" layoutX="158.0" text="Pied Piper Shoes" AnchorPane.leftAnchor="175.0" AnchorPane.rightAnchor="175.0" AnchorPane.topAnchor="10.0">
          <font>
-            <Font size="16.0" />
+            <Font size="24.0" />
          </font>
       </Label>
+      <TableView fx:id="productList" layoutX="29.0" layoutY="165.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="100.0">
+        <columns>
+          <TableColumn fx:id="nameCol" editable="false" prefWidth="485.0" sortable="false" text="Product" />
+          <TableColumn fx:id="sizeCol" minWidth="0.0" prefWidth="55.0" sortable="false" text="Size" />
+            <TableColumn fx:id="qtyCol" prefWidth="31.0" sortable="false" text="Qty" />
+            <TableColumn fx:id="priceCol" editable="false" prefWidth="63.0" sortable="false" text="Price" />
+            <TableColumn fx:id="addBtnCol" editable="false" prefWidth="37.0" sortable="false" />
+        </columns>
+      </TableView>
    </children>
-</Pane>
+</AnchorPane>

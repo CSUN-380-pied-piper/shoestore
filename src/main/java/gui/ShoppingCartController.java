@@ -71,12 +71,10 @@ public class ShoppingCartController {
      */
     private void initCartList() {
         cartList.setPlaceholder(new Label("Cart is empty"));
-        prodNameCol.setCellValueFactory(cellData ->
-                new SimpleStringProperty(cellData.getValue().getName()));
-        prodPriceCol.setCellValueFactory(cellData ->
-                new SimpleDoubleProperty(cellData.getValue().getPrice()));
+        prodNameCol.setCellValueFactory(cellData -> cellData.getValue().nameProp());
+        prodPriceCol.setCellValueFactory(cellData -> cellData.getValue().priceProp());
         delProdCol.setCellValueFactory(
-                param -> new ReadOnlyObjectWrapper<>(param.getValue()));
+                cellData -> new ReadOnlyObjectWrapper<>(cellData.getValue()));
         delProdCol.setCellFactory(cell -> new TableCell<>() {
             private final Button delBtn = new TrashButton();
             @Override

@@ -81,7 +81,8 @@ public class CheckoutController {
         city = cityTF.getText();
         s = stateTF.getText();
         zip = zipTF.getText();
-        Customer c = new Customer(firstName, lastName, phoneNum, email, street, unit, city, s, zip);
+        Customer c = new Customer(firstName, lastName, phoneNum, email, street, unit, city, s,
+                Integer.parseInt(zip));
         state.setCustomer(c);
     }
 

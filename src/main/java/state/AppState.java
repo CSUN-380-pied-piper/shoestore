@@ -43,7 +43,7 @@ public class AppState {
         this.viewStack = viewStack;
         this.sceneMap = new HashMap<>();
         this.cart = new ShoppingCart();
-        this.customer = new Customer(null, null, null, null, null, null, null, null, null);
+        this.customer = new Customer(null, null, null, null, null, null, null, null, 0);
     }
 
     /**

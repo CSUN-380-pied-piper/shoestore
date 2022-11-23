@@ -3,12 +3,18 @@ package gui;
 import backend.Database;
 import backend.Product;
 import backend.ShoppingCart;
+import javafx.beans.property.ReadOnlyObjectWrapper;
+import javafx.beans.property.SimpleDoubleProperty;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.ChoiceBoxTableCell;
+import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.stage.Stage;
 import state.AppState;
 import java.io.IOException;
@@ -28,12 +34,23 @@ public class ShoeStoreController {
     private ShoppingCart sc;
     private DecimalFormat df = new DecimalFormat("####,###,###.00");
     private HashMap<String, URL> sceneMap;
+    private ObservableList<Product> products;
 
     // import fxml ui elements that we need to interact with
     @FXML
-    Button CartButton, HeelsBtn, SneakersBtn, SandalsBtn, BootsBtn;
+    Button CartButton;
     @FXML
-    TextField CartLabel;
+    private TableView<Product> productList;
+    @FXML
+    private TableColumn<Product, Product> addBtnCol;
+    @FXML
+    private TableColumn<Product, String> nameCol;
+    @FXML
+    private TableColumn<Product, Number> priceCol;
+    @FXML
+    private TableColumn<Product, Number> qtyCol;
+    @FXML
+    private TableColumn<Product, Product> sizeCol;
 
     public ShoeStoreController(AppState state) {
         this.state = state;
@@ -47,6 +64,12 @@ public class ShoeStoreController {
             sc.addItem(item);
         }
 
+    }
+
+    void addToCart(Product prod, Integer qty) {
+        for (int i = 0; i < qty; i++) {
+            sc.addItem(prod);
+        }
     }
 
     /*
@@ -69,39 +92,59 @@ public class ShoeStoreController {
         }
     }
 
-    @FXML
-    public void switchToCheckout(ActionEvent event) throws IOException {
-        Parent root = loader.load(getClass().getResource("/checkout.fxml"));
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-    }
-
-    @FXML
-    public void switchToShoppingCart(ActionEvent event) throws IOException {
-        Parent childRoot = loader.load(getClass().getResource("/shoppingCart.fxml"));
-        viewStack.push(stage.getScene().getRoot());
-        stage.getScene().setRoot(childRoot);
-    }
-
-    @FXML
-    public void switchToOrderPlaced(ActionEvent event) throws IOException {
-        Parent root = loader.load(getClass().getResource("/orderConfirm.fxml"));
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-    }
-
-    @FXML
-    public void switchToShoeStore(ActionEvent event) throws IOException {
-        Parent root = loader.load(getClass().getResource("/shoeStore.fxml"));
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-    }
-
     private void populateSceneMap() {
         this.sceneMap.put(CartButton.getText(), getClass().getResource("/shoppingCart.fxml"));
+    }
+
+    private void initProductList() {
+        // get all the products currently available from the database
+        this.products = FXCollections.observableArrayList(db.getProducts("%"));
+        productList.setItems(products);
+        nameCol.setCellValueFactory(cellData -> cellData.getValue().nameProp());
+        priceCol.setCellValueFactory(cellData -> cellData.getValue().priceProp());
+        sizeCol.setCellValueFactory(cellData -> new ReadOnlyObjectWrapper<>(cellData.getValue()));
+        qtyCol.setCellValueFactory(cellData -> new SimpleIntegerProperty());
+        addBtnCol.setCellValueFactory(cellData -> new ReadOnlyObjectWrapper<>(cellData.getValue()));
+        sizeCol.setCellFactory(cell -> new TableCell<>() {
+            private final ChoiceBox box = new ChoiceBox();
+            @Override
+            protected void updateItem(Product prod, boolean empty) {
+                super.updateItem(prod, empty);
+                if (empty || prod == null) {
+                    setGraphic(null);
+                    return;
+                }
+                box.setItems(prod.getSizes());
+                setGraphic(box);
+            }
+        });
+        qtyCol.setCellFactory(cell -> new TableCell<>() {
+            private final ChoiceBox box = new ChoiceBox();
+            @Override
+            protected void updateItem(Number qty, boolean empty) {
+                super.updateItem(qty, empty);
+                if (empty || qty == null) {
+                    setGraphic(null);
+                    return;
+                }
+
+                box.setItems(FXCollections.observableArrayList(1,2,3,4,5,6,7,8,9));
+                setGraphic(box);
+            }
+        });
+        addBtnCol.setCellFactory(cell -> new TableCell<>() {
+            private final Button addBtn = new Button("+");
+            @Override
+            protected void updateItem(Product prod, boolean empty) {
+                super.updateItem(prod, empty);
+                if (empty || prod == null) {
+                    setGraphic(null);
+                    return;
+                }
+                setGraphic(addBtn);
+                addBtn.setOnAction(event -> addToCart(prod, 1));
+            }
+        });
     }
 
     @FXML
@@ -113,6 +156,8 @@ public class ShoeStoreController {
         this.sceneMap = state.getSceneMap();
         this.sc = state.getCart();
         this.populateSceneMap();
+        initProductList();
+        //db.getCustomer("johndoe@nowhere.fake");
     }
 
 }
