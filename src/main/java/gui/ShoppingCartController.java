@@ -11,6 +11,7 @@ import javafx.fxml.FXML;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.shape.SVGPath;
 import javafx.stage.Stage;
 import state.AppState;
 import java.io.IOException;
@@ -76,7 +77,7 @@ public class ShoppingCartController {
         delProdCol.setCellValueFactory(
                 cellData -> new ReadOnlyObjectWrapper<>(cellData.getValue()));
         delProdCol.setCellFactory(cell -> new TableCell<>() {
-            private final Button delBtn = new TrashButton();
+            private final Button delBtn = new Button("Remove ");
             @Override
             protected void updateItem(Product prod, boolean empty) {
                 super.updateItem(prod, empty);
@@ -84,6 +85,10 @@ public class ShoppingCartController {
                     setGraphic(null);
                     return;
                 }
+                SVGPath svg = new SVGPath();
+                svg.setContent(Glyphs.DEL());
+                delBtn.setContentDisplay(ContentDisplay.RIGHT);
+                delBtn.setGraphic(svg);
                 setGraphic(delBtn);
                 delBtn.setOnAction(event -> removeItem(prod));
             }
