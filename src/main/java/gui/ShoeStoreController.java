@@ -138,7 +138,7 @@ public class ShoeStoreController {
             }
         });
         addBtnCol.setCellFactory(cell -> new TableCell<>() {
-            private final Button addBtn = new Button("Add ");
+            private final Button addBtn = new Button("Add  ");
             @Override
             protected void updateItem(Product prod, boolean empty) {
                 super.updateItem(prod, empty);
@@ -151,9 +151,8 @@ public class ShoeStoreController {
                 svg.setContent(Glyphs.ADD());
                 addBtn.setContentDisplay(ContentDisplay.RIGHT);
                 addBtn.setGraphic(svg);
-                addBtn.setOnAction(event -> {
-                    addToCart(prod);
-                });
+                addBtn.prefWidthProperty().bind(cell.widthProperty());
+                addBtn.setOnAction(event -> addToCart(prod));
             }
         });
     }

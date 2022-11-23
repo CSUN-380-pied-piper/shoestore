@@ -43,7 +43,7 @@ public class ShoppingCartController {
     @FXML
     private TableColumn<Product, String> prodNameCol;
     @FXML
-    private TableColumn<Product, Number> prodPriceCol;
+    private TableColumn<Product, String> prodPriceCol;
     @FXML
     private TableColumn<Product, Product> delProdCol;
 
@@ -71,11 +71,11 @@ public class ShoppingCartController {
     private void initCartList() {
         cartList.setPlaceholder(new Label("Cart is empty"));
         prodNameCol.setCellValueFactory(cellData -> cellData.getValue().nameProp());
-        prodPriceCol.setCellValueFactory(cellData -> cellData.getValue().priceProp());
+        prodPriceCol.setCellValueFactory(cellData -> cellData.getValue().priceProp().asString("$%,.2f"));
         delProdCol.setCellValueFactory(
                 cellData -> new ReadOnlyObjectWrapper<>(cellData.getValue()));
         delProdCol.setCellFactory(cell -> new TableCell<>() {
-            private final Button delBtn = new Button("Remove ");
+            private final Button delBtn = new Button("Remove  ");
             @Override
             protected void updateItem(Product prod, boolean empty) {
                 super.updateItem(prod, empty);
@@ -88,6 +88,7 @@ public class ShoppingCartController {
                 delBtn.setContentDisplay(ContentDisplay.RIGHT);
                 delBtn.setGraphic(svg);
                 setGraphic(delBtn);
+                delBtn.prefWidthProperty().bind(cell.widthProperty());
                 delBtn.setOnAction(event -> removeItem(prod));
             }
         });
