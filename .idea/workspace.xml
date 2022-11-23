@@ -9,10 +9,7 @@
   <component name="ChangeListManager">
     <list default="true" id="28d67806-a977-42bf-8850-2f1a11be482b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/backend/Customer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/backend/Customer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gui/CheckoutController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/CheckoutController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gui/OrderConfirmController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/OrderConfirmController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/state/AppState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/state/AppState.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/backend/Database.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/backend/Database.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
