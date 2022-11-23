@@ -1,7 +1,6 @@
 package gui;
 
 import javafx.fxml.FXMLLoader;
-
 import java.io.IOException;
 import java.lang.reflect.Constructor;
 import java.net.URL;

@@ -12,7 +12,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import state.AppState;
-
 import java.io.IOException;
 import java.text.NumberFormat;
 import java.util.Stack;
