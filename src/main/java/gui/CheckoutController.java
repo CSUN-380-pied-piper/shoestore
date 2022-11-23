@@ -43,18 +43,16 @@ public class CheckoutController {
 
     @FXML
     public void backToShoppingCart(ActionEvent event) throws IOException {
-        Parent root = loader.load(getClass().getResource("/shoppingCart.fxml"));
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+        Parent prevScene = viewStack.pop();
+        stage.getScene().setRoot(prevScene);
     }
 
     @FXML
     public void backToStore(ActionEvent event) throws IOException {
-        Parent root = loader.load(getClass().getResource("/shoeStore.fxml"));
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+        // discard the cart scene, and go home.
+        viewStack.pop();
+        Parent prevScene = viewStack.pop();
+        stage.getScene().setRoot(prevScene);
     }
 
     @FXML
@@ -78,10 +76,9 @@ public class CheckoutController {
         Customer c = new Customer(firstName, lastName, phoneNum, email, street, unit, city, s, parseZip(zip));
         state.setCustomer(c);
         // now switch our scene
-        Parent root = loader.load(getClass().getResource("/orderConfirm.fxml"));
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+        Parent childRoot = loader.load(getClass().getResource("/orderConfirm.fxml"));
+        viewStack.push(stage.getScene().getRoot());
+        stage.getScene().setRoot(childRoot);
     }
 
     private int parseZip(String zip) {
@@ -97,6 +94,7 @@ public class CheckoutController {
         this.db = state.getDb();
         this.loader = state.getLoader();
         this.stage = state.getStage();
+        this.viewStack = state.getViewStack();
         this.cart = state.getCart();
         this.df = state.getFormatter();
         this.displayOrderSummary();

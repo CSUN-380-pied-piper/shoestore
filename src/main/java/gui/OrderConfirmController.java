@@ -10,7 +10,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.TextArea;
 import javafx.stage.Stage;
 import state.AppState;
-
 import java.io.IOException;
 import java.util.Stack;
 
@@ -23,7 +22,7 @@ public class OrderConfirmController {
     private Stack<Parent> viewStack;
 
     @FXML
-    TextArea orderConfTA;
+    private TextArea orderConfTA;
 
     public OrderConfirmController(AppState state) {
         this.state = state;
@@ -31,10 +30,12 @@ public class OrderConfirmController {
 
     @FXML
     public void backToStore(ActionEvent event) throws IOException {
-        Parent root = loader.load(getClass().getResource("/shoeStore.fxml"));
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+        // we know we've gone home > cart > checkout > conf
+        // so we need to pop scenes 3 times
+        viewStack.pop();
+        viewStack.pop();
+        Parent prevScene = viewStack.pop();
+        stage.getScene().setRoot(prevScene);
     }
 
     public String OrderConfirmationText() {
@@ -68,6 +69,7 @@ public class OrderConfirmController {
         this.db = state.getDb();
         this.loader = state.getLoader();
         this.stage = state.getStage();
+        this.viewStack = state.getViewStack();
         displayEmail();
     }
 }

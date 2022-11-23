@@ -30,14 +30,9 @@ public class ShoppingCartController {
 
     // fxml ui elements that we need to interact with
     @FXML
-    Button HomeButton;
-
-    @FXML
-    Button CheckoutButton;
-
+    Button HomeButton, CheckoutButton;
     @FXML
     Label taxLabel, totalLabel;
-
     @FXML
     private TableView<Product> cartList;
     @FXML
@@ -56,10 +51,9 @@ public class ShoppingCartController {
 
     @FXML
     public void checkout(ActionEvent event) throws IOException {
-        Parent root = loader.load(getClass().getResource("/checkout.fxml"));
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+        Parent childRoot = loader.load(getClass().getResource("/checkout.fxml"));
+        viewStack.push(stage.getScene().getRoot());
+        stage.getScene().setRoot(childRoot);
     }
 
     /**
