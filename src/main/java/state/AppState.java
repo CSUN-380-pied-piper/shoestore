@@ -43,7 +43,6 @@ public class AppState {
         this.viewStack = viewStack;
         this.sceneMap = new HashMap<>();
         this.cart = new ShoppingCart();
-        this.customer = new Customer(null, null, null, null, null, null, null, null, 0);
     }
 
     /**
@@ -80,11 +79,11 @@ public class AppState {
     public void setCart(ShoppingCart cart) {
     	this.cart = cart;
     }
-    
+
     public Customer getCustomer() {
         return customer;
     }
-    
+
     public void setCustomer(Customer customer) {
     	this.customer = customer;
     }
