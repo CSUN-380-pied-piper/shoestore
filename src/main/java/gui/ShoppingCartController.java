@@ -41,9 +41,7 @@ public class ShoppingCartController {
     @FXML
     private TableView<Product> cartList;
     @FXML
-    private TableColumn<Product, String> prodNameCol;
-    @FXML
-    private TableColumn<Product, String> prodPriceCol;
+    private TableColumn<Product, String> prodNameCol, prodPriceCol, prodSizeCol;
     @FXML
     private TableColumn<Product, Product> delProdCol;
 
@@ -71,6 +69,7 @@ public class ShoppingCartController {
     private void initCartList() {
         cartList.setPlaceholder(new Label("Cart is empty"));
         prodNameCol.setCellValueFactory(cellData -> cellData.getValue().nameProp());
+        prodSizeCol.setCellValueFactory(cellData -> cellData.getValue().lastSizeProp().asString());
         prodPriceCol.setCellValueFactory(cellData -> cellData.getValue().priceProp().asString("$%,.2f"));
         delProdCol.setCellValueFactory(
                 cellData -> new ReadOnlyObjectWrapper<>(cellData.getValue()));

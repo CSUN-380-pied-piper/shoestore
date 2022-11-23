@@ -42,12 +42,13 @@ public class ShoppingCart {
 
     public void addItem(Product prod) {
     	System.out.println("Adding Item to Shopping Cart...");
-        this.contents.add(prod);
-        String shoe = prod.getName();
+        Product copy = new Product(prod);
+        this.contents.add(copy);
+        String shoe = copy.getName();
         productQtys.put(shoe, productQtys.get(shoe) + 1);
-        subtotal = subtotal + prod.getPrice();
+        subtotal = subtotal + copy.getPrice();
         subTotal.set(subtotal);
-        System.out.println("Added " + prod.getName() );
+        System.out.println("Added " + copy.getName() );
         System.out.println("Total: " + getFinalTotal());
     }
 

@@ -75,8 +75,7 @@ public class CheckoutController {
         city = cityTF.getText();
         s = stateTF.getText();
         zip = zipTF.getText();
-        Customer c = new Customer(firstName, lastName, phoneNum, email, street, unit, city, s,
-                Integer.parseInt(zip));
+        Customer c = new Customer(firstName, lastName, phoneNum, email, street, unit, city, s, parseZip(zip));
         System.out.println(c);
         state.setCustomer(c);
         // now switch our scene
@@ -84,6 +83,14 @@ public class CheckoutController {
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
+    }
+
+    private int parseZip(String zip) {
+        try {
+            return Integer.parseInt(zip);
+        } catch (NumberFormatException ex) {
+            return 0;
+        }
     }
 
     @FXML

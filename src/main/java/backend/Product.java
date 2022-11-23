@@ -22,6 +22,20 @@ public class Product {
         this(name, price, true, 5, 12);
     }
 
+
+    /**
+     * 'Copy Constructor' method for copying the product object
+     *  when a customer has chosen their selection, and adds
+     *  the shoe/product to their cart.
+     *
+      * @param p
+     */
+    public Product(Product p) {
+        this(p.getName(), p.getPrice(), p.halfSizes, p.minSize.intValue(), p.maxSize.intValue());
+        this.lastSizeProp().set(p.lastSizeProp().get());
+        this.lastQtyProp().set(p.lastQtyProp().get());
+    }
+
     public Product(String name, Double price, boolean half, int min, int max) {
         this.name = new SimpleStringProperty(name);
         this.price = new SimpleDoubleProperty(price);
