@@ -21,7 +21,7 @@
             <Font size="24.0" />
          </font>
       </Label>
-      <Button fx:id="placeOrderButton" contentDisplay="RIGHT" layoutX="644.0" layoutY="514.0" mnemonicParsing="false" onAction="#placeOrder" text="Place Order" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="15.0">
+      <Button fx:id="placeOrderButton" contentDisplay="RIGHT" layoutX="644.0" layoutY="514.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#placeOrder" prefHeight="28.0" prefWidth="115.0" text="Place Order" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="15.0">
          <font>
             <Font size="14.0" />
          </font>
@@ -29,7 +29,7 @@
             <SVGPath content="M12,22 C6.4771525,22 2,17.5228475 2,12 C2,6.4771525 6.4771525,2 12,2 C17.5228475,2 22,6.4771525 22,12 C22,17.5228475 17.5228475,22 12,22 Z M8,10 L6,12 L11,17 L18,10 L16,8 L11,13 L8,10 Z" />
          </graphic>
       </Button>
-      <Button fx:id="backToCartButton" contentDisplay="RIGHT" layoutX="25.0" layoutY="514.0" mnemonicParsing="false" onAction="#backToShoppingCart" text="Back to Cart" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="15.0">
+      <Button fx:id="backToCartButton" contentDisplay="RIGHT" layoutX="25.0" layoutY="514.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#backToShoppingCart" prefHeight="28.0" prefWidth="115.0" text="Back to Cart" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="150.0">
          <font>
             <Font size="14.0" />
          </font>
@@ -37,7 +37,7 @@
             <SVGPath content="M8,16 L16,16 C16.5522847,16 17,16.4477153 17,17 C17,17.5522847 16.5522847,18 16,18 L7,18 C6.44771525,18 6,17.5522847 6,17 L6,4 L5,4 C4.44771525,4 4,3.55228475 4,3 C4,2.44771525 4.44771525,2 5,2 L7,2 C7.55228475,2 8,2.44771525 8,3 L8,5.00121803 C8.02424149,5.00040824 8.04858873,5 8.07303481,5 L17.9269652,5 C19.0718707,5 20,5.8954305 20,7 C20,7.14592469 19.9834464,7.29141112 19.9506349,7.43386092 L18.7989489,12.4338609 C18.5881731,13.348936 17.7469078,14 16.7752792,14 L8.07303481,14 C8.04858873,14 8.02424149,13.9995918 8,13.998782 L8,16 Z M7.5,22 C6.67157288,22 6,21.3284271 6,20.5 C6,19.6715729 6.67157288,19 7.5,19 C8.32842712,19 9,19.6715729 9,20.5 C9,21.3284271 8.32842712,22 7.5,22 Z M16.5,22 C15.6715729,22 15,21.3284271 15,20.5 C15,19.6715729 15.6715729,19 16.5,19 C17.3284271,19 18,19.6715729 18,20.5 C18,21.3284271 17.3284271,22 16.5,22 Z M8,7 L8,12 L16.831242,12 L18,7 L8,7 Z" />
          </graphic>
       </Button>
-      <Button fx:id="backToStoreButton" contentDisplay="RIGHT" layoutX="30.0" layoutY="20.0" mnemonicParsing="false" onAction="#backToStore" text="Back to Store" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="20.0">
+      <Button fx:id="backToStoreButton" contentDisplay="RIGHT" layoutX="30.0" layoutY="20.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#backToStore" prefHeight="28.0" prefWidth="125.0" text="Back to Store" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="15.0">
          <font>
             <Font size="14.0" />
          </font>

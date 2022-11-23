@@ -21,14 +21,14 @@
             <TableColumn fx:id="delProdCol" editable="false" minWidth="0.0" prefWidth="36.0" resizable="false" sortable="false" />
         </columns>
       </TableView>
-      <Button contentDisplay="RIGHT" layoutX="330.0" layoutY="351.0" mnemonicParsing="false" onAction="#checkout" text="Checkout" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="15.0">
+      <Button contentDisplay="RIGHT" layoutX="330.0" layoutY="351.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#checkout" prefHeight="28.0" prefWidth="100.0" text="Checkout" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="15.0">
          <font>
             <Font size="14.0" />
          </font>
          <graphic>
             <SVGPath content="M8,8 L8,5 C8,3.8954305 8.8954305,3 10,3 L14,3 C15.1045695,3 16,3.8954305 16,5 L16,8 L19,8 C20.1045695,8 21,8.8954305 21,10 L21,19 C21,20.1045695 20.1045695,21 19,21 L5,21 C3.8954305,21 3,20.1045695 3,19 L3,10 C3,8.8954305 3.8954305,8 5,8 L8,8 Z M5,10 L5,19 L19,19 L19,10 L15.9981873,10 L15.9981873,13 L14,13 L14,10 L10,10 L10,13 L8,13 L8,10 L5,10 Z M10,8 L14,8 L14,5 L10,5 L10,8 Z" />
          </graphic></Button>
-      <Button fx:id="HomeButton" contentDisplay="RIGHT" layoutX="190.0" layoutY="351.0" mnemonicParsing="false" onAction="#backToStore" text="Back to Store" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="15.0">
+      <Button fx:id="HomeButton" contentDisplay="RIGHT" layoutX="190.0" layoutY="351.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#backToStore" prefHeight="28.0" prefWidth="125.0" text="Back to Store" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="15.0">
          <font>
             <Font size="14.0" />
          </font>

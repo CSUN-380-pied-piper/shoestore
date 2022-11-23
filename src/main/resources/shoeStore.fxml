@@ -11,7 +11,7 @@
 
 <AnchorPane prefHeight="530.0" prefWidth="705.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.ShoeStoreController">
    <children>
-      <Button fx:id="CartButton" contentDisplay="RIGHT" layoutX="554.0" layoutY="17.0" mnemonicParsing="false" onAction="#switchScene" text="shopping cart" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="15.0">
+      <Button fx:id="CartButton" contentDisplay="RIGHT" layoutX="554.0" layoutY="17.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#switchScene" prefHeight="28.0" prefWidth="125.0" text="shopping cart" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="15.0">
          <font>
             <Font size="14.0" />
          </font>
@@ -24,7 +24,7 @@
             <Font size="24.0" />
          </font>
       </Label>
-      <TableView fx:id="productList" layoutX="29.0" layoutY="165.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="150.0">
+      <TableView fx:id="productList" layoutX="29.0" layoutY="165.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="100.0">
         <columns>
           <TableColumn fx:id="nameCol" editable="false" prefWidth="485.0" sortable="false" text="Product" />
           <TableColumn fx:id="sizeCol" minWidth="0.0" prefWidth="55.0" sortable="false" text="Size" />
