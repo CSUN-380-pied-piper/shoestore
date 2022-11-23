@@ -41,15 +41,12 @@ public class ShoppingCart {
     }
 
     public void addItem(Product prod) {
-    	System.out.println("Adding Item to Shopping Cart...");
         Product copy = new Product(prod);
         this.contents.add(copy);
         String shoe = copy.getName();
         productQtys.put(shoe, productQtys.get(shoe) + 1);
         subtotal = subtotal + copy.getPrice();
         subTotal.set(subtotal);
-        System.out.println("Added " + copy.getName() );
-        System.out.println("Total: " + getFinalTotal());
     }
 
     public void removeItem(Product prod) {
