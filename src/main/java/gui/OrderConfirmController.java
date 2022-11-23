@@ -24,7 +24,7 @@ public class OrderConfirmController {
     private Stack<Parent> viewStack;
 
     @FXML
-    TextArea orderConf;
+    TextArea orderConfTA;
 
     public OrderConfirmController(AppState state) {
         this.state = state;
@@ -50,10 +50,25 @@ public class OrderConfirmController {
 		return finalReceipt;
     }
 
+    private void displayEmail() {
+        Customer c = state.getCustomer();
+        orderConfTA.setText("Order Confirmation\n\n" +
+                "Hi "
+                + c.getFirstName() + " " + c.getLastName() + "!\n"
+                + "Here are the details of your order: \n\n"
+                + "Shipping Address: \n"
+                + c.getStreet() + " " + c.getUnit() + "\n"
+                + c.getCity() + " " + c.getState() + " " + c.getZip() + "\n\n"
+                +"Email: "
+                + c.getEmail() + "\n" +
+                "Phone Number: " + c.getPhoneNum());
+    }
+
     @FXML
     public void initialize() {
         this.db = state.getDb();
         this.loader = state.getLoader();
         this.stage = state.getStage();
+        displayEmail();
     }
 }

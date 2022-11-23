@@ -1,7 +1,15 @@
 package backend;
 
 public class Customer {
-    private String lastName, firstName, email, phoneNum, street, unit, city, state, cardholder;
+    private String lastName;
+    private String firstName;
+    private String email;
+    private String phoneNum;
+    private String street;
+    private String unit;
+    private String city;
+    private String state;
+    private String cardholder;
     private int zip, creditCardNum, expDate, cvcCode;
 
     public Customer(String fn, String ln, String pn, String e, String st, String u, String c, String s, int z) {
@@ -27,6 +35,42 @@ public class Customer {
                 +"Email: "
                 + email + "\n" + 
                 "Phone Number: " + phoneNum;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getPhoneNum() {
+        return phoneNum;
+    }
+
+    public String getStreet() {
+        return street;
+    }
+
+    public String getUnit() {
+        return unit;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public String getState() {
+        return state;
+    }
+
+    public int getZip() {
+        return zip;
     }
 
     @Override

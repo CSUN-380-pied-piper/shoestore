@@ -67,11 +67,6 @@ public class CheckoutController {
 
     @FXML
     public void placeOrder(ActionEvent event) throws IOException {
-        Parent root = loader.load(getClass().getResource("/orderConfirm.fxml"));
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-
         firstName = firstNameTF.getText();
         lastName = lastNameTF.getText();
         phoneNum = contactNumTF.getText();
@@ -83,7 +78,13 @@ public class CheckoutController {
         zip = zipTF.getText();
         Customer c = new Customer(firstName, lastName, phoneNum, email, street, unit, city, s,
                 Integer.parseInt(zip));
+        System.out.println(c);
         state.setCustomer(c);
+        // now switch our scene
+        Parent root = loader.load(getClass().getResource("/orderConfirm.fxml"));
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
     }
 
     @FXML
