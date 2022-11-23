@@ -76,7 +76,6 @@ public class CheckoutController {
         s = stateTF.getText();
         zip = zipTF.getText();
         Customer c = new Customer(firstName, lastName, phoneNum, email, street, unit, city, s, parseZip(zip));
-        System.out.println(c);
         state.setCustomer(c);
         // now switch our scene
         Parent root = loader.load(getClass().getResource("/orderConfirm.fxml"));

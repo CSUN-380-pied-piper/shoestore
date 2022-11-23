@@ -57,8 +57,6 @@ public class ShoeStoreController {
     private void addToCart(Product prod) {
         int qty = prod.getLastQty();
         double size = prod.getLastSize();
-        System.out.println("qty: " + qty);
-        System.out.println("size: " + size);
         if (sizeAvailable(prod, size)) {
             for (int i = 0; i < qty; i++) {
                 sc.addItem(prod);
@@ -78,8 +76,6 @@ public class ShoeStoreController {
     public void switchScene(ActionEvent event) throws IOException {
         Object source = event.getSource();
         if (source instanceof Button) {
-            System.out.println(((Button) source).getText());
-            System.out.println(((Button) source).getId());
             Parent childRoot = loader.load(sceneMap.get(((Button) source).getText()));
             viewStack.push(stage.getScene().getRoot());
             stage.getScene().setRoot(childRoot);
