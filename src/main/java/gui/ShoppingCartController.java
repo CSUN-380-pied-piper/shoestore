@@ -32,7 +32,7 @@ public class ShoppingCartController {
     @FXML
     Button HomeButton, CheckoutButton;
     @FXML
-    Label taxLabel, totalLabel;
+    Label subtotalLabel, taxLabel, totalLabel;
     @FXML
     private TableView<Product> cartList;
     @FXML
@@ -96,6 +96,7 @@ public class ShoppingCartController {
      * tax and total display labels.
      */
     private void initTaxAndTotal() {
+        subtotalLabel.textProperty().bind(cart.subTotalProperty().asString("$%,.2f"));
         taxLabel.textProperty().bind(cart.taxProperty().asString("$%,.2f"));
         totalLabel.textProperty().bind(cart.finalTotalProperty().asString("$%,.2f"));
     }

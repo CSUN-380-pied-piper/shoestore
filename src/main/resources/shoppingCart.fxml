@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
@@ -14,7 +13,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="530.0" prefWidth="705.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.ShoppingCartController">
    <children>
-      <TableView fx:id="cartList" layoutX="25.0" layoutY="126.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="180.0" prefWidth="562.0" AnchorPane.bottomAnchor="110.0" AnchorPane.leftAnchor="25.0" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="100.0">
+      <TableView fx:id="cartList" layoutX="25.0" layoutY="126.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="299.0" prefWidth="655.0" AnchorPane.bottomAnchor="131.0" AnchorPane.leftAnchor="25.0" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="100.0">
         <columns>
           <TableColumn fx:id="prodNameCol" editable="false" maxWidth="1.7976931348623157E308" prefWidth="348.0" text="Item" />
             <TableColumn fx:id="prodSizeCol" editable="false" minWidth="0.0" prefWidth="101.0" resizable="false" sortable="false" text="Size" />
@@ -41,41 +40,46 @@
             <Font size="24.0" />
          </font>
       </Label>
-      <GridPane layoutX="422.0" layoutY="288.0" prefHeight="55.0" prefWidth="155.0" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="420.0">
+      <GridPane layoutX="524.0" layoutY="409.0">
          <columnConstraints>
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="66.0" minWidth="10.0" prefWidth="51.0" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="119.0" minWidth="10.0" prefWidth="119.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="94.0" minWidth="10.0" prefWidth="67.0" />
+            <ColumnConstraints halignment="RIGHT" hgrow="ALWAYS" maxWidth="89.0" minWidth="10.0" prefWidth="89.0" />
          </columnConstraints>
          <rowConstraints>
-            <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="19.0" minHeight="10.0" prefHeight="19.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="20.0" minHeight="10.0" prefHeight="19.0" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
          </rowConstraints>
          <children>
-            <Label prefHeight="16.0" prefWidth="70.0" text="tax:">
+            <Label prefHeight="16.0" prefWidth="70.0" text="Tax:" GridPane.rowIndex="1">
+               <font>
+                  <Font size="15.0" />
+                   </font>
+            </Label>
+            <Label prefHeight="16.0" prefWidth="70.0" text="Total:" GridPane.rowIndex="2">
                <font>
                   <Font size="15.0" />
                </font>
             </Label>
-            <Label prefHeight="16.0" prefWidth="70.0" text="total:" GridPane.rowIndex="1">
+            <Label fx:id="taxLabel" alignment="CENTER_RIGHT" text="0.00" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <font>
                   <Font size="15.0" />
                </font>
             </Label>
-            <Label fx:id="taxLabel" alignment="CENTER_RIGHT" layoutX="10.0" layoutY="15.0" text="0.00" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.hgrow="ALWAYS">
+            <Label fx:id="totalLabel" alignment="CENTER_RIGHT" text="0.00" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <font>
                   <Font size="15.0" />
                </font>
-               <GridPane.margin>
-                  <Insets right="5.0" />
-               </GridPane.margin>
             </Label>
-            <Label fx:id="totalLabel" alignment="CENTER_RIGHT" layoutX="129.0" layoutY="15.0" text="0.00" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="1">
+            <Label prefHeight="16.0" prefWidth="70.0" text="Subtotal:">
                <font>
                   <Font size="15.0" />
                </font>
-               <GridPane.margin>
-                  <Insets right="5.0" />
-               </GridPane.margin>
+            </Label>
+            <Label fx:id="subtotalLabel" alignment="CENTER_RIGHT" text="0.00" GridPane.columnIndex="1">
+               <font>
+                  <Font size="15.0" />
+               </font>
             </Label>
          </children>
       </GridPane>
