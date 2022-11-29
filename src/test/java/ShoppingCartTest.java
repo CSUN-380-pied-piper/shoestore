@@ -9,13 +9,13 @@ class ShoppingCartTest {
 
     @org.junit.jupiter.api.Test
     void addItem() {
-        Product heels = new Product("Heels", 45.0, true, 5, 11);
+        Product heels = new Product("Heels",45.0, true, 5, 11);
         heels.lastSizeProp().set(7.5);
         heels.lastQtyProp().set(1);
         cart.addItem(heels);
         assertFalse(cart.getContents().contains(heels));
         assertTrue(cart.getTax() == 3.26);
-        assertTrue(cart.getFinalTotal().equals(48.26));
+        assertEquals(48.26, cart.getFinalTotal(), .01);
     }
 
     @org.junit.jupiter.api.Test
