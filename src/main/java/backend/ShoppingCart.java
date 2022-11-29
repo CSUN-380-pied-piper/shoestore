@@ -72,7 +72,7 @@ public class ShoppingCart {
     }
     
     public Double getTax() {
-    	double tax = Math.round(subtotal *7.25);
+    	double tax = Math.round(subTotal.get() * 7.25);
     	tax = tax / 100;
     	return tax;
     }
