@@ -72,7 +72,7 @@
                      <children>
                         <TextField fx:id="lastNameTF" onAction="#placeOrder" promptText="Last Name" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                         <TextField fx:id="firstNameTF" onAction="#placeOrder" promptText="First Name" GridPane.rowIndex="1" />
-                        <TextField fx:id="contactNumTF" onAction="#placeOrder" promptText="Phone Number" GridPane.rowIndex="3" />
+                        <TextField fx:id="phoneNumTF" onAction="#placeOrder" promptText="Phone Number" GridPane.rowIndex="3" />
                         <TextField fx:id="eTF" onAction="#placeOrder" prefHeight="25.0" prefWidth="202.0" promptText="Email" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                         <Label text="Fist Name" />
                         <Label layoutX="10.0" layoutY="17.0" text="Last Name" GridPane.columnIndex="1" />

@@ -24,15 +24,15 @@ public class CheckoutController {
     private Database db;
     private SceneLoader loader;
     private Stack<Parent> viewStack;
-    private String lastName, firstName, phoneNum, email, street, unit, city, s, zip;
+    private String ln, fn, pn, e, st, u, c, s, zip, ccn, cn, ed, cc;
     private NumberFormat df;
-
 
     @FXML
     Button placeOrderButton, backToStoreButton, backToCartButton;
 
     @FXML
-    private TextField firstNameTF, lastNameTF, contactNumTF, eTF, stTF, unitTF, cityTF, stateTF, zipTF;
+    private TextField firstNameTF, lastNameTF, phoneNumTF, eTF, stTF, unitTF, cityTF,
+            stateTF, zipTF, cardNameTF, cardNumTF, expDateTF, cvcTF;
 
     @FXML
     private Label subLabel, taxLabel, totalLabel;
@@ -64,17 +64,25 @@ public class CheckoutController {
 
     @FXML
     public void placeOrder(ActionEvent event) throws IOException {
-        firstName = firstNameTF.getText();
-        lastName = lastNameTF.getText();
-        phoneNum = contactNumTF.getText();
-        email = eTF.getText();
-        street = stTF.getText();
-        unit = unitTF.getText();
-        city = cityTF.getText();
+        fn = firstNameTF.getText();
+        ln = lastNameTF.getText();
+        pn = phoneNumTF.getText();
+        e = eTF.getText();
+        st = stTF.getText();
+        u = unitTF.getText();
+        c = cityTF.getText();
         s = stateTF.getText();
         zip = zipTF.getText();
-        Customer c = new Customer(firstName, lastName, phoneNum, email, street, unit, city, s, parseZip(zip));
+        cn = cardNameTF.getText();
+        ccn = cardNameTF.getText();
+        ed = expDateTF.getText();
+        cc = cvcTF.getText();
+        Customer c = new Customer(fn, ln, pn, e, st, u, this.c, s, parseZip(zip));
         state.setCustomer(c);
+        // Validate user input
+        if (!userInputValid()) {
+            return;
+        }
         // now switch our scene
         Parent childRoot = loader.load(getClass().getResource("/orderConfirm.fxml"));
         viewStack.push(stage.getScene().getRoot());
@@ -87,6 +95,60 @@ public class CheckoutController {
         } catch (NumberFormatException ex) {
             return 0;
         }
+    }
+
+    private boolean userInputValid() {
+        boolean validTextFields = true;
+        if (fn.isEmpty()) {
+            // set text field to red if empty
+            validTextFields = false;
+            firstNameTF.setStyle("-fx-text-box-border: #B22222; -fx-focus-color: #B22222;");
+        }
+        if (ln.isEmpty()) {
+            validTextFields = false;
+            lastNameTF.setStyle("-fx-text-box-border: #B22222; -fx-focus-color: #B22222;");
+        }
+        if (pn.isEmpty()) {
+            validTextFields = false;
+            phoneNumTF.setStyle("-fx-text-box-border: #B22222; -fx-focus-color: #B22222;");
+        }
+        if (e.isEmpty()) {
+            validTextFields = false;
+            eTF.setStyle("-fx-text-box-border: #B22222; -fx-focus-color: #B22222;");
+        }
+        if (st.isEmpty()) {
+            validTextFields = false;
+            stTF.setStyle("-fx-text-box-border: #B22222; -fx-focus-color: #B22222;");
+        }
+        if (c.isEmpty()) {
+            validTextFields = false;
+            cityTF.setStyle("-fx-text-box-border: #B22222; -fx-focus-color: #B22222;");
+        }
+        if (s.isEmpty()) {
+            validTextFields = false;
+            stateTF.setStyle("-fx-text-box-border: #B22222; -fx-focus-color: #B22222;");
+        }
+        if (zip.isEmpty()) {
+            validTextFields = false;
+            zipTF.setStyle("-fx-text-box-border: #B22222; -fx-focus-color: #B22222;");
+        }
+        if (ccn.isEmpty()) {
+            validTextFields = false;
+            cardNameTF.setStyle("-fx-text-box-border: #B22222; -fx-focus-color: #B22222;");
+        }
+        if (cn.isEmpty()) {
+            validTextFields = false;
+            cardNumTF.setStyle("-fx-text-box-border: #B22222; -fx-focus-color: #B22222;");
+        }
+        if (ed.isEmpty()) {
+            validTextFields = false;
+            expDateTF.setStyle("-fx-text-box-border: #B22222; -fx-focus-color: #B22222;");
+        }
+        if (cc.isEmpty()){
+            validTextFields = false;
+            cvcTF.setStyle("-fx-text-box-border: #B22222; -fx-focus-color: #B22222;");
+        }
+        return validTextFields;
     }
 
     @FXML

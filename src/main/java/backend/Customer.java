@@ -9,8 +9,7 @@ public class Customer {
     private String unit;
     private String city;
     private String state;
-    private String cardholder;
-    private int zip, creditCardNum, expDate, cvcCode;
+    private int zip;
 
     public Customer(String fn, String ln, String pn, String e, String st, String u, String c, String s, int z) {
         firstName = fn;
