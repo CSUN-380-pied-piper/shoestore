@@ -55,7 +55,7 @@ class ShoppingCartTest {
         assertEquals(134.06, cart.getFinalTotal(), .01);
     }
     
-        @Test
+    @Test
     void ReceiptInTextArea() {
     	Product heels1 = new Product("Heels",45.0, true, 5, 11);
     	Product heels2 = new Product("Heels",45.0, true, 5, 11);
