@@ -51,9 +51,18 @@ public class ShoppingCartController {
 
     @FXML
     public void checkout(ActionEvent event) throws IOException {
-        Parent childRoot = loader.load(getClass().getResource("/checkout.fxml"));
-        viewStack.push(stage.getScene().getRoot());
-        stage.getScene().setRoot(childRoot);
+        if (cart.getContents().isEmpty()) {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Checkout cancelled");
+            alert.setHeaderText("Shopping cart is empty.");
+            alert.setContentText("Your shopping cart is currently empty, please add" +
+                    "some items to your cart before checking out.");
+            alert.showAndWait();
+        } else {
+            Parent childRoot = loader.load(getClass().getResource("/checkout.fxml"));
+            viewStack.push(stage.getScene().getRoot());
+            stage.getScene().setRoot(childRoot);
+        }
     }
 
     /**
