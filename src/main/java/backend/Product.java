@@ -6,7 +6,7 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
-public class Product {
+public class Product implements Queryable {
 
     private String id;
     private SimpleDoubleProperty price;

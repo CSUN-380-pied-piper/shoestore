@@ -2,6 +2,7 @@ package gui;
 
 import backend.Database;
 import backend.Product;
+import backend.Queryable;
 import backend.ShoppingCart;
 import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.collections.FXCollections;
@@ -31,14 +32,14 @@ public class ShoeStoreController {
     private ShoppingCart sc;
     private DecimalFormat df = new DecimalFormat("####,###,###.00");
     private HashMap<String, URL> sceneMap;
-    private ObservableList<Product> products;
+    private ObservableList<Queryable> products;
     private ObservableList<Integer> qtyList;
 
     // import fxml ui elements that we need to interact with
     @FXML
     Button CartButton;
     @FXML
-    private TableView<Product> productList;
+    private TableView<Queryable> productList;
     @FXML
     private TableColumn<Product, Product> addBtnCol;
     @FXML

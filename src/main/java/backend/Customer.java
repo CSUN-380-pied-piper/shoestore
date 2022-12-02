@@ -1,6 +1,6 @@
 package backend;
 
-public class Customer {
+public class Customer implements Queryable {
     private String lastName;
     private String firstName;
     private String email;
