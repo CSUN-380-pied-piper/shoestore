@@ -101,7 +101,7 @@ public class ShoppingCart {
     		}
     		
     		if (HeelNum > 0) {
-    			finalText = "Number of Heels:  "+ HeelNum;
+    			finalText = "Number of Heels: "+ HeelNum;
     		}
     		if (SneakerNum > 0) {
     			finalText = finalText + "\nNumber of Sneakers: " + SneakerNum;
