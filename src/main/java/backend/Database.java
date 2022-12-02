@@ -4,6 +4,9 @@ import java.math.BigInteger;
 import java.sql.*;
 import java.util.ArrayList;
 
+/**
+ * The type Database.
+ */
 public class Database {
 
     private final String url = "jdbc:postgresql://bgapytnwjskfjif8rjg3-postgresql.services.clever-cloud.com:5432/bgapytnwjskfjif8rjg3";
@@ -12,10 +15,31 @@ public class Database {
 
     private Connection conn;
 
+    /**
+     * The enum Tables.
+     */
     enum TABLES {
-        CUSTOMERS, PRODUCTS, ORDERS, CONTENTS
+        /**
+         * Customers tables.
+         */
+        CUSTOMERS,
+        /**
+         * Products tables.
+         */
+        PRODUCTS,
+        /**
+         * Orders tables.
+         */
+        ORDERS,
+        /**
+         * Contents tables.
+         */
+        CONTENTS
     }
 
+    /**
+     * Instantiates a new Database.
+     */
     public Database() {
     }
 
@@ -28,10 +52,22 @@ public class Database {
         }
     }
 
+    /**
+     * Creates a connection to our database server if none exists.
+     */
     public void connect() {
         if (this.conn == null) {
             this.openConnection();
         }
+    }
+
+    private Product parseContents(ResultSet rs) throws SQLException {
+        String shoeName = rs.getString("name");
+        Double shoePrice = rs.getDouble("price");
+        Product shoe = new Product(shoeName, shoePrice);
+        shoe.lastSizeProp().set(rs.getDouble("size"));
+        shoe.lastQtyProp().set(rs.getInt("qty"));
+        return shoe;
     }
 
     private Product parseProduct(ResultSet rs) throws SQLException {
@@ -67,7 +103,7 @@ public class Database {
         while (results.next()) {
             switch(t) {
                 case ORDERS: ; break;
-                case CONTENTS: ; break;
+                case CONTENTS: l.add((parseContents(results))); break;
                 case PRODUCTS: l.add(parseProduct(results)); break;
                 case CUSTOMERS: l.add(parseCustomer(results)); break;
             }
@@ -77,8 +113,19 @@ public class Database {
         results.close();
     }
 
+    /**
+     * Gets contents of an order from the database
+     *
+     * @param email   the email of the customer who placed the order
+     * @param orderId the order id
+     *
+     * @return the contents, as an ArrayList, of Product objects, with lastSize
+     *         and lastQty properties pre-set to the correct values
+     */
     public ArrayList<Queryable> getContents(String email, BigInteger orderId) {
-        String sqlQuery = "SELECT * FROM contents WHERE orderid like '" + orderId + "' and";
+        String sqlQuery =
+                "SELECT c.size, c.qty, p.name, p.price FROM contents as c, products as p" +
+                        " WHERE c.orderid=" + orderId + " and p.id=c.prodid";
         ArrayList<Queryable> productList = new ArrayList<>();
         try {
             runQuery(sqlQuery, TABLES.PRODUCTS, productList);
@@ -89,6 +136,13 @@ public class Database {
     }
 
 
+    /**
+     * Gets customer information from the database.
+     *
+     * @param email the email address of the customer we're searching for
+     *
+     * @return the customer object
+     */
     public Customer getCustomer(String email) {
         String sqlQuery = "SELECT * FROM customers WHERE email like '" + email + "'";
         ArrayList<Queryable> custList = new ArrayList<>();
@@ -101,6 +155,13 @@ public class Database {
         return (Customer) custList.get(0);
     }
 
+    /**
+     * Gets product information from the database.
+     *
+     * @param name the name of the product we're searching for
+     *
+     * @return the product(s) information, as an ArrayList of Product objects.
+     */
     public ArrayList<Queryable> getProducts(String name) {
         String sqlQuery = "SELECT * FROM products WHERE name like '" + name + "'";
         ArrayList<Queryable> productList = new ArrayList<>();
