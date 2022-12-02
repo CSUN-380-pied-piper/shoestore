@@ -54,4 +54,25 @@ class ShoppingCartTest {
         cart.subTotalProperty().set(125.0);
         assertEquals(134.06, cart.getFinalTotal(), .01);
     }
+    
+        @Test
+    void ReceiptInTextArea() {
+    	Product heels1 = new Product("Heels",45.0, true, 5, 11);
+    	Product heels2 = new Product("Heels",45.0, true, 5, 11);
+    	Product sneakers1 = new Product("Sneakers",120.0, true, 5, 11);
+    	Product boots1 = new Product("Boots",135.0, true, 5, 11);
+    	Product boots2 = new Product("Boots",135.0, true, 5, 11);
+    	
+    	cart.addItem(heels1);
+    	cart.addItem(heels2);
+    	cart.addItem(sneakers1);
+    	cart.addItem(boots1);
+    	cart.addItem(boots2);
+    	
+    	assertEquals("Number of Heels: 2\n"
+    			+ "Number of Sneakers: 1\n"
+    			+ "Number of Sandals: 2\n"
+    			+ "\nSubTotal: $480.0", cart.ReceiptInTextArea());
+    	
+    }
 }
