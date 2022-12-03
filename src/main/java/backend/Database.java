@@ -61,6 +61,10 @@ public class Database {
         }
     }
 
+    private Product parseOrders(ResultSet rs) throws SQLException {
+        return null;
+    }
+
     private Product parseContents(ResultSet rs) throws SQLException {
         String shoeName = rs.getString("name");
         Double shoePrice = rs.getDouble("price");
@@ -102,7 +106,7 @@ public class Database {
         // while we have results from the query, parse them...
         while (results.next()) {
             switch(t) {
-                case ORDERS: ; break;
+                case ORDERS: l.add(parseOrders(results)); break;
                 case CONTENTS: l.add((parseContents(results))); break;
                 case PRODUCTS: l.add(parseProduct(results)); break;
                 case CUSTOMERS: l.add(parseCustomer(results)); break;
@@ -116,19 +120,18 @@ public class Database {
     /**
      * Gets contents of an order from the database
      *
-     * @param email   the email of the customer who placed the order
      * @param orderId the order id
      *
      * @return the contents, as an ArrayList, of Product objects, with lastSize
      *         and lastQty properties pre-set to the correct values
      */
-    public ArrayList<Queryable> getContents(String email, BigInteger orderId) {
-        String sqlQuery =
-                "SELECT c.size, c.qty, p.name, p.price FROM contents as c, products as p" +
-                        " WHERE c.orderid=" + orderId + " and p.id=c.prodid";
+    public ArrayList<Queryable> getContents(BigInteger orderId) {
+        String sqlQuery = "SELECT c.size, c.qty, p.name, p.price " +
+                          "FROM contents as c, products as p " +
+                          "WHERE c.orderid=" + orderId + " and p.id=c.prodid";
         ArrayList<Queryable> productList = new ArrayList<>();
         try {
-            runQuery(sqlQuery, TABLES.PRODUCTS, productList);
+            runQuery(sqlQuery, TABLES.CONTENTS, productList);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
