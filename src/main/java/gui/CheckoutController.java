@@ -7,6 +7,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -74,19 +75,25 @@ public class CheckoutController {
         s = stateTF.getText();
         zip = zipTF.getText();
         cn = cardNameTF.getText();
-        ccn = cardNameTF.getText();
+        ccn = cardNumTF.getText();
         ed = expDateTF.getText();
         cc = cvcTF.getText();
         Customer c = new Customer(fn, ln, pn, e, st, u, this.c, s, parseZip(zip));
         state.setCustomer(c);
         // Validate user input
-        if (!userInputValid()) {
-            return;
+        if (!(userInputValid())) {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Place order cancelled");
+            alert.setHeaderText("User input is incomplete or empty.");
+            alert.setContentText("Your did not enter required personal details, please " +
+                    "fill in the necessary information needed.");
+            alert.showAndWait();
+        } else {
+            // now switch our scene
+            Parent childRoot = loader.load(getClass().getResource("/orderConfirm.fxml"));
+            viewStack.push(stage.getScene().getRoot());
+            stage.getScene().setRoot(childRoot);
         }
-        // now switch our scene
-        Parent childRoot = loader.load(getClass().getResource("/orderConfirm.fxml"));
-        viewStack.push(stage.getScene().getRoot());
-        stage.getScene().setRoot(childRoot);
     }
 
     private int parseZip(String zip) {
@@ -102,52 +109,64 @@ public class CheckoutController {
         if (fn.isEmpty()) {
             // set text field to red if empty
             validTextFields = false;
-            firstNameTF.setStyle("-fx-text-box-border: #B22222; -fx-focus-color: #B22222;");
-        }
+            firstNameTF.setStyle("-fx-text-box-border: red; -fx-focus-color: red;");
+        } else
+            firstNameTF.setStyle("");
         if (ln.isEmpty()) {
             validTextFields = false;
-            lastNameTF.setStyle("-fx-text-box-border: #B22222; -fx-focus-color: #B22222;");
-        }
+            lastNameTF.setStyle("-fx-text-box-border: red; -fx-focus-color: red;");
+        } else
+            lastNameTF.setStyle("");
         if (pn.isEmpty()) {
             validTextFields = false;
-            phoneNumTF.setStyle("-fx-text-box-border: #B22222; -fx-focus-color: #B22222;");
-        }
+            phoneNumTF.setStyle("-fx-text-box-border: red; -fx-focus-color: red;");
+        } else
+            phoneNumTF.setStyle("");
         if (e.isEmpty()) {
             validTextFields = false;
-            eTF.setStyle("-fx-text-box-border: #B22222; -fx-focus-color: #B22222;");
-        }
+            eTF.setStyle("-fx-text-box-border: red; -fx-focus-color: red;");
+        } else
+            eTF.setStyle("");
         if (st.isEmpty()) {
             validTextFields = false;
-            stTF.setStyle("-fx-text-box-border: #B22222; -fx-focus-color: #B22222;");
-        }
+            stTF.setStyle("-fx-text-box-border: red; -fx-focus-color: red;");
+        } else
+            stTF.setStyle("");
         if (c.isEmpty()) {
             validTextFields = false;
-            cityTF.setStyle("-fx-text-box-border: #B22222; -fx-focus-color: #B22222;");
-        }
+            cityTF.setStyle("-fx-text-box-border: red; -fx-focus-color: red;");
+        } else
+            cityTF.setStyle("");
         if (s.isEmpty()) {
             validTextFields = false;
-            stateTF.setStyle("-fx-text-box-border: #B22222; -fx-focus-color: #B22222;");
-        }
+            stateTF.setStyle("-fx-text-box-border: red; -fx-focus-color: red;");
+        } else
+            stateTF.setStyle("");
         if (zip.isEmpty()) {
             validTextFields = false;
-            zipTF.setStyle("-fx-text-box-border: #B22222; -fx-focus-color: #B22222;");
-        }
+            zipTF.setStyle("-fx-text-box-border: red; -fx-focus-color: red;");
+        } else
+            zipTF.setStyle("");
         if (ccn.isEmpty()) {
             validTextFields = false;
-            cardNameTF.setStyle("-fx-text-box-border: #B22222; -fx-focus-color: #B22222;");
-        }
+            cardNumTF.setStyle("-fx-text-box-border: red; -fx-focus-color: red;");
+        } else
+            cardNumTF.setStyle("");
         if (cn.isEmpty()) {
             validTextFields = false;
-            cardNumTF.setStyle("-fx-text-box-border: #B22222; -fx-focus-color: #B22222;");
-        }
+            cardNameTF.setStyle("-fx-text-box-border: red; -fx-focus-color: red;");
+        } else
+            cardNameTF.setStyle("");
         if (ed.isEmpty()) {
             validTextFields = false;
-            expDateTF.setStyle("-fx-text-box-border: #B22222; -fx-focus-color: #B22222;");
-        }
+            expDateTF.setStyle("-fx-text-box-border: red; -fx-focus-color: red;");
+        } else
+            expDateTF.setStyle("");
         if (cc.isEmpty()){
             validTextFields = false;
-            cvcTF.setStyle("-fx-text-box-border: #B22222; -fx-focus-color: #B22222;");
-        }
+            cvcTF.setStyle("-fx-text-box-border: red; -fx-focus-color: red;");
+        } else
+            cvcTF.setStyle("");
         return validTextFields;
     }
 
