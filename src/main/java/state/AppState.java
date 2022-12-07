@@ -42,7 +42,7 @@ public class AppState {
         this.db = db;
         this.viewStack = viewStack;
         this.sceneMap = new HashMap<>();
-        this.cart = new ShoppingCart();
+        this.cart = new ShoppingCart(df);
     }
 
     /**

@@ -1,11 +1,15 @@
 import backend.Product;
 import backend.ShoppingCart;
 import org.junit.jupiter.api.Test;
+
+import java.text.NumberFormat;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class ShoppingCartTest {
 
-    private ShoppingCart cart = new ShoppingCart();
+    private NumberFormat df = NumberFormat.getCurrencyInstance();
+    private ShoppingCart cart = new ShoppingCart(df);
 
     @Test
     void addItem() {

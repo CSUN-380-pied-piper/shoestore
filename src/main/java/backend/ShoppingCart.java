@@ -1,14 +1,16 @@
 package backend;
 
-import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleListProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
+import java.text.NumberFormat;
+
 public class ShoppingCart {
 
+    private NumberFormat df;
     private ObservableList<Product> contents;
     private SimpleDoubleProperty subTotal;
     private SimpleDoubleProperty tax;
@@ -17,7 +19,8 @@ public class ShoppingCart {
     private SimpleObjectProperty<ObservableList<Product>> contentsProp;
     private Double subtotal = 0.0;
 
-    public ShoppingCart() {
+    public ShoppingCart(NumberFormat df) {
+        this.df = df;
         this.contents = FXCollections.observableArrayList();
         this.subTotal = new SimpleDoubleProperty(0.0);
         this.tax = new SimpleDoubleProperty();
@@ -82,41 +85,24 @@ public class ShoppingCart {
     }
     
     public String ReceiptInTextArea() {
-    	int HeelNum = 0;
-    	int SneakerNum = 0;
-    	int SandalNum = 0;
-    	int BootNum = 0;
+        StringBuilder builder = new StringBuilder();
     	
-    	String finalText = "";
-    	
-    	for (int i = 0; i < contents.size(); i++) {
-    		if (contents.get(i).getName().equals("Heels")) {
-    			HeelNum++;
-    		} else if (contents.get(i).getName().equals("Sneakers")) {
-    			SneakerNum++;
-    		} else if (contents.get(i).getName().equals("Sandals")) {
-    			SandalNum++;
-    		} else if (contents.get(i).getName().equals("Boots")) {
-    			BootNum++;
-    		}
-    		
-    		if (HeelNum > 0) {
-    			finalText = "Number of Heels: "+ HeelNum;
-    		}
-    		if (SneakerNum > 0) {
-    			finalText = finalText + "\nNumber of Sneakers: " + SneakerNum;
-    		}
-    		if (SandalNum > 0) {
-    			finalText = finalText + "\nNumber of Sandals: " + SandalNum;
-    		}
-    		if (BootNum > 0) {
-    			finalText = finalText + "\nNumber of Sandals: " + BootNum;
-    		}
-    		
-    		finalText = finalText + "\n\nSubTotal: $" + subtotal;
-    		
+    	for (Product p: contents) {
+            builder.append(p.getName());
+            builder.append(", Size: ");
+            builder.append(p.getLastSize());
+            builder.append("\n");
     	}
-    	return finalText;
-    	
+        // now add the subtotal, tax, and shipping
+        builder.append("\n");
+        builder.append("Subtotal: ");
+        builder.append(df.format(subTotal.get()));
+        builder.append("\n");
+        builder.append("Tax: ");
+        builder.append(df.format(tax.get()));
+        builder.append("\n");
+        builder.append("Total: ");
+        builder.append(df.format(finalTotal.get()));
+        return builder.toString();
     }
 }

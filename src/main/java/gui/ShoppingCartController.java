@@ -59,7 +59,7 @@ public class ShoppingCartController {
             Alert alert = new SkinnedAlert(Alert.AlertType.WARNING);
             alert.setTitle("Checkout cancelled");
             alert.setHeaderText("Shopping cart is empty.");
-            alert.setContentText("Your shopping cart is currently empty, please add" +
+            alert.setContentText("Your shopping cart is currently empty, please add " +
                     "some items to your cart before checking out.");
             alert.showAndWait();
         } else {

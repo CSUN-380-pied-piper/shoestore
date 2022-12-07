@@ -56,6 +56,7 @@ public class OrderConfirmController {
                 "Hi "
                 + c.getFirstName() + " " + c.getLastName() + "!\n"
                 + "Here are the details of your order: \n\n"
+                + state.getCart().ReceiptInTextArea() + "\n\n"
                 + "Shipping Address: \n"
                 + c.getStreet() + " " + c.getUnit() + "\n"
                 + c.getCity() + " " + c.getState() + " " + c.getZip() + "\n\n"
