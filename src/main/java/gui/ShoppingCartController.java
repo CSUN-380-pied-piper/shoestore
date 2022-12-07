@@ -56,7 +56,7 @@ public class ShoppingCartController {
     @FXML
     public void checkout(ActionEvent event) throws IOException {
         if (cart.getContents().isEmpty()) {
-            Alert alert = new Alert(Alert.AlertType.WARNING);
+            Alert alert = new SkinnedAlert(Alert.AlertType.WARNING);
             alert.setTitle("Checkout cancelled");
             alert.setHeaderText("Shopping cart is empty.");
             alert.setContentText("Your shopping cart is currently empty, please add" +
@@ -71,7 +71,7 @@ public class ShoppingCartController {
 
     @FXML
     public void emptyCart(ActionEvent event) {
-        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        Alert alert = new SkinnedAlert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Empty Shopping Cart?");
         alert.setHeaderText("Confirm empty cart");
         alert.setContentText("Do you want to empty your shopping cart?");

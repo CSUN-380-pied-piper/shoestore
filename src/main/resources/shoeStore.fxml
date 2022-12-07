@@ -8,7 +8,7 @@
 <?import javafx.scene.shape.SVGPath?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="530.0" prefWidth="705.0" stylesheets="@base.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.ShoeStoreController">
+<AnchorPane prefHeight="530.0" prefWidth="705.0" stylesheets="@css/base.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.ShoeStoreController">
    <children>
       <Button fx:id="CartButton" contentDisplay="RIGHT" graphicTextGap="12.0" layoutX="554.0" layoutY="17.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#switchScene" prefHeight="28.0" prefWidth="125.0" text="shopping cart" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="15.0">
          <font>

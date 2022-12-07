@@ -96,7 +96,7 @@ public class CheckoutController {
         state.setCustomer(c);
         // Validate user input
         if (!(userInputValid())) {
-            Alert alert = new Alert(Alert.AlertType.WARNING);
+            Alert alert = new SkinnedAlert(Alert.AlertType.WARNING);
             alert.setTitle("Place order cancelled");
             alert.setHeaderText("User input is incomplete or empty.");
             alert.setContentText("Your did not enter required personal details, please " +
