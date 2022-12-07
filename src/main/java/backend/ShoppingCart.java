@@ -3,7 +3,6 @@ package backend;
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import java.util.HashMap;
 
 public class ShoppingCart {
 
@@ -12,7 +11,6 @@ public class ShoppingCart {
     private SimpleDoubleProperty tax;
     private SimpleDoubleProperty finalTotal;
     private Double subtotal = 0.0;
-    private HashMap<String, Integer> productQtys;
 
     public ShoppingCart() {
         this.contents = FXCollections.observableArrayList();
@@ -21,7 +19,6 @@ public class ShoppingCart {
         this.finalTotal = new SimpleDoubleProperty();
         this.tax.bind(subTotal.multiply(0.0725));
         this.finalTotal.bind(subTotal.add(tax));
-        this.initQtyMap();
     }
 
     public ObservableList<Product> getContents() {
@@ -44,7 +41,6 @@ public class ShoppingCart {
         Product copy = new Product(prod);
         this.contents.add(copy);
         String shoe = copy.getName();
-        productQtys.put(shoe, productQtys.get(shoe) + 1);
         subtotal = subtotal + copy.getPrice();
         subTotal.set(subtotal);
     }
@@ -53,18 +49,6 @@ public class ShoppingCart {
         subtotal = subtotal - prod.getPrice();
         subTotal.set(subtotal);
         contents.remove(prod);
-    }
-
-    private void initQtyMap() {
-        this.productQtys = new HashMap<>();
-        String[] shoeTypes = {"Heels", "Sneakers", "Sandals", "Boots"};
-        for (String s : shoeTypes) {
-            this.productQtys.put(s, 0);
-        }
-    }
-
-    public Integer getShoeQty(String shoe) {
-        return this.productQtys.get(shoe);
     }
 
     public Double getSubTotal() {
