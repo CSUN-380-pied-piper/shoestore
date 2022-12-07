@@ -93,4 +93,8 @@ public class Product implements Queryable {
         }
         return sizes;
     }
+
+    public String toString() {
+        return this.getName() + ", size: " + this.getLastSize();
+    }
 }

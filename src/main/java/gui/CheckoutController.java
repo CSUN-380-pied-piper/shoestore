@@ -2,6 +2,7 @@ package gui;
 
 import backend.Customer;
 import backend.Database;
+import backend.Product;
 import backend.ShoppingCart;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -40,7 +41,7 @@ public class CheckoutController {
             stateTF, zipTF, cardNameTF, cardNumTF, expDateTF, cvcTF;
 
     @FXML
-    private Label subLabel, taxLabel, totalLabel;
+    private Label subLabel, taxLabel, totalLabel, cartSummaryLbl;
 
     public CheckoutController(AppState state) {
         this.state = state;
@@ -63,6 +64,12 @@ public class CheckoutController {
 
     @FXML
     public void displayOrderSummary() {
+        StringBuilder builder = new StringBuilder();
+        for (Product p : cart.getContents()) {
+            builder.append(p.toString());
+            builder.append("\n");
+        }
+        cartSummaryLbl.setText(builder.toString());
         subLabel.setText(df.format(cart.getSubTotal()));
         taxLabel.setText(df.format(cart.getTax()));
         totalLabel.setText(df.format(cart.getFinalTotal()));
