@@ -9,6 +9,7 @@ import javafx.fxml.FXML;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.paint.Color;
 import javafx.scene.shape.SVGPath;
 import javafx.stage.Stage;
 import state.AppState;
@@ -105,8 +106,10 @@ public class ShoppingCartController {
                 }
                 SVGPath svg = new SVGPath();
                 svg.setContent(Glyphs.DEL());
+                svg.setFill(Color.web("#dadada"));
                 delBtn.setContentDisplay(ContentDisplay.RIGHT);
                 delBtn.setGraphic(svg);
+                delBtn.setGraphicTextGap(12);
                 setGraphic(delBtn);
                 delBtn.prefWidthProperty().bind(cell.widthProperty());
                 delBtn.setOnAction(event -> removeItem(prod));

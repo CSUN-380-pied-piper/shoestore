@@ -10,15 +10,14 @@
 <?import javafx.scene.shape.SVGPath?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="530.0" prefWidth="705.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.OrderConfirmController">
+<AnchorPane prefHeight="530.0" prefWidth="705.0" stylesheets="@base.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.OrderConfirmController">
    <children>
-      <Button fx:id="confHomeBtn" contentDisplay="RIGHT" layoutX="137.0" layoutY="381.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#backToStore" prefHeight="28.0" prefWidth="125.0" text="Back to Store" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="15.0">
+      <Button fx:id="confHomeBtn" contentDisplay="RIGHT" graphicTextGap="12.0" layoutX="137.0" layoutY="381.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#backToStore" prefHeight="28.0" prefWidth="125.0" text="Back to Store" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="15.0">
          <font>
             <Font size="14.0" />
          </font>
          <graphic>
-            <SVGPath content="M12,5.56124969 L5,11.1612497 L5,19 L10,19 L10,15 L14,15 L14,19 L19,19 L19,11.6418745 C19,11.3380908 18.8619103,11.0507779 18.624695,10.8610057 L12,5.56124969 Z M12,3 L19.8740851,9.29926811 C20.5857308,9.86858467 21,10.7305234 21,11.6418745 L21,19 C21,20.1045695 20.1045695,21 19,21 L5,21 C3.8954305,21 3,20.1045695 3,19 L3,11.1612497 C3,10.5536823 3.27617944,9.97905645 3.7506099,9.59951208 L12,3 Z" />
+            <SVGPath content="M12,5.56124969 L5,11.1612497 L5,19 L10,19 L10,15 L14,15 L14,19 L19,19 L19,11.6418745 C19,11.3380908 18.8619103,11.0507779 18.624695,10.8610057 L12,5.56124969 Z M12,3 L19.8740851,9.29926811 C20.5857308,9.86858467 21,10.7305234 21,11.6418745 L21,19 C21,20.1045695 20.1045695,21 19,21 L5,21 C3.8954305,21 3,20.1045695 3,19 L3,11.1612497 C3,10.5536823 3.27617944,9.97905645 3.7506099,9.59951208 L12,3 Z" fill="#dadada" />
          </graphic>
       </Button>
       <VBox alignment="CENTER" layoutX="15.0" layoutY="10.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="10.0">
@@ -47,7 +46,7 @@
                   <Insets bottom="10.0" />
                </padding>
             </Label>
-            <Line endX="690.0" endY="95.49998474121094" startX="15.0" startY="95.5" />
+            <Line endX="690.0" endY="95.49998474121094" startX="15.0" startY="95.5" stroke="#dadada" />
             <Label text="Email Simulation">
                <font>
                   <Font size="16.0" />

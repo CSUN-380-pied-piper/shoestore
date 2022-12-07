@@ -12,6 +12,7 @@ import javafx.fxml.FXML;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.paint.Color;
 import javafx.scene.shape.SVGPath;
 import javafx.stage.Stage;
 import state.AppState;
@@ -147,7 +148,9 @@ public class ShoeStoreController {
                 setGraphic(addBtn);
                 SVGPath svg = new SVGPath();
                 svg.setContent(Glyphs.ADD());
+                svg.setFill(Color.web("#dadada"));
                 addBtn.setContentDisplay(ContentDisplay.RIGHT);
+                addBtn.setGraphicTextGap(12);
                 addBtn.setGraphic(svg);
                 addBtn.prefWidthProperty().bind(cell.widthProperty());
                 addBtn.setOnAction(event -> addToCart(prod));

@@ -69,6 +69,8 @@ public class CheckoutController {
             builder.append(p.toString());
             builder.append("\n");
         }
+        // append one extra new line for nicer formatting
+        builder.append("\n");
         cartSummaryLbl.setText(builder.toString());
         subLabel.setText(df.format(cart.getSubTotal()));
         taxLabel.setText(df.format(cart.getTax()));

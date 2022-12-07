@@ -1,0 +1,13 @@
+@import "button.css";
+@import "combobox.css";
+@import "dialogue.css";
+@import "listview.css";
+@import "tableview.css";
+@import "text.css";
+
+
+.root {
+    -fx-base: #1e2028;
+    -fx-focus-color: transparent;
+    -fx-faint-focus-color: transparent;
+}
