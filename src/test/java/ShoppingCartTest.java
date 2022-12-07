@@ -37,10 +37,6 @@ class ShoppingCartTest {
         boots.lastQtyProp().set(1);
         cart.addItem(boots);
         assertEquals(135, cart.getSubTotal());
-
-        // not working if test by following, subtotal = 0
-//        cart.subTotalProperty().set(145.87);
-//        assertEquals(145.87, cart.getSubTotal());
     }
 
     @Test
