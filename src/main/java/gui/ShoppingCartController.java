@@ -13,7 +13,10 @@ import javafx.scene.shape.SVGPath;
 import javafx.stage.Stage;
 import state.AppState;
 import java.io.IOException;
+import java.lang.reflect.Array;
 import java.text.NumberFormat;
+import java.util.ArrayList;
+import java.util.Optional;
 import java.util.Stack;
 
 public class ShoppingCartController {
@@ -30,7 +33,7 @@ public class ShoppingCartController {
 
     // fxml ui elements that we need to interact with
     @FXML
-    Button HomeButton, CheckoutButton;
+    Button HomeButton, CheckoutButton, EmptyCartBtn;
     @FXML
     Label subtotalLabel, taxLabel, totalLabel;
     @FXML
@@ -62,6 +65,21 @@ public class ShoppingCartController {
             Parent childRoot = loader.load(getClass().getResource("/checkout.fxml"));
             viewStack.push(stage.getScene().getRoot());
             stage.getScene().setRoot(childRoot);
+        }
+    }
+
+    @FXML
+    public void emptyCart(ActionEvent event) {
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Empty Shopping Cart?");
+        alert.setHeaderText("Confirm empty cart");
+        alert.setContentText("Do you want to empty your shopping cart?");
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.get() == ButtonType.OK){
+            ArrayList<Product> temp = new ArrayList<>(cart.getContents());
+            for (Product p : temp) {
+                this.removeItem(p);
+            }
         }
     }
 
@@ -104,10 +122,11 @@ public class ShoppingCartController {
      * Initializes the observable properties for our computed
      * tax and total display labels.
      */
-    private void initTaxAndTotal() {
+    private void initBindings() {
         subtotalLabel.textProperty().bind(cart.subTotalProperty().asString("$%,.2f"));
         taxLabel.textProperty().bind(cart.taxProperty().asString("$%,.2f"));
         totalLabel.textProperty().bind(cart.finalTotalProperty().asString("$%,.2f"));
+        EmptyCartBtn.disableProperty().bind(cart.isEmptyProperty().emptyProperty());
     }
 
     @FXML
@@ -122,6 +141,6 @@ public class ShoppingCartController {
         this.df = state.getFormatter();
         this.cartList.setItems(cart.getContents());
         this.initCartList();
-        this.initTaxAndTotal();
+        this.initBindings();
     }
 }

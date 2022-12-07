@@ -16,6 +16,7 @@ import javafx.scene.shape.SVGPath;
 import javafx.stage.Stage;
 import state.AppState;
 import java.io.IOException;
+import java.math.BigInteger;
 import java.net.URL;
 import java.text.DecimalFormat;
 import java.util.HashMap;
@@ -164,7 +165,8 @@ public class ShoeStoreController {
         this.sc = state.getCart();
         this.populateSceneMap();
         initProductList();
-        //db.getCustomer("johndoe@nowhere.fake");
+        db.getCustomer("johndoe@nowhere.fake");
+        db.getContents(BigInteger.valueOf(1));
     }
 
 }

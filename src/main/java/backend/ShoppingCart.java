@@ -1,6 +1,9 @@
 package backend;
 
+import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleDoubleProperty;
+import javafx.beans.property.SimpleListProperty;
+import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -10,6 +13,8 @@ public class ShoppingCart {
     private SimpleDoubleProperty subTotal;
     private SimpleDoubleProperty tax;
     private SimpleDoubleProperty finalTotal;
+    private SimpleListProperty<Product> isEmpty;
+    private SimpleObjectProperty<ObservableList<Product>> contentsProp;
     private Double subtotal = 0.0;
 
     public ShoppingCart() {
@@ -18,6 +23,9 @@ public class ShoppingCart {
         this.tax = new SimpleDoubleProperty();
         this.finalTotal = new SimpleDoubleProperty();
         this.tax.bind(subTotal.multiply(0.0725));
+        this.contentsProp = new SimpleObjectProperty<>(contents);
+        this.isEmpty = new SimpleListProperty<>();
+        this.isEmpty.bind(contentsProp);
         this.finalTotal.bind(subTotal.add(tax));
     }
 
@@ -59,6 +67,14 @@ public class ShoppingCart {
     	double tax = Math.round(subTotal.get() * 7.25);
     	tax = tax / 100;
     	return tax;
+    }
+
+    public ObservableList<Product> getIsEmpty() {
+        return isEmpty.get();
+    }
+
+    public SimpleListProperty<Product> isEmptyProperty() {
+        return isEmpty;
     }
     
     public Double getFinalTotal() {

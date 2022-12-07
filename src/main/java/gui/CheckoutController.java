@@ -12,9 +12,12 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import org.w3c.dom.Text;
 import state.AppState;
 import java.io.IOException;
+import java.lang.reflect.Array;
 import java.text.NumberFormat;
+import java.util.ArrayList;
 import java.util.Stack;
 
 public class CheckoutController {
@@ -27,6 +30,7 @@ public class CheckoutController {
     private Stack<Parent> viewStack;
     private String ln, fn, pn, e, st, u, c, s, zip, ccn, cn, ed, cc;
     private NumberFormat df;
+    private ArrayList<TextField> reqFields;
 
     @FXML
     Button placeOrderButton, backToStoreButton, backToCartButton;
@@ -40,6 +44,7 @@ public class CheckoutController {
 
     public CheckoutController(AppState state) {
         this.state = state;
+        this.reqFields = new ArrayList<>();
     }
 
     @FXML
@@ -104,70 +109,40 @@ public class CheckoutController {
         }
     }
 
+    private void flagTextField(TextField tf, Boolean red) {
+        if (red) {
+            tf.setStyle("-fx-text-box-border: red; -fx-focus-color: red;");
+        } else {
+            tf.setStyle("-fx-text-box-border: green; -fx-focus-color: green;");
+        }
+    }
+
     private boolean userInputValid() {
         boolean validTextFields = true;
-        if (fn.isEmpty()) {
-            // set text field to red if empty
-            validTextFields = false;
-            firstNameTF.setStyle("-fx-text-box-border: red; -fx-focus-color: red;");
-        } else
-            firstNameTF.setStyle("");
-        if (ln.isEmpty()) {
-            validTextFields = false;
-            lastNameTF.setStyle("-fx-text-box-border: red; -fx-focus-color: red;");
-        } else
-            lastNameTF.setStyle("");
-        if (pn.isEmpty()) {
-            validTextFields = false;
-            phoneNumTF.setStyle("-fx-text-box-border: red; -fx-focus-color: red;");
-        } else
-            phoneNumTF.setStyle("");
-        if (e.isEmpty()) {
-            validTextFields = false;
-            eTF.setStyle("-fx-text-box-border: red; -fx-focus-color: red;");
-        } else
-            eTF.setStyle("");
-        if (st.isEmpty()) {
-            validTextFields = false;
-            stTF.setStyle("-fx-text-box-border: red; -fx-focus-color: red;");
-        } else
-            stTF.setStyle("");
-        if (c.isEmpty()) {
-            validTextFields = false;
-            cityTF.setStyle("-fx-text-box-border: red; -fx-focus-color: red;");
-        } else
-            cityTF.setStyle("");
-        if (s.isEmpty()) {
-            validTextFields = false;
-            stateTF.setStyle("-fx-text-box-border: red; -fx-focus-color: red;");
-        } else
-            stateTF.setStyle("");
-        if (zip.isEmpty()) {
-            validTextFields = false;
-            zipTF.setStyle("-fx-text-box-border: red; -fx-focus-color: red;");
-        } else
-            zipTF.setStyle("");
-        if (ccn.isEmpty()) {
-            validTextFields = false;
-            cardNumTF.setStyle("-fx-text-box-border: red; -fx-focus-color: red;");
-        } else
-            cardNumTF.setStyle("");
-        if (cn.isEmpty()) {
-            validTextFields = false;
-            cardNameTF.setStyle("-fx-text-box-border: red; -fx-focus-color: red;");
-        } else
-            cardNameTF.setStyle("");
-        if (ed.isEmpty()) {
-            validTextFields = false;
-            expDateTF.setStyle("-fx-text-box-border: red; -fx-focus-color: red;");
-        } else
-            expDateTF.setStyle("");
-        if (cc.isEmpty()){
-            validTextFields = false;
-            cvcTF.setStyle("-fx-text-box-border: red; -fx-focus-color: red;");
-        } else
-            cvcTF.setStyle("");
+        for (TextField tf : reqFields) {
+            if (tf.getText().isEmpty() || tf.getText().isBlank()) {
+                flagTextField(tf, true);
+                validTextFields = false;
+            } else {
+                flagTextField(tf,false);
+            }
+        }
         return validTextFields;
+    }
+
+    private void initReqFieldsList() {
+        reqFields.add(firstNameTF);
+        reqFields.add(lastNameTF);
+        reqFields.add(phoneNumTF);
+        reqFields.add(eTF);
+        reqFields.add(stTF);
+        reqFields.add(cityTF);
+        reqFields.add(stateTF);
+        reqFields.add(zipTF);
+        reqFields.add(cardNameTF);
+        reqFields.add(cardNumTF);
+        reqFields.add(expDateTF);
+        reqFields.add(cvcTF);
     }
 
     @FXML
@@ -178,6 +153,7 @@ public class CheckoutController {
         this.viewStack = state.getViewStack();
         this.cart = state.getCart();
         this.df = state.getFormatter();
+        this.initReqFieldsList();
         this.displayOrderSummary();
     }
 }
