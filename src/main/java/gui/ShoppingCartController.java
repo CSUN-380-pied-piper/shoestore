@@ -14,7 +14,6 @@ import javafx.scene.shape.SVGPath;
 import javafx.stage.Stage;
 import state.AppState;
 import java.io.IOException;
-import java.lang.reflect.Array;
 import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.Optional;
@@ -63,7 +62,7 @@ public class ShoppingCartController {
                     "some items to your cart before checking out.");
             alert.showAndWait();
         } else {
-            Parent childRoot = loader.load(getClass().getResource("/checkout.fxml"));
+            Parent childRoot = loader.load(getClass().getResource("/fxml/checkout.fxml"));
             viewStack.push(stage.getScene().getRoot());
             stage.getScene().setRoot(childRoot);
         }

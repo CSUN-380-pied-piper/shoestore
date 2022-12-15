@@ -86,7 +86,7 @@ public class ShoeStoreController {
     }
 
     private void populateSceneMap() {
-        this.sceneMap.put(CartButton.getText(), getClass().getResource("/shoppingCart.fxml"));
+        this.sceneMap.put(CartButton.getText(), getClass().getResource("/fxml/shoppingCart.fxml"));
     }
 
     private void initProductList() {

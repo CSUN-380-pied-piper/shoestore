@@ -8,15 +8,11 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
-import org.w3c.dom.Text;
+import javafx.util.Pair;
 import state.AppState;
 import java.io.IOException;
-import java.lang.reflect.Array;
 import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.Stack;
@@ -34,7 +30,7 @@ public class CheckoutController {
     private ArrayList<TextField> reqFields;
 
     @FXML
-    Button placeOrderButton, backToStoreButton, backToCartButton;
+    Button placeOrderButton, backToStoreButton, backToCartButton, loginButton;
 
     @FXML
     private TextField firstNameTF, lastNameTF, phoneNumTF, eTF, stTF, unitTF, cityTF,
@@ -43,19 +39,28 @@ public class CheckoutController {
     @FXML
     private Label subLabel, taxLabel, totalLabel, cartSummaryLbl;
 
+    /**
+     * Constructor for the checkout controller.
+     * @param state
+     */
     public CheckoutController(AppState state) {
         this.state = state;
         this.reqFields = new ArrayList<>();
     }
 
     @FXML
-    public void backToShoppingCart(ActionEvent event) throws IOException {
+    public void userLogin(ActionEvent event) {
+        Dialog<Pair<String,String>> login = new LoginPopup();
+    }
+
+    @FXML
+    public void backToShoppingCart(ActionEvent event){
         Parent prevScene = viewStack.pop();
         stage.getScene().setRoot(prevScene);
     }
 
     @FXML
-    public void backToStore(ActionEvent event) throws IOException {
+    public void backToStore(ActionEvent event) {
         // discard the cart scene, and go home.
         viewStack.pop();
         Parent prevScene = viewStack.pop();
@@ -104,7 +109,7 @@ public class CheckoutController {
             alert.showAndWait();
         } else {
             // now switch our scene
-            Parent childRoot = loader.load(getClass().getResource("/orderConfirm.fxml"));
+            Parent childRoot = loader.load(getClass().getResource("/fxml/orderConfirm.fxml"));
             viewStack.push(stage.getScene().getRoot());
             stage.getScene().setRoot(childRoot);
         }
@@ -120,9 +125,13 @@ public class CheckoutController {
 
     private void flagTextField(TextField tf, Boolean red) {
         if (red) {
-            tf.setStyle("-fx-text-box-border: red; -fx-focus-color: red;");
+            if (! tf.getStyleClass().contains("error")) {
+                tf.getStyleClass().add("error");
+            }
         } else {
-            tf.setStyle("-fx-text-box-border: green; -fx-focus-color: green;");
+            if (tf.getStyleClass().contains("error")) {
+                tf.getStyleClass().remove("error");
+            }
         }
     }
 
