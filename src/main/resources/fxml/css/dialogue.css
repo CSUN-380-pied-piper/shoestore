@@ -5,7 +5,7 @@
 	-fx-border-width: 0;
  }
 
-/**Costumization of The Bar where the buttons are located**/
+/**Custpmization of The Bar where the buttons are located**/
 .dialog-pane > .button-bar > .container {
 	-fx-background-color: transparent;
 }
@@ -45,17 +45,17 @@
 .alert.confirmation.dialog-pane,
 .text-input-dialog.dialog-pane,
 .choice-dialog.dialog-pane {
-	-fx-graphic: url("../images/sign-confirm.png");
+	-fx-graphic: url("../../images/sign-confirm.png");
 }
 
 .alert.information.dialog-pane {
-	-fx-graphic: url("../images/sign-info.png");
+	-fx-graphic: url("../../images/sign-info.png");
 }
 
 .alert.error.dialog-pane {
-	-fx-graphic: url("../images/sign-error.png");
+	-fx-graphic: url("../../images/sign-error.png");
 }
 
 .alert.warning.dialog-pane {
-	-fx-graphic: url("../images/sign-warning.png");
+	-fx-graphic: url("../../images/sign-warning.png");
 }

@@ -8,6 +8,6 @@
 
 .root {
     -fx-base: #1e2028;
-    -fx-focus-color: transparent;
-    -fx-faint-focus-color: transparent;
+    -fx-focus-color: #c678dd;
+    -fx-faint-focus-color: #c678dd22;
 }

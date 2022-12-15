@@ -15,13 +15,23 @@
 
 .text-field {
 	-fx-background-color:  #404754;
-	-fx-text-box-border: transparent;
 	-fx-background-radius: 3;
 	-fx-background-insets: 0;
 	-fx-padding: 1 1 1 6;
 	-fx-font-size: 13pt;
 	-fx-text-fill: #d7dae0;
-    -fx-focus-color: transparent;
+}
+
+.text-field.error {
+    -fx-background-color: #E9567822;
+    -fx-text-box-border: #E95678;
+    -fx-faint-focus-color: #E9567833;
+}
+
+.text-field.valid {
+    -fx-background-color: #27d79622;
+    -fx-text-box-border: #27d796;
+    -fx-faint-focus-color: #27d79633;
 }
 
 .text-area {
