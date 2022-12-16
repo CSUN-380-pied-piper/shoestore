@@ -1,7 +1,5 @@
 package gui;
 
-import javafx.scene.shape.SVGPath;
-
 public class Glyphs {
 
     public static String HOME() {

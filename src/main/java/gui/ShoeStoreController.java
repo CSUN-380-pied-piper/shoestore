@@ -17,7 +17,6 @@ import javafx.scene.shape.SVGPath;
 import javafx.stage.Stage;
 import state.AppState;
 import java.io.IOException;
-import java.math.BigInteger;
 import java.net.URL;
 import java.text.DecimalFormat;
 import java.util.HashMap;
