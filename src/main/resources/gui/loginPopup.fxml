@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+  ~ RVS RenderManager:
+  ~ distributed render manager for lightwave screamernet
+  ~
+  ~ Copyright (c) 2019.
+  ~ Jocelyn Mallon & Zareh Gorjian
+  -->
+
+<?import java.net.URL?>
+<?import javafx.scene.control.ButtonType?>
+<?import javafx.scene.control.DialogPane?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.shape.SVGPath?>
+<?import javafx.scene.text.Font?>
+
+<DialogPane fx:id="loginPane" headerText="Please enter your account details:" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+   <stylesheets>
+      <URL value="@css/dialogue.css" />
+      <URL value="@css/text.css" />
+   </stylesheets>
+   <content>
+      <GridPane>
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="40.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Label text="Email:" textFill="#d7dae0">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="21.0" layoutY="27.0" text="Password:" textFill="#d7dae0" GridPane.rowIndex="1">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <TextField fx:id="userField" promptText="johndoe@abc.com" GridPane.columnIndex="1" />
+            <PasswordField fx:id="passField" promptText="password" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+         </children>
+      </GridPane>
+   </content>
+   <buttonTypes>
+      <ButtonType fx:constant="OK" />
+      <ButtonType fx:constant="CANCEL" />
+   </buttonTypes>
+   <graphic>
+      <SVGPath content="M12,12 C9.790861,12 8,10.209139 8,8 C8,5.790861 9.790861,4 12,4 C14.209139,4 16,5.790861 16,8 C16,10.209139 14.209139,12 12,12 Z M12,15 C15.1858467,15 18.0454815,15.5712647 20,18.0625268 C20,18.7758847 20,19.4217091 20,20 C9.33333333,20 4,20 4,20 C4,20 4,19.1325637 4,18.0625268 C5.95451855,15.5712647 8.81415326,15 12,15 Z" fill="#dadada" />
+   </graphic>
+</DialogPane>

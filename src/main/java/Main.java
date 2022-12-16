@@ -15,7 +15,7 @@ public class Main extends Application {
     public void start(Stage stage) throws Exception {
         state = new AppState(stage, new Database(), new Stack<>());
         SceneLoader loader = new SceneLoader(state);
-        Parent root = loader.load(getClass().getResource("/fxml/shoeStore.fxml"));
+        Parent root = loader.load(getClass().getResource("/gui/shoeStore.fxml"));
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();

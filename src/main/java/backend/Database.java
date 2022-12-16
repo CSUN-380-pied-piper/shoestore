@@ -34,7 +34,11 @@ public class Database {
         /**
          * Contents tables.
          */
-        CONTENTS
+        CONTENTS,
+        /**
+         * Hashes tables.
+         */
+        HASHES
     }
 
     /**
@@ -97,6 +101,11 @@ public class Database {
                 , state, zip);
     }
 
+    private HashedPass parseHashes(ResultSet rs) throws SQLException {
+        String combined = rs.getString("hash");
+        return new HashedPass(combined);
+    }
+
     private void runQuery(String sql, TABLES t, ArrayList<Queryable> l) throws SQLException {
         // open the db connection...
         connect();
@@ -110,6 +119,7 @@ public class Database {
                 case CONTENTS: l.add((parseContents(results))); break;
                 case PRODUCTS: l.add(parseProduct(results)); break;
                 case CUSTOMERS: l.add(parseCustomer(results)); break;
+                case HASHES: l.add(parseHashes(results)); break;
             }
         }
         // cleanup/close our DB connection when we're done with it.
@@ -154,8 +164,21 @@ public class Database {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-        System.out.println("Customer: " + custList.get(0));
         return (Customer) custList.get(0);
+    }
+
+    public HashedPass getHash(String email) {
+        String sqlQuery = "SELECT c.id, c.email, h.hash FROM " +
+                "hashes as h, customers as c " +
+                "WHERE c.email like '" + email + "'" +
+                "and h.customer=c.id";
+        ArrayList<Queryable> hashList = new ArrayList<>();
+        try {
+            runQuery(sqlQuery, TABLES.HASHES, hashList);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return (HashedPass) hashList.get(0);
     }
 
     /**

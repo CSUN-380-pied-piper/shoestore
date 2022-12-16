@@ -86,7 +86,7 @@ public class ShoeStoreController {
     }
 
     private void populateSceneMap() {
-        this.sceneMap.put(CartButton.getText(), getClass().getResource("/fxml/shoppingCart.fxml"));
+        this.sceneMap.put(CartButton.getText(), getClass().getResource("/gui/shoppingCart.fxml"));
     }
 
     private void initProductList() {
@@ -168,8 +168,6 @@ public class ShoeStoreController {
         this.sc = state.getCart();
         this.populateSceneMap();
         initProductList();
-        db.getCustomer("johndoe@nowhere.fake");
-        db.getContents(BigInteger.valueOf(1));
     }
 
 }

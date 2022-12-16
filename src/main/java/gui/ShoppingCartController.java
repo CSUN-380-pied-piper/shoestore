@@ -62,7 +62,7 @@ public class ShoppingCartController {
                     "some items to your cart before checking out.");
             alert.showAndWait();
         } else {
-            Parent childRoot = loader.load(getClass().getResource("/fxml/checkout.fxml"));
+            Parent childRoot = loader.load(getClass().getResource("/gui/checkout.fxml"));
             viewStack.push(stage.getScene().getRoot());
             stage.getScene().setRoot(childRoot);
         }

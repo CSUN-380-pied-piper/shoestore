@@ -8,6 +8,6 @@ public class SkinnedAlert extends Alert {
     public SkinnedAlert(AlertType alertType) {
         super(alertType);
         DialogPane dialogPane = this.getDialogPane();
-        dialogPane.getStylesheets().add(getClass().getResource("/fxml/css/base.css").toExternalForm());
+        dialogPane.getStylesheets().add(getClass().getResource("/gui/css/base.css").toExternalForm());
     }
 }

@@ -15,6 +15,7 @@ import state.AppState;
 import java.io.IOException;
 import java.text.NumberFormat;
 import java.util.ArrayList;
+import java.util.Optional;
 import java.util.Stack;
 
 public class CheckoutController {
@@ -50,7 +51,12 @@ public class CheckoutController {
 
     @FXML
     public void userLogin(ActionEvent event) {
-        Dialog<Pair<String,String>> login = new LoginPopup();
+        Dialog<Customer> login = new LoginPopup(state);
+        Optional<Customer> result = login.showAndWait();
+        if (result.isPresent()) {
+            System.out.println("Login Successful!");
+            System.out.println("Welcome back, " + result.get().getFirstName());
+        }
     }
 
     @FXML
@@ -84,21 +90,23 @@ public class CheckoutController {
 
     @FXML
     public void placeOrder(ActionEvent event) throws IOException {
-        fn = firstNameTF.getText();
-        ln = lastNameTF.getText();
-        pn = phoneNumTF.getText();
-        e = eTF.getText();
-        st = stTF.getText();
-        u = unitTF.getText();
-        c = cityTF.getText();
-        s = stateTF.getText();
-        zip = zipTF.getText();
-        cn = cardNameTF.getText();
-        ccn = cardNumTF.getText();
-        ed = expDateTF.getText();
-        cc = cvcTF.getText();
-        Customer c = new Customer(fn, ln, pn, e, st, u, this.c, s, parseZip(zip));
-        state.setCustomer(c);
+        if (state.getCustomer() == null) {
+            fn = firstNameTF.getText();
+            ln = lastNameTF.getText();
+            pn = phoneNumTF.getText();
+            e = eTF.getText();
+            st = stTF.getText();
+            u = unitTF.getText();
+            c = cityTF.getText();
+            s = stateTF.getText();
+            zip = zipTF.getText();
+            cn = cardNameTF.getText();
+            ccn = cardNumTF.getText();
+            ed = expDateTF.getText();
+            cc = cvcTF.getText();
+            Customer c = new Customer(fn, ln, pn, e, st, u, this.c, s, parseZip(zip));
+            state.setCustomer(c);
+        }
         // Validate user input
         if (!(userInputValid())) {
             Alert alert = new SkinnedAlert(Alert.AlertType.WARNING);
@@ -109,7 +117,7 @@ public class CheckoutController {
             alert.showAndWait();
         } else {
             // now switch our scene
-            Parent childRoot = loader.load(getClass().getResource("/fxml/orderConfirm.fxml"));
+            Parent childRoot = loader.load(getClass().getResource("/gui/orderConfirm.fxml"));
             viewStack.push(stage.getScene().getRoot());
             stage.getScene().setRoot(childRoot);
         }

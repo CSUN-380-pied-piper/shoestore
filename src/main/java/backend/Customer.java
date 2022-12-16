@@ -1,88 +1,127 @@
 package backend;
 
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
+
 public class Customer implements Queryable {
-    private String lastName;
-    private String firstName;
-    private String email;
-    private String phoneNum;
-    private String street;
-    private String unit;
-    private String city;
-    private String state;
-    private int zip;
+
+    private SimpleStringProperty lastName;
+    private SimpleStringProperty firstName;
+    private SimpleStringProperty email;
+    private SimpleStringProperty phoneNum;
+    private SimpleStringProperty street;
+    private SimpleStringProperty unit;
+    private SimpleStringProperty city;
+    private SimpleStringProperty state;
+    private SimpleIntegerProperty zip;
 
     public Customer(String fn, String ln, String pn, String e, String st, String u, String c, String s, int z) {
-        firstName = fn;
-        lastName = ln;
-        phoneNum = pn;
-        email = e;
-        street = st;
-        unit = u;
-        city = c;
-        state = s;
-        zip = z;
+        this.lastName = new SimpleStringProperty(ln);
+        this.firstName = new SimpleStringProperty(fn);
+        this.phoneNum = new SimpleStringProperty(pn);
+        this.email = new SimpleStringProperty(e);
+        this.street = new SimpleStringProperty(st);
+        this.unit = new SimpleStringProperty(u);
+        this.city = new SimpleStringProperty(c);
+        this.state = new SimpleStringProperty(s);
+        this.zip = new SimpleIntegerProperty(z);
     }
 
    public String orderConfirmationCustomerInfo() {
          return "Order Confirmation\n\n" +
         		"Hi "
-                + firstName + " " + lastName + "!\n"
+                + firstName.get() + " " + lastName.get() + "!\n"
                 + "Here are the details of your order: \n\n"
                 + "Shipping Address: \n"
-                + street + " " + unit + "\n"
-                + city + " " + state + " " + zip + "\n\n"
+                + street.get() + " " + unit.get() + "\n"
+                + city.get() + " " + state.get() + " " + zip.get() + "\n\n"
                 +"Email: "
-                + email + "\n" + 
-                "Phone Number: " + phoneNum;
+                + email.get() + "\n" +
+                "Phone Number: " + phoneNum.get();
     }
 
-    public String getLastName() {
+    public SimpleStringProperty lastNameProperty() {
         return lastName;
     }
 
-    public String getFirstName() {
+    public SimpleStringProperty firstNameProperty() {
         return firstName;
     }
 
-    public String getEmail() {
+    public SimpleStringProperty emailProperty() {
         return email;
     }
 
-    public String getPhoneNum() {
+    public SimpleStringProperty phoneNumProperty() {
         return phoneNum;
     }
 
-    public String getStreet() {
+    public SimpleStringProperty streetProperty() {
         return street;
     }
 
-    public String getUnit() {
+    public SimpleStringProperty unitProperty() {
         return unit;
     }
 
-    public String getCity() {
+    public SimpleStringProperty cityProperty() {
         return city;
     }
 
-    public String getState() {
+    public SimpleStringProperty stateProperty() {
         return state;
     }
 
-    public int getZip() {
+    public SimpleIntegerProperty zipProperty() {
         return zip;
+    }
+    public String getLastName() {
+        return lastName.get();
+    }
+
+    public String getFirstName() {
+        return firstName.get();
+    }
+
+    public String getEmail() {
+        return email.get();
+    }
+
+    public String getPhoneNum() {
+        return phoneNum.get();
+    }
+
+    public String getStreet() {
+        return street.get();
+    }
+
+    public String getUnit() {
+        return unit.get();
+    }
+
+    public String getCity() {
+        return city.get();
+    }
+
+    public String getState() {
+        return state.get();
+    }
+
+    public int getZip() {
+        return zip.get();
     }
 
     @Override
     public String toString() {
         StringBuilder builder = new StringBuilder();
         builder.append("Name: ");
-        builder.append(firstName);
+        builder.append(firstName.get());
         builder.append(", ");
-        builder.append(lastName);
+        builder.append(lastName.get());
         builder.append(", email: ");
-        builder.append(email);
+        builder.append(email.get());
         builder.append(", phone: ");
-        builder.append(phoneNum);
+        builder.append(phoneNum.get());
         return builder.toString();
     }
 }

@@ -8,13 +8,28 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="28d67806-a977-42bf-8850-2f1a11be482b" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/backend/HashedPass.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/backend/Customer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/backend/Customer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/backend/Database.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/backend/Database.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/backend/ShoppingCart.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/backend/ShoppingCart.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gui/OrderConfirmController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/OrderConfirmController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gui/CheckoutController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/CheckoutController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gui/ShoeStoreController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/ShoeStoreController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/gui/ShoppingCartController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/ShoppingCartController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/state/AppState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/state/AppState.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/ShoppingCartTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ShoppingCartTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gui/SkinnedAlert.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/SkinnedAlert.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/fxml/checkout.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/gui/checkout.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/fxml/css/base.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/gui/css/base.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/fxml/css/button.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/gui/css/button.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/fxml/css/combobox.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/gui/css/combobox.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/fxml/css/dialogue.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/gui/css/dialogue.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/fxml/css/listview.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/gui/css/listview.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/fxml/css/tableview.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/gui/css/tableview.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/fxml/css/text.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/gui/css/text.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/fxml/orderConfirm.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/gui/orderConfirm.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/fxml/shoeStore.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/gui/shoeStore.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/fxml/shoppingCart.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/gui/shoppingCart.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,8 +75,9 @@
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
     "create.test.in.the.same.root": "true",
-    "last_opened_file_path": "/Users/jocelyn/Documents/School/COMP380/project/code/shoestore/src/main/resources",
-    "project.structure.last.edited": "Modules",
+    "last_opened_file_path": "/Users/jocelyn/Documents/School/COMP380/project/code/shoestore/src/main/resources/gui",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Project",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.26545843",
     "settings.editor.selected.configurable": "preferences.pluginManager"
@@ -69,10 +85,13 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/resources/gui" />
       <recent name="$PROJECT_DIR$/src/main/resources" />
       <recent name="$PROJECT_DIR$/src/main/resources/images" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/resources/fxml" />
+      <recent name="$PROJECT_DIR$/src/main/resources/gui" />
       <recent name="$PROJECT_DIR$/src/main/resources/css" />
       <recent name="$PROJECT_DIR$/src" />
       <recent name="$PROJECT_DIR$/src/main/resources" />
@@ -175,7 +194,11 @@
       <workItem from="1669250435717" duration="3287000" />
       <workItem from="1669682938459" duration="1817000" />
       <workItem from="1669851462948" duration="12866000" />
-      <workItem from="1670439033214" duration="8779000" />
+      <workItem from="1670439033214" duration="13942000" />
+      <workItem from="1670460646527" duration="222000" />
+      <workItem from="1670980535510" duration="792000" />
+      <workItem from="1671064606227" duration="302000" />
+      <workItem from="1671132011031" duration="15155000" />
     </task>
     <servers />
   </component>
