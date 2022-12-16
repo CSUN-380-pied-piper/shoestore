@@ -70,10 +70,13 @@ class ShoppingCartTest {
     	cart.addItem(boots1);
     	cart.addItem(boots2);
     	
-    	assertEquals("Number of Heels: 2\n"
-    			+ "Number of Sneakers: 1\n"
-    			+ "Number of Sandals: 2\n"
-    			+ "\nSubTotal: $480.0", cart.ReceiptInTextArea());
-    	
+    	assertEquals("Heels, Size: 5.0\n"
+    			+ "Heels, Size: 5.0\n"
+                + "Sneakers, Size: 5.0\n"
+                + "Boots, Size: 5.0\n"
+                + "Boots, Size: 5.0\n"
+    			+ "\nSubtotal: $480.00"
+                + "\nTax: $34.80"
+                + "\nTotal: $514.80", cart.ReceiptInTextArea());
     }
 }
