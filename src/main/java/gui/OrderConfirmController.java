@@ -31,7 +31,7 @@ public class OrderConfirmController {
     @FXML
     public void backToStore(ActionEvent event) throws IOException {
         // we know we've gone home > cart > checkout > conf
-        // so we need to pop scenes 3 times
+        // therefor we need to pop scenes 3 times
         viewStack.pop();
         viewStack.pop();
         Parent prevScene = viewStack.pop();

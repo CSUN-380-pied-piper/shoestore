@@ -84,7 +84,8 @@ public class Database {
         Integer minSize = rs.getInt("minsize");
         Integer maxSize = rs.getInt("maxsize");
         boolean half = rs.getBoolean("halfsizes");
-        return new Product(shoeName, shoePrice, half, minSize, maxSize);
+        BigInteger id = BigInteger.valueOf(rs.getInt("id"));
+        return new Product(shoeName, shoePrice, half, minSize, maxSize, id);
     }
 
     private Customer parseCustomer(ResultSet rs) throws SQLException {
@@ -97,8 +98,9 @@ public class Database {
         Integer zip = rs.getInt("zipcode");
         String phone = rs.getString("phone");
         String email = rs.getString("email");
+        BigInteger id = BigInteger.valueOf(rs.getInt("id"));
         return new Customer(fname, lname, phone, email, street, unit, city
-                , state, zip);
+                , state, zip, id);
     }
 
     private HashedPass parseHashes(ResultSet rs) throws SQLException {
@@ -146,6 +148,38 @@ public class Database {
             throw new RuntimeException(e);
         }
         return productList;
+    }
+
+    public void insertOrder(ShoppingCart cart, String email) throws SQLException {
+        Customer c = getCustomer(email);
+        ResultSet generatedKeys;
+        int orderKey = 0;
+        String orderSql = "INSERT INTO orders (customer, total, shipped) VALUES (?,?,?)";
+        PreparedStatement statement = conn.prepareStatement(orderSql,
+                Statement.RETURN_GENERATED_KEYS);
+        statement.setInt(1,c.getId());
+        statement.setDouble(2,cart.getFinalTotal());
+        statement.setBoolean(3,false);
+        // insert the order record into the db now
+        if (statement.executeUpdate() > 0) {
+            // Retrieves any auto-generated keys created as a result of executing this Statement object
+            generatedKeys = statement.getGeneratedKeys();
+            if (generatedKeys.next()) {
+                orderKey = generatedKeys.getInt(1);
+            }
+        }
+        // now insert the order/cart contents into the db
+        String contSql = "INSERT INTO contents (orderid, prodid, size, qty) VALUES (?,?,?,?)";
+        PreparedStatement cntStmt = conn.prepareStatement(contSql, Statement.RETURN_GENERATED_KEYS);
+        for (Product p : cart.getContents()) {
+            cntStmt.setInt(1,orderKey);
+            cntStmt.setInt(2, p.getId().intValue());
+            cntStmt.setDouble(3, p.getLastSize());
+            cntStmt.setInt(4, p.getLastQty());
+            cntStmt.addBatch();
+        }
+        // now execute the batch
+        cntStmt.executeBatch();
     }
 
 

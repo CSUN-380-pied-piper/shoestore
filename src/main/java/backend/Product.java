@@ -5,10 +5,11 @@ import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import java.math.BigInteger;
 
 public class Product implements Queryable {
 
-    private String id;
+    private BigInteger id;
     private SimpleDoubleProperty price;
     private SimpleStringProperty name;
     private SimpleDoubleProperty lastSize;
@@ -19,9 +20,8 @@ public class Product implements Queryable {
     private Double maxSize;
 
     public Product(String name, Double price) {
-        this(name, price, true, 5, 12);
+        this(name, price, true, 5, 12, null);
     }
-
 
     /**
      * 'Copy Constructor' method for copying the product object
@@ -31,12 +31,16 @@ public class Product implements Queryable {
       * @param p
      */
     public Product(Product p) {
-        this(p.getName(), p.getPrice(), p.halfSizes, p.minSize.intValue(), p.maxSize.intValue());
+        this(p.getName(), p.getPrice(), p.halfSizes, p.minSize.intValue(), p.maxSize.intValue(), p.getId());
         this.lastSizeProp().set(p.lastSizeProp().get());
         this.lastQtyProp().set(p.lastQtyProp().get());
     }
 
     public Product(String name, Double price, boolean half, int min, int max) {
+        this(name, price, half, min, max, null);
+    }
+
+    public Product(String name, Double price, boolean half, int min, int max, BigInteger id) {
         this.name = new SimpleStringProperty(name);
         this.price = new SimpleDoubleProperty(price);
         this.lastQty = new SimpleIntegerProperty(1);
@@ -45,6 +49,7 @@ public class Product implements Queryable {
         this.sizes = initSizes(min, max);
         this.minSize = Double.valueOf(min);
         this.maxSize = Double.valueOf(max);
+        this.id = id;
     }
 
     public String getName() {
@@ -77,6 +82,10 @@ public class Product implements Queryable {
 
     public Double getPrice() {
         return price.get();
+    }
+
+    public BigInteger getId() {
+        return id;
     }
 
     public ObservableList<Double> getSizes() {

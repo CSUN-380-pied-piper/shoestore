@@ -3,6 +3,8 @@ package backend;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 
+import java.math.BigInteger;
+
 public class Customer implements Queryable {
 
     private SimpleStringProperty lastName;
@@ -14,7 +16,13 @@ public class Customer implements Queryable {
     private SimpleStringProperty city;
     private SimpleStringProperty state;
     private SimpleIntegerProperty zip;
+    private BigInteger custId;
 
+    public Customer(String fn, String ln, String pn, String e, String st, String u, String c, String s, int z,
+                    BigInteger id) {
+        this(fn, ln, pn, e, st, u, c, s, z);
+        this.setId(id);
+    }
     public Customer(String fn, String ln, String pn, String e, String st, String u, String c, String s, int z) {
         this.lastName = new SimpleStringProperty(ln);
         this.firstName = new SimpleStringProperty(fn);
@@ -111,6 +119,13 @@ public class Customer implements Queryable {
         return zip.get();
     }
 
+    public void setId(BigInteger id) {
+        this.custId = id;
+    }
+
+    public int getId() {
+        return this.custId.intValue();
+    }
     @Override
     public String toString() {
         StringBuilder builder = new StringBuilder();

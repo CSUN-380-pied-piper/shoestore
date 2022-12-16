@@ -154,10 +154,22 @@ public class CheckoutController {
                     "fill in the necessary information needed.");
             alert.showAndWait();
         } else {
-            // now switch our scene
-            Parent childRoot = loader.load(getClass().getResource("/gui/orderConfirm.fxml"));
-            viewStack.push(stage.getScene().getRoot());
-            stage.getScene().setRoot(childRoot);
+            try {
+                // payment processing would happen here...
+                // then insert the order into the database
+                db.insertOrder(cart, eTF.getText());
+                // now switch our scene to the confirmation
+                Parent childRoot = loader.load(getClass().getResource("/gui/orderConfirm.fxml"));
+                viewStack.push(stage.getScene().getRoot());
+                stage.getScene().setRoot(childRoot);
+            } catch (Exception ex) {
+                ex.printStackTrace();
+                Alert error = new SkinnedAlert(Alert.AlertType.ERROR);
+                error.setTitle("Checkout Error");
+                error.setHeaderText("An error occurred while placing your order.");
+                error.setContentText("An error occurred while placing your order, please contact us for assistance.");
+                error.showAndWait();
+            }
         }
     }
 

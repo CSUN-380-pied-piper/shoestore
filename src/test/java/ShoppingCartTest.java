@@ -2,6 +2,7 @@ import backend.Product;
 import backend.ShoppingCart;
 import org.junit.jupiter.api.Test;
 
+import java.math.BigInteger;
 import java.text.NumberFormat;
 
 import static org.junit.jupiter.api.Assertions.*;
