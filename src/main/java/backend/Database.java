@@ -78,6 +78,15 @@ public class Database {
         return shoe;
     }
 
+    /**
+     * Parses every row returned when querying our products table
+     *
+     * @param rs    The ResultSet object, which we use to parse the
+     *              individual row/record information
+     * @return      A new Product object, with the relevant fields
+     *              populated from the db cursor/record
+     * @throws SQLException
+     */
     private Product parseProduct(ResultSet rs) throws SQLException {
         String shoeName = rs.getString("name");
         Double shoePrice = rs.getDouble("price");
@@ -88,6 +97,16 @@ public class Database {
         return new Product(shoeName, shoePrice, half, minSize, maxSize, id);
     }
 
+    /**
+     * Parses every row returned by our customers query
+     *
+     * @param rs    the ResultSet object, which supplies us with the cursor
+     *              location (i.e. allows us to access our row information)
+     *              for a single row/record in the customers table
+     * @return      new Customer object, with the necessary fields populated
+     *              from our database record
+     * @throws SQLException
+     */
     private Customer parseCustomer(ResultSet rs) throws SQLException {
         String fname = rs.getString("firstname");
         String lname = rs.getString("lastname");
@@ -112,8 +131,8 @@ public class Database {
         // open the db connection...
         connect();
         // now create and run our query
-        Statement stmt = conn.createStatement();
-        ResultSet results = stmt.executeQuery(sql);
+        PreparedStatement stmt = conn.prepareStatement(sql);
+        ResultSet results = stmt.executeQuery();
         // while we have results from the query, parse them...
         while (results.next()) {
             switch(t) {
@@ -150,6 +169,16 @@ public class Database {
         return productList;
     }
 
+    /**
+     * Inserts order and shopping cart information into the database
+     * order information will be inserted into the 'orders' table
+     * and individual cart items will be inserted into the 'contents' table
+     *
+     * @param cart  the shopping cart object from the successful order
+     * @param email the customer email address, used to identify the customer
+     *              record/account in the database
+     * @throws SQLException
+     */
     public void insertOrder(ShoppingCart cart, String email) throws SQLException {
         Customer c = getCustomer(email);
         ResultSet generatedKeys;
@@ -162,7 +191,7 @@ public class Database {
         statement.setBoolean(3,false);
         // insert the order record into the db now
         if (statement.executeUpdate() > 0) {
-            // Retrieves any auto-generated keys created as a result of executing this Statement object
+            // Retrieve our generated pkey
             generatedKeys = statement.getGeneratedKeys();
             if (generatedKeys.next()) {
                 orderKey = generatedKeys.getInt(1);
