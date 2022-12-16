@@ -67,14 +67,6 @@ public class ShoeStoreController {
         }
     }
 
-    /*
-        Note, this is a placeholder/wip method to eventually remove the
-        individual methods for each 'scene' button in our fxml files.
-
-        Instead, this method will take the source text/label from the button
-        and handle loading the appropriate fxml file, and pushing/popping
-        the view stack before switching the scene.
-     */
     @FXML
     public void switchScene(ActionEvent event) throws IOException {
         Object source = event.getSource();
@@ -102,6 +94,12 @@ public class ShoeStoreController {
         sizeCol.setCellValueFactory(cellData -> cellData.getValue().lastSizeProp());
         qtyCol.setCellValueFactory(cellData -> cellData.getValue().lastQtyProp());
         addBtnCol.setCellValueFactory(cellData -> new ReadOnlyObjectWrapper<>(cellData.getValue()));
+        /*
+            For the 'size' and 'qty' columns, we want to have a dropdown menu
+            that users can use to select the relevant size/qty they want from
+
+            To do this, we use custom cellFactories for each column.
+         */
         sizeCol.setCellFactory(cell -> new TableCell<>() {
             private final ChoiceBox<Double> box = new ChoiceBox();
             @Override

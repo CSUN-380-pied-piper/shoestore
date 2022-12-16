@@ -65,15 +65,11 @@ public class LoginPopup extends Dialog<Customer> {
         try {
             HexFormat hex = HexFormat.of();
             byte[] seed = hex.parseHex(salt);
-            //SecureRandom random = new SecureRandom();
-            //random.nextBytes(seed);
             KeySpec spec = new PBEKeySpec(input.toCharArray(), seed, 65536, 128);
             SecretKeyFactory factory = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA1");
             byte[] hash = factory.generateSecret(spec).getEncoded();
             String hashHex = HexFormat.of().formatHex(hash);
             String saltHex = HexFormat.of().formatHex(seed);
-            //System.out.println("hash: " + hashHex);
-            //System.out.println("salt: " + saltHex);
             return hashHex + ":" + saltHex;
         } catch (NoSuchAlgorithmException | InvalidKeySpecException ex) {
             ex.printStackTrace();

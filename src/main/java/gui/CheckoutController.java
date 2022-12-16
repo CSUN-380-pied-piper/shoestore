@@ -24,7 +24,6 @@ public class CheckoutController {
     private AppState state;
     private ShoppingCart cart;
     private Stage stage;
-    private Scene scene;
     private Database db;
     private SceneLoader loader;
     private Stack<Parent> viewStack;
