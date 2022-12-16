@@ -72,8 +72,8 @@ public class LoginPopup extends Dialog<Customer> {
             byte[] hash = factory.generateSecret(spec).getEncoded();
             String hashHex = HexFormat.of().formatHex(hash);
             String saltHex = HexFormat.of().formatHex(seed);
-            System.out.println("hash: " + hashHex);
-            System.out.println("salt: " + saltHex);
+            //System.out.println("hash: " + hashHex);
+            //System.out.println("salt: " + saltHex);
             return hashHex + ":" + saltHex;
         } catch (NoSuchAlgorithmException | InvalidKeySpecException ex) {
             ex.printStackTrace();

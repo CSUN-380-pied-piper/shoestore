@@ -21,11 +21,10 @@ public class AppState {
     private SceneLoader loader;
     private Stack<Parent> viewStack;
     private HashMap<String, URL> sceneMap;
-
+    private Boolean loggedIn = false;
     private ShoppingCart cart;
     private Customer customer;
     private NumberFormat df = NumberFormat.getCurrencyInstance();
-
 
     /**
      * Instantiates a new App state.
@@ -84,8 +83,17 @@ public class AppState {
         return customer;
     }
 
-    public void setCustomer(Customer customer) {
-    	this.customer = customer;
+    public void setCustomer(Customer newCustomer) {
+        if (newCustomer == null) {
+            this.loggedIn = false;
+        } else {
+            this.loggedIn = true;
+        }
+    	this.customer = newCustomer;
+    }
+
+    public Boolean loggedIn() {
+        return loggedIn;
     }
     
     /**

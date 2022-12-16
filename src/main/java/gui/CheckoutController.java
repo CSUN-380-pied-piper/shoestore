@@ -4,13 +4,15 @@ import backend.Customer;
 import backend.Database;
 import backend.Product;
 import backend.ShoppingCart;
+import javafx.beans.binding.StringBinding;
+import javafx.beans.binding.When;
+import javafx.beans.property.SimpleBooleanProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
-import javafx.util.Pair;
 import state.AppState;
 import java.io.IOException;
 import java.text.NumberFormat;
@@ -29,6 +31,7 @@ public class CheckoutController {
     private String ln, fn, pn, e, st, u, c, s, zip, ccn, cn, ed, cc;
     private NumberFormat df;
     private ArrayList<TextField> reqFields;
+    private SimpleBooleanProperty loggedIn;
 
     @FXML
     Button placeOrderButton, backToStoreButton, backToCartButton, loginButton;
@@ -47,15 +50,27 @@ public class CheckoutController {
     public CheckoutController(AppState state) {
         this.state = state;
         this.reqFields = new ArrayList<>();
+        this.loggedIn = new SimpleBooleanProperty(false);
     }
 
     @FXML
     public void userLogin(ActionEvent event) {
-        Dialog<Customer> login = new LoginPopup(state);
-        Optional<Customer> result = login.showAndWait();
-        if (result.isPresent()) {
-            System.out.println("Login Successful!");
-            System.out.println("Welcome back, " + result.get().getFirstName());
+        if (loggedIn.get()) {
+            Alert alert = new SkinnedAlert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Logout");
+            alert.setHeaderText("Are you sure you want to logout?");
+            Optional<ButtonType> result = alert.showAndWait();
+            if (result.isPresent() && result.get() == ButtonType.OK) {
+                this.loggedIn.set(false);
+                resetCustomerInfo();
+            }
+        } else {
+            Dialog<Customer> login = new LoginPopup(state);
+            Optional<Customer> result = login.showAndWait();
+            if (result.isPresent()) {
+                this.loggedIn.set(true);
+                populateCustomerInfo(result.get());
+            }
         }
     }
 
@@ -86,6 +101,29 @@ public class CheckoutController {
         subLabel.setText(df.format(cart.getSubTotal()));
         taxLabel.setText(df.format(cart.getTax()));
         totalLabel.setText(df.format(cart.getFinalTotal()));
+    }
+
+    private void resetCustomerInfo() {
+        for (TextField tf : reqFields) {
+            tf.setText("");
+        }
+        // remember to empty the unit field too since that's non-required
+        unitTF.setText("");
+        // and reset our AppState customer object
+        state.setCustomer(null);
+    }
+
+    private void populateCustomerInfo(Customer c) {
+        firstNameTF.setText(c.getFirstName());
+        lastNameTF.setText(c.getLastName());
+        phoneNumTF.setText(c.getPhoneNum());
+        eTF.setText(c.getEmail());
+        stTF.setText(c.getStreet());
+        unitTF.setText(c.getUnit());
+        cityTF.setText(c.getCity());
+        stateTF.setText(c.getState());
+        zipTF.setText(String.valueOf(c.getZip()));
+        state.setCustomer(c);
     }
 
     @FXML
@@ -156,6 +194,12 @@ public class CheckoutController {
         return validTextFields;
     }
 
+    private void initLoginButton() {
+        StringBinding loginText = new When(loggedIn)
+                .then("Logout").otherwise("Login");
+        loginButton.textProperty().bind(loginText);
+    }
+
     private void initReqFieldsList() {
         reqFields.add(firstNameTF);
         reqFields.add(lastNameTF);
@@ -180,6 +224,7 @@ public class CheckoutController {
         this.cart = state.getCart();
         this.df = state.getFormatter();
         this.initReqFieldsList();
+        this.initLoginButton();
         this.displayOrderSummary();
     }
 }
